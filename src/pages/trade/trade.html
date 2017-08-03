@@ -1,0 +1,143 @@
+<!--
+  Generated template for the TradePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <!-- <button (click)="openCalendar()"> -->
+
+      <div class="hack-header">
+        <ion-label><ion-icon name="document"></ion-icon></ion-label>
+        <ion-datetime (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime>
+      </div>
+
+
+
+
+      <!-- </button> -->
+    </ion-buttons>
+    <ion-title>Giao dịch</ion-title>
+
+    <ion-buttons end>
+      <button>
+        <ion-icon name="document"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="search-box">
+    <form (ngSubmit)="search()">
+
+      <ion-input [(ngModel)]="trade.search" name="user" placeholder="Search.."></ion-input>
+      <button type="submit"><ion-icon name="search"></ion-icon></button>
+    </form>
+  </div>
+  <div class="day-report">
+    <table padding>
+      <thead>
+        <tr>
+          <td class="day">22/7</td>
+          <td class="cr-money">22.321.000</td>
+          <td>
+            <p class="tb"><span>Cần thu: </span><span class="g target">15.500.000</span></p>
+            <p class="tb"><span>Đã thu: </span><span class="g achievement">500.000</span></p>
+          </td>
+        </tr>
+      </thead>
+      <tbody padding>
+        <tr>
+          <td>9g30</td>
+          <td>
+            <p class="nm">Vũ Đức Trọng</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <span>10.000.000</span>
+          </td>
+        </tr>
+        <tr>
+          <td>9g30</td>
+          <td>
+            <p class="nm">Vũ Đức Trọng</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <span>10.000.000</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table padding>
+      <thead>
+        <tr>
+          <td class="day">22/7</td>
+          <td class="cr-money">22.321.000</td>
+          <td>
+            <p class="tb"><span>Cần thu: </span><span class="g target">15.500.000</span></p>
+            <p class="tb"><span>Đã thu: </span><span class="g achievement">500.000</span></p>
+          </td>
+        </tr>
+      </thead>
+      <tbody padding>
+        <tr>
+          <td>9g30</td>
+          <td>
+            <p class="nm">Vũ Đức Trọng</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <span>10.000.000</span>
+          </td>
+        </tr>
+        <tr>
+          <td>9g30</td>
+          <td>
+            <p class="nm">Vũ Đức Trọng</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <span>10.000.000</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>
+
+
+
+
+
+<!-- <div class="day-header">
+  <div class="dt mg">22/7</div>
+  <div class="total-money mg">22.321.000</div>
+  <div class="need">
+    <p><span>Cần thu: </span><span class="g target">15.500.000</span></p>
+    <p><span>Đã thu: </span><span class="g achievement">500.000</span></p>
+  </div>
+</div>
+<ion-list>
+  <ion-item class="hello">
+    <div class="time">
+      9g30
+    </div>
+    <div class="name-phone">
+      <p class="nm">Vũ Đức Trọng</p>
+      <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p>
+    </div>
+    <div class="state">
+      <ion-icon name="log-out"></ion-icon>
+      <span>10.000.000</span>
+    </div>
+  </ion-item>
+  <ion-item><ion-icon name="log-in"></ion-icon></ion-item>
+  <ion-item>hahah</ion-item>
+</ion-list> -->

@@ -1,0 +1,68 @@
+<!--
+  Generated template for the CamDoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding>
+  <form (ngSubmit)="submitBocho()">
+    <ion-list class="cd-list">
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Số tiền vay</span></ion-label>
+        <ion-input [(ngModel)]="cd.batho" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Số ngày</span></ion-label>
+        <ion-input [(ngModel)]="cd.day" name="day" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Chu kì</span></ion-label>
+        <ion-input [(ngModel)]="cd.cycle" name="cycle" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Tỉ lệ</span></ion-label>
+        <ion-input [(ngModel)]="cd.cost" name="cost" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Tên khách</span></ion-label>
+        <ion-input [(ngModel)]="cd.money" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Số ĐT</span></ion-label>
+        <ion-input [(ngModel)]="cd.money" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>CMT</span></ion-label>
+        <ion-input [(ngModel)]="cd.money" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Địa chỉ</span></ion-label>
+        <ion-input [(ngModel)]="cd.money" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Tài sản</span></ion-label>
+        <ion-input [(ngModel)]="cd.money" name="money" ></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label>Cắt trước</ion-label>
+        <ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle>
+      </ion-item> -->
+    </ion-list>
+
+  </form>
+  <button ion-button (click)="taiAnh()">
+    <ion-icon name='upload'></ion-icon>
+    Tải ảnh lên
+  </button>
+  <button ion-button (click)="save()">Lưu lại</button>
+</ion-content>

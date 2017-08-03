@@ -1,0 +1,12 @@
+page-dashboard {
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+      display: none;
+  }
+  ion-tabs{
+    background: #333;
+    ion-tab{
+      color: #fff;
+    }
+  }
+}

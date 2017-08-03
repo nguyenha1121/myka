@@ -1,0 +1,38 @@
+<!--
+  Generated template for the SumPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-buttons>
+    <button><span>sss</span></button>
+  </ion-buttons>
+  <ion-navbar>
+    <ion-title>Thu lãi</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="submitSum()">
+    <ion-list class="cd-list">
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Khách hàng</span></ion-label>
+        <ion-input [(ngModel)]="su.kh" name="money" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Số tiền</span></ion-label>
+        <ion-input [(ngModel)]="su.tmoney" name="day" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-icon name="add-circle"></ion-icon>
+        <span>Nhân viên</span></ion-label>
+        <ion-input [(ngModel)]="su.staff" name="cycle" ></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

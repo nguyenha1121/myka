@@ -1,0 +1,29 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar  hideBackButton>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form class="list" (ngSubmit)="logForm()">
+    <ion-item class="item item-input">
+      <ion-input [(ngModel)]="log.user" name="user" placeholder="Text Input"></ion-input>
+    </ion-item>
+
+    <ion-item class="item item-input">
+      <ion-input [(ngModel)]="log.password" name="password" type="password" placeholder="Password Input"></ion-input>
+    </ion-item>
+
+    <button class="button button-block button-calm" ion-button type="submit">Login</button>
+
+  </form>
+  <button class="button button-block button-calm" ion-button (click)="goRegister()">Register</button>
+</ion-content>
