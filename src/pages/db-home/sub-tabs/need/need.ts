@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
+
+import { DbModal } from '../db-modal/db-modal';
 /**
  * Generated class for the NeedPage page.
  *
@@ -23,8 +25,10 @@ export class NeedPage {
     public navParams: NavParams,
     public getj: GetJsonProvider,
     public call: CallNumber,
-    public store : Storage
+    public store : Storage,
+    public modal: ModalController
   ) {
+    this.modal = modal;
     // this.store.get('API_Token').then(token =>{
     //   this.getj.load(this.url, token).then(data=>{
     //     this.data = data.data.items;
@@ -35,6 +39,7 @@ export class NeedPage {
     this.store.get('API_Token').then(token =>{
       this.getj.load('assets/need.json', token).then(data=>{
         this.data = data.data.items;
+        console.log(data);
         // this.data = this.hack(this.data);
         // console.log(JSON.parse(this.data[0].khach_hang['tenkh']));
         // this.data = null;
@@ -69,17 +74,17 @@ export class NeedPage {
 
   //
   dateConvert(date){
-    // date = '2017-07-27 00:00:00';
     var dt = new Date(date);
     return((dt.getMonth() + 1) + '/' + dt.getDate());
   }
 
   gotoDetail(kh){
     console.log(kh);
+    let myModal = this.modal.create(DbModal,{'param':kh});
+    myModal.present();
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad NeedPage');
   }
 
 }

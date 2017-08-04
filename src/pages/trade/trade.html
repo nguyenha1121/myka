@@ -41,6 +41,30 @@
     </form>
   </div>
   <div class="day-report">
+    <table *ngFor="let day of out" padding>
+      <thead>
+        <tr>
+          <td class="day">{{viewDay(day.day)}}</td>
+          <td class="cr-money">{{tinhtongtien(day)}}</td>
+          <td>
+            <p class="tb"><span>Cần thu: </span><span class="g target">{{canthu(day)['out']}}</span></p>
+            <p class="tb"><span>Đã thu: </span><span class="g achievement">{{dathu(day)['out']}}</span></p>
+          </td>
+        </tr>
+      </thead>
+      <tbody padding>
+        <tr *ngFor="let gd of day.value">
+          <td>{{gd.time}}</td>
+          <td>
+            <p class="nm">{{gd.customer}}</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <span>{{gd.chi_phi}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <table padding>
       <thead>
         <tr>

@@ -16,15 +16,11 @@ export class GetJsonProvider {
   public datalogin;
   public log;
   public domain = "http://thuviensofl.xyz";
-  constructor(public http: Http ,public store: Storage) {
-    // console.log('Hello GetJsonProvider Provider');
-  }
-  //     this.store.get('API_Token').then(token =>{
+  constructor(public http: Http ,public store: Storage) {}
+
+
   load(url,token) {
-    // console.log('ssss');
-    // var x = typeof(token);
-    //   console.log(token);
-    //   console.log(x);
+    this.data = false;
         if (this.data) {
           return Promise.resolve(this.data);
         }
@@ -42,7 +38,7 @@ export class GetJsonProvider {
           this.http.get(url,options)
             .map(res => res.json())
             .subscribe(data => {
-              console.log(data);
+              // console.log(data);
               this.data = data;
               resolve(this.data);
             });
@@ -51,7 +47,9 @@ export class GetJsonProvider {
  }
 
  login(info){
+   this.log = false;
   if (this.log) {
+    console.log('sss');
     return Promise.resolve(this.log);
   }
   let url = 'http://thuviensofl.xyz/api/staff/list';
@@ -67,9 +65,6 @@ export class GetJsonProvider {
       headers: iheader
     });
 
-    // if(url == null){
-    //   url = 'assets/ex.json';
-    // }
     this.http.get(url,options)
       .map(res => res.json())
       .subscribe(data => {

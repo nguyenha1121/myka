@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{toArray(data.khach_hang).tenkh}}</ion-title>
+    <ion-buttons end>
+      <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    </ion-buttons>
+    <ion-buttons start>
+      <button (click)="dismiss()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <table>
+    <tbody>
+      <tr>
+        <td><i class="fa fa-usd" aria-hidden="true"></i> Tổng tiền</td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" value="100000000"></ion-input></div></td>
+      </tr>
+      <!-- [attr.enableEdit]="true ? null : 'readonly'" -->
+      <tr>
+        <td><i class="fa fa-tags" aria-hidden="true"></i> Chi phí</td>
+        <td><div><ion-input type="number" value="100000"></ion-input></div></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user" aria-hidden="true"></i> Ngày vay</td>
+        <td><div><span>ss</span></div></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-tags" aria-hidden="true"></i> Khách hàng</td>
+        <td><div><span>ss</span></div></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-tags" aria-hidden="true"></i> SDT</td>
+        <td><div><span>0969538900</span></div></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user" aria-hidden="true"></i> CMT</td>
+        <td><div><span></span></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Tài sản</h3>
+  <p>Chưa cập nhật</p>
+  <h3>Lịch trả lãi</h3>
+  <button ion-button class="button button-block"  *ngIf="enableEdit">Edit Submit</button>
+</ion-content>
+
+<!-- {{toArray(data.khach_hang).tenkh}} -->

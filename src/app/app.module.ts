@@ -19,6 +19,7 @@ import { FinalizePage } from '../pages/finalize/finalize';
 import { SumPage } from '../pages/sum/sum';
 import { DbHomePage } from '../pages/db-home/db-home';
 import { LendingPage } from '../pages/db-home/sub-tabs/lending/lending';
+import { DbModal } from '../pages/db-home/sub-tabs/db-modal/db-modal';
 import { NeedPage } from '../pages/db-home/sub-tabs/need/need';
 import { TimeoutPage } from '../pages/db-home/sub-tabs/timeout/timeout';
 import { SignUpPage } from '../pages/db-home/sub-tabs/sign-up/sign-up';
@@ -45,7 +46,7 @@ import { LoginProvider } from '../providers/login/login';
     DetailPage,
     CamDoPage,
     BocHoPage,
-    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage,
+    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,7 @@ import { LoginProvider } from '../providers/login/login';
     DetailPage,
     CamDoPage,
     BocHoPage,
-    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage,
+    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal
   ],
   providers: [
     StatusBar,

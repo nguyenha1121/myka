@@ -23,7 +23,7 @@
           <div class="kh-money">{{kh.chi_phi}}</div>
         </div>
         <div class="kh-r2">
-          <div *ngIf="dateConvert(toArray(kh.khach_hang).date)!==null" class="day">{{dateConvert(toArray(kh.khach_hang).date)}}</div>
+          <div *ngIf="dateConvert(toArray(kh.khach_hang).date)!==null" class="day">{{dateConvert(kh.ngay_vay)}}</div>
           <div class="local">
             <ion-icon name="md-pin"></ion-icon>
             <span class="address">{{toArray(kh.khach_hang).diachi}}</span>
@@ -36,6 +36,7 @@
         </div>
     </ion-item>
   </ion-list>
+
 </ion-content>
 
 

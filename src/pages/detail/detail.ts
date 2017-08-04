@@ -19,15 +19,24 @@ export class DetailPage {
   public de={};
   public helo="jsjs";
   public params;
+  public ab;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.params = this.navParams.get('late-time');
     this.helo = this.params;
     // this.navCtrl.remove();
+    for(let i = 1;i<10000;i++){
+      this.ab = i;
+    }
   }
   clickme(){
-    this.navCtrl.push(DetailPage,{'late-time':'your face'},{duration:1}).then(()=>{
-      this.navCtrl.remove(this.navCtrl.getActive().index - 1 ,1);
-    });
+    // this.navCtrl.push(DetailPage,{'late-time':'your face'},{duration:1}).then(()=>{
+    //   this.navCtrl.remove(this.navCtrl.getActive().index - 1 ,1);
+    // });
+    this.ab= 10;
+    for(let i = 1;i<10000;i++){
+      this.ab = i;
+    }
+    this.ab = 100;
   }
 
   ionViewDidLoad() {
