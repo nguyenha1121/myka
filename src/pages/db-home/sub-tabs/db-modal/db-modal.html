@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{toArray(data.khach_hang).tenkh}}</ion-title>
+    <ion-title>{{data.khach_hang.tenkh}}</ion-title>
     <ion-buttons end>
       <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
     </ion-buttons>
@@ -12,38 +12,64 @@
 
 </ion-header>
 <ion-content padding>
-  <table>
+  <table class="modal">
     <tbody>
+      <ion-input type=hidden [(ngModel)]="data.id"></ion-input>
       <tr>
-        <td><i class="fa fa-usd" aria-hidden="true"></i> Tổng tiền</td>
-        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" value="100000000"></ion-input></div></td>
+        <td  class="w"><div><i class="fa fa-usd" aria-hidden="true"></i><span> Tổng tiền</span></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.so_tien"></ion-input></div></td>
       </tr>
       <!-- [attr.enableEdit]="true ? null : 'readonly'" -->
       <tr>
-        <td><i class="fa fa-tags" aria-hidden="true"></i> Chi phí</td>
-        <td><div><ion-input type="number" value="100000"></ion-input></div></td>
+        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Chi phí</span></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.chi_phi"></ion-input></div></td>
       </tr>
       <tr>
-        <td><i class="fa fa-user" aria-hidden="true"></i> Ngày vay</td>
-        <td><div><span>ss</span></div></td>
+        <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> Ngày vay</span></div></td>
+        <td *ngIf="!enableEdit">
+          <div><span>{{dateConvert(data.ngay_vay)}}</span></div>
+        </td>
+        <td *ngIf="enableEdit"><div><ion-datetime displayFormat="M/D" (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime></div></td>
       </tr>
       <tr>
-        <td><i class="fa fa-tags" aria-hidden="true"></i> Khách hàng</td>
-        <td><div><span>ss</span></div></td>
+        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Khách hàng</span></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" value="100000"></ion-input></div></td>
       </tr>
       <tr>
-        <td><i class="fa fa-tags" aria-hidden="true"></i> SDT</td>
-        <td><div><span>0969538900</span></div></td>
+        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> SDT</span></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.sdt"></ion-input></div></td>
       </tr>
       <tr>
-        <td><i class="fa fa-user" aria-hidden="true"></i> CMT</td>
-        <td><div><span></span></div></td>
+        <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> CMT</span></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.cmt"></ion-input></div></td>
       </tr>
     </tbody>
   </table>
   <h3>Tài sản</h3>
   <p>Chưa cập nhật</p>
   <h3>Lịch trả lãi</h3>
+  <table class="lichthu">
+    <tr>
+      <th>Nhân viên</th>
+      <th>Thời gian</th>
+      <th>Số tiền (VND)</th>
+    </tr>
+    <tr>
+      <td>Nhân viên A</td>
+      <td>7/14</td>
+      <td>500.000</td>
+    </tr>
+    <tr>
+      <td>Nhân viên A</td>
+      <td>7/14</td>
+      <td>500.000</td>
+    </tr>
+    <tr>
+      <td>Nhân viên A</td>
+      <td>7/14</td>
+      <td>500.000</td>
+    </tr>
+  </table>
   <button ion-button class="button button-block"  *ngIf="enableEdit">Edit Submit</button>
 </ion-content>
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavParams, ViewController } from 'ionic-angular';
 
-import { GetJsonProvider } from '../../../../providers/get-json/get-json';
+import { GetJsonProvider } from '../../../providers/get-json/get-json';
 
 /**
  * Generated class for the LendingPage page.
@@ -11,18 +11,16 @@ import { GetJsonProvider } from '../../../../providers/get-json/get-json';
  */
 
 @Component({
-  selector: 'db-modal',
-  templateUrl: 'db-modal.html',
+  selector: 'new-trade',
+  templateUrl: 'new-trade.html',
 })
-export class DbModal {
+export class NewTradeModal {
 
   public data = {
-    ngay_vay: 0
+    // ngay_vay: 0
   };
 
   public enableEdit=false;
-  private url = "assets/ex.json";
-  public url_edit = '/api';
   public readonly="";
   public summaryDate;
   constructor(
@@ -33,9 +31,9 @@ export class DbModal {
     // this.data.ngay_vay = new Date().toISOString();
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
-    console.log(this.data.ngay_vay);
-    this.summaryDate = new Date(this.data.ngay_vay).toISOString();
-    // this.data = 'aaaa';
+    // console.log(this.data.ngay_vay);
+    // this.summaryDate = new Date(this.data.ngay_vay).toISOString();
+    // // this.data = 'aaaa';
   }
 
   dateConvert(date){
@@ -47,11 +45,11 @@ export class DbModal {
     this.ViewCtrl.dismiss();
   }
 
-  onChangehere(ev){
-    let date = new Date(this.summaryDate);
-    this.data.ngay_vay = this.summaryDate;
-    console.log(this.data.ngay_vay);
-  }
+  // onChangehere(ev){
+  //   let date = new Date(this.summaryDate);
+  //   this.data.ngay_vay = this.summaryDate;
+  //   console.log(this.data.ngay_vay);
+  // }
   editEnable(){
     this.enableEdit = !this.enableEdit;
     this.readonly = "readonly";

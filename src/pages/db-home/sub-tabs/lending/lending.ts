@@ -22,10 +22,6 @@ export class LendingPage {
     public navParams: NavParams,
     public getj: GetJsonProvider
   ) {
-    // this.getj.load(this.url).then(data=>{
-    //   this.data = data.data;
-    //   console.log(this.data);
-    // });
   }
 
   ionViewDidLoad() {

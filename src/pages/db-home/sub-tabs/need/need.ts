@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
 
 import { DbModal } from '../db-modal/db-modal';
+
+// import { NumP } from '../../../../include/numprocess';
 /**
  * Generated class for the NeedPage page.
  *
@@ -20,14 +22,16 @@ import { DbModal } from '../db-modal/db-modal';
 export class NeedPage {
 
   public data:any;
+  public param;
   private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,
     public call: CallNumber,
     public store : Storage,
-    public modal: ModalController
+    public modal: ModalController,
   ) {
+    console.log(this.navParams.data);
     this.modal = modal;
     // this.store.get('API_Token').then(token =>{
     //   this.getj.load(this.url, token).then(data=>{
@@ -35,16 +39,17 @@ export class NeedPage {
     //     this.data = this.hack(this.data);
     //   });
     // });
-
-    this.store.get('API_Token').then(token =>{
-      this.getj.load('assets/need.json', token).then(data=>{
-        this.data = data.data.items;
-        console.log(data);
-        // this.data = this.hack(this.data);
-        // console.log(JSON.parse(this.data[0].khach_hang['tenkh']));
-        // this.data = null;
-      });
-    });
+    /////// GET DATA LIKE PARAMS
+    this.data = this.navParams.data;
+    // this.store.get('API_Token').then(token =>{
+    //   this.getj.load('assets/need.json', token).then(data=>{
+    //     // this.data = data.data.items;
+    //     console.log(this.data);
+    //     // this.data = this.hack(this.data);
+    //     // console.log(JSON.parse(this.data[0].khach_hang['tenkh']));
+    //     // this.data = null;
+    //   });
+    // });
 
   }
 
@@ -85,6 +90,36 @@ export class NeedPage {
   }
 
   ionViewDidLoad() {
+  }
+
+
+
+  dq(n,a){
+    if(n <=0){
+      return a;
+    } else {
+      let d = this.dq(Math.floor(n/1000),a);
+      if(n%1000 > 99){
+        a += String(n%1000);
+      } else if(n%1000 > 9){
+        a += '0';
+        a += n%1000;
+      } else {
+        a += '00';
+        a += n%1000;
+      }
+      return d +'.'+ a;
+    }
+  }
+
+  styleNumber(number){
+    let out='';
+    out = this.dq(number,'');
+    out = out.slice(1);
+    while(out[0] == '0'){
+      out = out.slice(1);
+    }
+    return out;
   }
 
 }

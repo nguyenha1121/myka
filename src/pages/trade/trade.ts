@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
+import { NewTradeModal } from './new-trade/new-trade';
 /**
  * Generated class for the TradePage page.
  *
@@ -21,7 +22,9 @@ export class TradePage {
   public data;
   public out;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modal : ModalController, public getj: GetJsonProvider, public store: Storage) {
-
+    // var a ='';
+    // // this.dq(1230000099988,a);
+    // console.log(this.dq(1230000099988,a),"sss");
     this.getj = getj;
     this.store = store;
     this.store.get('API_Token').then(val => {
@@ -31,9 +34,18 @@ export class TradePage {
         console.log(this.out);
       }
       )
-    })
+    });
+    this.modal = modal;
   }
 
+  addNew(){
+    let news = this.modal.create(NewTradeModal);
+    news.present();
+  }
+
+  clickme(){
+    console.log('some thing');
+  }
 
   loop(_obj){
     var out =[];
@@ -59,7 +71,6 @@ export class TradePage {
   tinhtongtien(day){
     let out = 0;
     for(let i = 0; i < day.value.length;i++){
-      console.log(out);
       let a = day.value[i].total;
       let b ='';
       for(let i=0; i< a.length; i++){
@@ -135,11 +146,36 @@ export class TradePage {
     return out;
   }
 
+  dq(n,a){
+    if(n <=0){
+      return a;
+    } else {
+      let d = this.dq(Math.floor(n/1000),a);
+      if(n%1000 > 99){
+        a += String(n%1000);
+      } else if(n%1000 > 9){
+        a += '0';
+        a += n%1000;
+      } else {
+        a += '00';
+        a += n%1000;
+      }
+      return d +'.'+ a;
+    }
+  }
+
+  styleNumber(number){
+    let out='';
+    out = this.dq(number,'');
+    out = out.slice(1);
+    while(out[0] == '0'){
+      out = out.slice(1);
+    }
+    return out;
+  }
+
   trade = {};
   summaryDate: any = new Date().toISOString();
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TradePage');
-  }
 
   search(){
     console.log(this.trade);

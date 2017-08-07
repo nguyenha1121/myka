@@ -50,6 +50,10 @@ export class LoginPage {
       this.data = data;
         console.log(this.data.data.API_Token);
             this.store.set('API_Token',this.data.data.API_Token);
+            let time = new Date();
+            let timenow = time.getTime();
+            let timeexpire = timenow + 86400000;
+            this.store.set('time-expire',timeexpire);
             this.store.set('log-in',this.data.data);
         if(this.data.status==1){
           this.navCtrl.push(DashboardPage,{'log-in':this.data.data});

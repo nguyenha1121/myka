@@ -7,6 +7,7 @@ import { LoanPage } from '../loan/loan';
 import { FinalizePage } from '../finalize/finalize';
 import { SumPage } from '../sum/sum';
 import { DbHomePage } from '../db-home/db-home';
+import { DbHomeLoading } from '../db-home/db-loading';
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
 /**
@@ -21,7 +22,7 @@ import { GetJsonProvider } from '../../providers/get-json/get-json';
   templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
-  home:any = DbHomePage;
+  home:any = DbHomeLoading;
   transaction:any = TradePage;
   loan:any = LoanPage;
   interest:any = SumPage;
@@ -55,34 +56,3 @@ export class DashboardPage {
 
 }
 //
-// if(this.data){
-//   console.log('co data');
-//   this.tabs = this.data.menu.tabs;
-//   this.tabs.forEach(function(index, value, array){
-//     // console.log(index["tab-icon"]);
-//     ftabs.push({
-//       name: index.name,
-//       icon: index['tab-icon']
-//     });
-//   }) ;
-//   this.tabs = ftabs;
-// } else {
-//     this.store.get('log-in').then(val=>{
-//         this.data = val;
-//
-//         console.log('1');
-//         console.log(this.data.menu.tabs);
-//         console.log('2');
-//         this.tabs = this.data.menu.tabs;
-//         // ForEachCallback
-//         this.tabs.forEach(function(index, value, array){
-//           // console.log(index["tab-icon"]);
-//           ftabs.push({
-//             name: index.name,
-//             icon: index['tab-icon']
-//           });
-//         }) ;
-//         this.tabs = ftabs;
-//         console.log(this.tabs);
-//     })
-// };

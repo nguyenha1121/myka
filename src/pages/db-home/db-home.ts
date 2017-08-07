@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Storage } from '@ionic/storage';
+import { GetJsonProvider } from '../../providers/get-json/get-json';
+
 import { LendingPage } from './sub-tabs/lending/lending';
 import { NeedPage } from './sub-tabs/need/need';
 import { TimeoutPage } from './sub-tabs/timeout/timeout';
@@ -13,6 +16,8 @@ import { SignUpPage } from './sub-tabs/sign-up/sign-up';
  * on Ionic pages and navigation.
  */
 
+
+
 @Component({
   selector: 'page-db-home',
   templateUrl: 'db-home.html',
@@ -22,7 +27,22 @@ export class DbHomePage {
   db_tab2: any = LendingPage;
   db_tab3: any = TimeoutPage;
   db_tab4: any = SignUpPage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public data;
+  params: any  = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      public store: Storage, public getj: GetJsonProvider
+  ) {
+    this.data = this.navParams.get('dashboard');
+    // console.log( this.data.totalChoVay.dangvay);
+    this.params[0] = this.data.totalChoVay.dangvay;
+    // this.store = store;
+    // this.getj = getj;
+    // this.store.get('API_Token').then(token =>{
+    //   this.getj.load('assets/db-home.json', token).then(data=>{
+    //     this.data = data.data;
+    //     console.log(data);
+    //   });
+    // });
   }
 // $state;
   ionViewDidLoad() {

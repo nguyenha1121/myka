@@ -7,59 +7,61 @@
 
 
 
-<ion-content padding>
+<ion-content>
   <form (ngSubmit)="submitBocho()">
-    <ion-list class="cd-list">
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Số tiền vay</span></ion-label>
-        <ion-input [(ngModel)]="bh.batho" name="money" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Số ngày</span></ion-label>
-        <ion-input [(ngModel)]="bh.day" name="day" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Chu kì</span></ion-label>
-        <ion-input [(ngModel)]="bh.cycle" name="cycle" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Tỉ lệ</span></ion-label>
-        <ion-input [(ngModel)]="bh.cost" name="cost" ></ion-input>
-      </ion-item>
-      <ion-item class="no">
-        <ion-label>Cắt trước</ion-label>
-        <ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Tên khách</span></ion-label>
-        <ion-input [(ngModel)]="bh.money" name="money" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Số ĐT</span></ion-label>
-        <ion-input [(ngModel)]="bh.money" name="money" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>CMT</span></ion-label>
-        <ion-input [(ngModel)]="bh.money" name="money" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Địa chỉ</span></ion-label>
-        <ion-input [(ngModel)]="bh.money" name="money" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label><ion-icon name="add-circle"></ion-icon>
-        <span>Tài sản</span></ion-label>
-        <ion-input [(ngModel)]="bh.money" name="money" ></ion-input>
-      </ion-item>
-    </ion-list>
+    <table class="cd-list">
+      <tr>
+        <td>
+          <ion-label><ion-icon name="logo-usd"></ion-icon>
+          <span>Số tiền vay</span></ion-label>
+        </td>
+        <td><ion-input type="number" step="10000" [(ngModel)]="bh.sotien" name="sotien" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-clock" md="md-clock"></ion-icon>
+        <span>Số ngày</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.songay" name="songay" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
+        <span>Chu kì</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.chuki" name="chuki" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-pulse" md="md-pulse"></ion-icon>
+        <span>Tỉ lệ</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.tile" name="tile" ></ion-input></td>
+      </tr>
+      <tr class="no">
+        <td><ion-label>Cắt trước</ion-label></td>
+        <td><ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        <span>Tên khách</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.tenkhach" name="tenkhach" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-call" md="md-call"></ion-icon>
+        <span>Số ĐT</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.sdt" name="sdt" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-card" md="md-card"></ion-icon>
+        <span>CMT</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.cmt" name="cmt" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
+        <span>Địa chỉ</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.diachi" name="diachi" ></ion-input></td>
+      </tr>
+      <tr>
+        <td><ion-label><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
+        <span>Tài sản</span></ion-label></td>
+        <td><ion-input [(ngModel)]="bh.taisan" name="taisan" ></ion-input></td>
+      </tr>
+    </table>
 
   </form>
   <button ion-button (click)="taiAnh()">
@@ -68,7 +70,7 @@
   </button>
   <button ion-button (click)="save()">Lưu lại</button>
 </ion-content>
-      <!-- <ion-item>
+      <!-- <tr>
         <ion-label>Cắt trước</ion-label>
         <ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle>
-      </ion-item> -->
+      </tr> -->

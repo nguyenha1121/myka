@@ -4,6 +4,17 @@ page-need {
   }
   .hn{
     // color: red;
+    padding-left: 10px!important;
+    border-top: 1px solid #ddd;
+    &:nth-child(odd){
+      background: #f2f2f2;
+    }
+  }
+  .scroll-content{
+    padding: 0!important;
+  }
+  .item-inner{
+    padding-right: 0!important;
   }
   .list-item{
     padding-top: 0;
@@ -21,10 +32,10 @@ page-need {
         color: red;
       }
       button{
-        background: #fff;
+        background: transparent;
         color: #6567cc;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 15px;
       }
     }
     display: flex;

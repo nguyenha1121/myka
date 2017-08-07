@@ -18,19 +18,19 @@
         <div class="kh-name">
           <div class="name">
             <div class="icon"><ion-icon name="md-contact"></ion-icon></div>
-            <div><button (click)="gotoDetail(kh)">{{toArray(kh.khach_hang).tenkh}}</button></div>
+            <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.tenkh}}</button></div>
           </div>
-          <div class="kh-money">{{kh.chi_phi}}</div>
+          <div class="kh-money">{{styleNumber(kh.chi_phi)}}</div>
         </div>
         <div class="kh-r2">
-          <div *ngIf="dateConvert(toArray(kh.khach_hang).date)!==null" class="day">{{dateConvert(kh.ngay_vay)}}</div>
+          <div *ngIf="dateConvert(kh.khach_hang.date)!==null" class="day">{{dateConvert(kh.ngay_vay)}}</div>
           <div class="local">
             <ion-icon name="md-pin"></ion-icon>
-            <span class="address">{{toArray(kh.khach_hang).diachi}}</span>
+            <span class="address">{{kh.khach_hang.diachi}}</span>
           </div>
         </div>
         <div class="kh-r3">
-          <button (click)="clickedCall(toArray(kh.khach_hang).sdt)" class="box phone">{{toArray(kh.khach_hang).sdt}}</button>
+          <button (click)="clickedCall(toArray(kh.khach_hang).sdt)" class="box phone">{{kh.khach_hang.sdt}}</button>
           <button (click)="clickedSMS()" class="box oth">SMS</button>
           <button (click)="clickedThu()" class="box oth">Thu lãi</button>
         </div>

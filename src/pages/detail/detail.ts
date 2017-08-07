@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
+import { GetJsonProvider } from '../../providers/get-json/get-json';
 
 // import { GetJsonProvider } from '../../../../providers/get-json/get-json';
 /**
@@ -20,7 +22,16 @@ export class DetailPage {
   public helo="jsjs";
   public params;
   public ab;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage) {
+    // this.getj = getj;
+    // this.store = store;
+    // this.store.get('API_Token').then(token=>{
+    //   this.getj.load('http://thuviensofl.xyz/api/customer/list',token).then(data=>{
+    //     console.log(data);
+    //   })
+    // });
+
+
     this.params = this.navParams.get('late-time');
     this.helo = this.params;
     // this.navCtrl.remove();

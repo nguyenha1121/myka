@@ -25,4 +25,8 @@ export class BocHoPage {
     console.log('submit BH');
   }
 
+  save(){
+    console.log(this.bh);
+  }
+
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { GetJsonProvider } from '../../providers/get-json/get-json';
 
 /**
  * Generated class for the SumPage page.
@@ -14,15 +16,36 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SumPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public listCustomer:any;
+  public su = {
+
   }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage) {
+    this.store = store;
+    this.getj = getj;
+    this.store.get('API_Token').then(token =>{
+      this.getj.load('http://thuviensofl.xyz/api/customer/list',token).then(data =>{
+        this.listCustomer = data.data.items;
+        // console.log(this.listCustomer);
+      })
+    })
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SumPage');
   }
-  su ={};
+
   submitSum(){
     console.log(this.su);
   }
 
+  compareFn(option1: any, option2: any) {
+      return option1.id === option2.id;
+  }
+  save(){
+    console.log(this.su);
+  }
 }
