@@ -8,7 +8,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
-// import { File } from '@ionic-native/file';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -87,7 +87,7 @@ import { LoginProvider } from '../providers/login/login';
     LoginProvider,
     CallNumber,
     SMS,
-    FileChooser, Transfer, TransferObject
+    FileChooser, Transfer, TransferObject, File
   ]
 })
 export class AppModule {}

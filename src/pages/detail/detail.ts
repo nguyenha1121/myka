@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
@@ -22,7 +23,8 @@ export class DetailPage {
   public helo="jsjs";
   public params;
   public ab;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage, public filechoose: FileChooser) {
+    this.filechoose = filechoose;
     // this.getj = getj;
     // this.store = store;
     // this.store.get('API_Token').then(token=>{
@@ -38,6 +40,11 @@ export class DetailPage {
     for(let i = 1;i<10000;i++){
       this.ab = i;
     }
+  }
+  loadImage(){
+    this.filechoose.open().then(uri=>{
+      console.log(uri);
+    }).catch(e => console.log(e));
   }
   clickme(){
     // this.navCtrl.push(DetailPage,{'late-time':'your face'},{duration:1}).then(()=>{
