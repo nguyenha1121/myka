@@ -65,10 +65,12 @@
 
   </form>
   <button ion-button (click)="taiAnh()">
-    <ion-icon name='upload'></ion-icon>
+    <!-- <ion-icon name='upload'></ion-icon> -->
     Tải ảnh lên
   </button>
   <button ion-button (click)="save()">Lưu lại</button>
+  <img [src]="uri" alt="#">
+  <!-- <p>{{uri}}</p> -->
 </ion-content>
       <!-- <tr>
         <ion-label>Cắt trước</ion-label>

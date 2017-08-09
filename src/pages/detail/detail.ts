@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
@@ -23,8 +24,12 @@ export class DetailPage {
   public helo="jsjs";
   public params;
   public ab;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage, public filechoose: FileChooser) {
+  public filepath ;
+  public uploadUrl;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage,
+     public filechoose: FileChooser, public upload : FileTransfer) {
     this.filechoose = filechoose;
+    this.upload = upload;
     // this.getj = getj;
     // this.store = store;
     // this.store.get('API_Token').then(token=>{
@@ -41,11 +46,18 @@ export class DetailPage {
       this.ab = i;
     }
   }
+
+  fileTransfer: FileTransferObject = this.upload.create();
+
   loadImage(){
     this.filechoose.open().then(uri=>{
       console.log(uri);
+      this.filepath = uri;
     }).catch(e => console.log(e));
   }
+  // uploadImage(){
+  //   this.fileTransfer.upload(this.filepath,this.uploadUrl );
+  // }
   clickme(){
     // this.navCtrl.push(DetailPage,{'late-time':'your face'},{duration:1}).then(()=>{
     //   this.navCtrl.remove(this.navCtrl.getActive().index - 1 ,1);

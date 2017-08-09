@@ -15,7 +15,7 @@ export class HomePage {
   root:any  ;
   public data;
   //test url
-  private url = "assets/user.json";
+  // private url = "assets/user.json";
   constructor(private store: Storage,public navCtrl: NavController, public getj : GetJsonProvider) {
       // this.getj. loadListTab().then(data => {
       //   this.data = data;

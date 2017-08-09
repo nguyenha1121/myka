@@ -7,7 +7,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { Transfer, TransferObject } from '@ionic-native/transfer';
+import { FileTransfer} from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
@@ -87,7 +88,7 @@ import { LoginProvider } from '../providers/login/login';
     LoginProvider,
     CallNumber,
     SMS,
-    FileChooser, Transfer, TransferObject, File
+    FileChooser, Transfer, TransferObject, File, FileTransfer
   ]
 })
 export class AppModule {}

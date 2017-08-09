@@ -85,7 +85,6 @@ export class TradePage {
   }
 
   canthu(day){
-    let out :any;
     var date = new Date();
 
     let money = 0;

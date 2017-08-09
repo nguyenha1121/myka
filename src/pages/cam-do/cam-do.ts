@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 /**
  * Generated class for the CamDoPage page.
@@ -14,7 +15,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CamDoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public uri:any;
+
+  constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams) {
+    this.filechoose = filechoose;
   }
 
   cd = {};
@@ -22,5 +26,13 @@ export class CamDoPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad CamDoPage');
   }
+  // taiAnh(){
+  //   this.filechoose.open().then(uri =>{
+  //     console.log(uri);
+  //     if(uri){
+  //       this.uri = uri;
+  //     }
+  //   }).catch(e => console.log(e));
+  // }
 
 }
