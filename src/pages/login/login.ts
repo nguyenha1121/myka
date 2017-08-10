@@ -21,6 +21,7 @@ import { RegisterPage } from '../register/register';
 })
 export class LoginPage {
 
+  public url = 'http://app.onbank.vn/api/staff/login?username=abcxyz&password=123456'
   public data;
   constructor(private store: Storage ,public navCtrl: NavController, public getj : GetJsonProvider, public postf : PostFormProvider, private app: MenuController) {
     this.app = app;
@@ -30,8 +31,29 @@ export class LoginPage {
       let a = this.store.get('API_Token');
       console.log(a);
   }
-  log ={};
+  log ={
+    user:'',
+    password:''
+  };
   logForm (){
+    let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
+    this.getj.loadlogin(url,false).then(data =>{
+        this.data = data;
+        this.store.set('API_Token',this.data.data.API_Token);
+        let time = new Date();
+        let timenow = time.getTime();
+        let timeexpire = timenow + 86400000;
+        console.log(timeexpire);
+        this.store.set('time-expire',timeexpire);
+        this.store.set('log-in',this.data.data);
+        console.log(this.data);
+        if(this.data.status==1){
+          this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
+        } else {
+          window.location.reload();
+        }
+      });
+
     // this.getj.login(this.log).then(data => {
     //   this.data = data;
     //   console.log(this.data);
@@ -44,23 +66,7 @@ export class LoginPage {
     // console.log(this.log);
 
 
-    this.postf.postTo(this.log).then(data=>{
-      // console.log(data);
-      // console.log('s');
-      this.data = data;
-        console.log(this.data.data.API_Token);
-            this.store.set('API_Token',this.data.data.API_Token);
-            let time = new Date();
-            let timenow = time.getTime();
-            let timeexpire = timenow + 86400000;
-            this.store.set('time-expire',timeexpire);
-            this.store.set('log-in',this.data.data);
-        if(this.data.status==1){
-          this.navCtrl.push(DashboardPage,{'log-in':this.data.data});
-        } else {
-          window.location.reload();
-        }
-    });
+
   }
 
   goRegister(){
@@ -70,3 +76,23 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 }
+
+
+
+
+//
+// this.postf.postTo(this.url,this.log).then(data=>{
+//   this.data = data;
+//     console.log(this.data.data.API_Token);
+//         this.store.set('API_Token',this.data.data.API_Token);
+//         let time = new Date();
+//         let timenow = time.getTime();
+//         let timeexpire = timenow + 86400000;
+//         this.store.set('time-expire',timeexpire);
+//         this.store.set('log-in',this.data.data);
+//     if(this.data.status==1){
+//       this.navCtrl.push(DashboardPage,{'log-in':this.data.data});
+//     } else {
+//       window.location.reload();
+//     }
+// });

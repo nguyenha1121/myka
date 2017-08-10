@@ -29,13 +29,27 @@ export class GetJsonProvider {
           let iheader = new Headers({
             'Content-Type':'application/json',
             'X-Requested-With': 'XMLHttpRequest',
-            'X-Token': token
+            'X-Token': ''
           });
+          if(token){
+            iheader = new Headers({
+              'Content-Type':'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+              'X-Token': token
+            });
+          }
 
+          var headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('X-Requested-With', 'XMLHttpRequest');
+          headers.append('X-Token', token);
+          console.log(token);
           let options = new RequestOptions({
             headers: iheader
           });
-          this.http.get(url,options)
+          this.http.get(url, {
+              headers: headers
+            })
             .map(res => res.json())
             .subscribe(data => {
               // console.log(data);
@@ -45,6 +59,40 @@ export class GetJsonProvider {
         });
 
  }
+
+ loadlogin(url,token) {
+   this.data = false;
+       if (this.data) {
+         return Promise.resolve(this.data);
+       }
+
+       return new Promise(resolve => {
+         let iheader = new Headers({
+           'Content-Type':'application/json',
+           'X-Requested-With': 'XMLHttpRequest',
+           'X-Token': ''
+         });
+         if(token){
+           iheader = new Headers({
+             'Content-Type':'application/json',
+             'X-Requested-With': 'XMLHttpRequest',
+             'X-Token': token
+           });
+         }
+
+         let options = new RequestOptions({
+           headers: iheader
+         });
+         this.http.get(url)
+           .map(res => res.json())
+           .subscribe(data => {
+             // console.log(data);
+             this.data = data;
+             resolve(this.data);
+           });
+       });
+
+}
 
  login(info){
    this.log = false;

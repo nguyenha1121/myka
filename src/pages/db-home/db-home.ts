@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 import { GetJsonProvider } from '../../providers/get-json/get-json';
@@ -30,8 +30,11 @@ export class DbHomePage {
   public data;
   params: any  = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
-      public store: Storage, public getj: GetJsonProvider
+      public store: Storage, public getj: GetJsonProvider,
+      public menuCtrl: MenuController
   ) {
+    this.menuCtrl.enable(false,'usermenu');
+    this.menuCtrl.enable(true,'db-menu');
     this.data = this.navParams.get('dashboard');
     // console.log( this.data.totalChoVay.dangvay);
     this.params[0] = this.data.totalChoVay.dangvay;
@@ -48,5 +51,12 @@ export class DbHomePage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad DbHomePage');
   }
+
+  openDbMenu(){
+    // this.menuCtrl.enable(false,'usermenu');
+    // this.menuCtrl.enable(true,'dbmenu');
+    this.menuCtrl.toggle('left');
+  }
+
 
 }

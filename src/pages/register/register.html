@@ -16,21 +16,24 @@
 <ion-content padding>
   <form (ngSubmit)="registerform()">
     <ion-item>
-      <ion-input [(ngModel)]="reg.user" name="user" placeholder="Text Input"></ion-input>
+      <ion-input [(ngModel)]="reg.user" name="user" placeholder="User"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input [(ngModel)]="reg.password" name="password" type="password" placeholder="Password Input"></ion-input>
+      <ion-input [(ngModel)]="reg.password" name="password" type="password" placeholder="Password"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input [(ngModel)]="reg.rePassword" name="rePassword" type="text" placeholder="Password Input"></ion-input>
+      <ion-input [(ngModel)]="reg.rePassword" name="rePassword" type="text" placeholder="Re-Password"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input [(ngModel)]="reg.email" name="email" type="email" placeholder="Password Input"></ion-input>
+      <ion-input [(ngModel)]="reg.email" name="email" type="email" placeholder="Email"></ion-input>
     </ion-item>
-
+    
+    <ion-item>
+      <ion-input [(ngModel)]="reg.phone" name="phone" type="number" placeholder="SDT"></ion-input>
+    </ion-item>
     <button ion-button type="submit">Register</button>
   </form>
   <button ion-button (click)="goLogin()">Go to Login</button>

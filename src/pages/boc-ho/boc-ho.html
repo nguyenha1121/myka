@@ -64,11 +64,14 @@
     </table>
 
   </form>
-  <button ion-button (click)="taiAnh()">
-    <ion-icon name='upload'></ion-icon>
-    Tải ảnh lên
+  <button class="btn" ion-button (click)="taiAnh()">
+    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+    <span>Tải ảnh lên</span>
   </button>
-  <button ion-button (click)="save()">Lưu lại</button>
+  <button class="btn" ion-button (click)="save()">
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    <span>Lưu lại</span>
+  </button>
 </ion-content>
       <!-- <tr>
         <ion-label>Cắt trước</ion-label>

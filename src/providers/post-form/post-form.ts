@@ -21,28 +21,18 @@ export class PostFormProvider {
   public data;
   public form = '';
   public log;
-  postTo(form){
-    let url = 'http://thuviensofl.xyz/api/staff/login';
+  postTo(url,form,token){
+    // let url = 'http://thuviensofl.xyz/api/staff/login';
     if(this.data){
       return Promise.resolve(this.data);
     }
     return new Promise(resolve => {
-      let iheader = new Headers({
-        // 'TOKEN': 'abc',
-        'Content-Type':'application/json',
-        'API_TOKEN':''
-      });
-      let options = new RequestOptions({
-        headers: iheader,
-      });
-
-      let info = {
-        'username': form.user,
-        'password': form.password
-      };
-      console.log(info);
-      let infos = JSON.stringify(info);
-      this.http.post(url,infos,options)
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      let body = 'username=hanguyen12&password=123456&repassword=123456&email=nguyenha1.08112@gmail.com&identity-no=1&phone=0969538900';
+      this.http.post(url,body,{
+        headers: headers
+      })
       .map(res=>res.json())
       .subscribe(data => {
         this.data = data;

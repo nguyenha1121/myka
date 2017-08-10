@@ -9,14 +9,14 @@
   <ion-navbar>
     <ion-buttons start>
       <div class="hack-header">
-        <ion-label><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon></ion-label>
+        <ion-label><i class="fa fa-calendar-check-o" aria-hidden="true"></i></ion-label>
         <ion-datetime (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime>
       </div>
     </ion-buttons>
     <ion-title>Giao dịch</ion-title>
     <ion-buttons end>
-      <button (click)="addNew()">
-        <ion-icon name="document"></ion-icon>
+      <button class="pencil" (click)="addNew()">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
       </button>
     </ion-buttons>
   </ion-navbar>

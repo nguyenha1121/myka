@@ -15,15 +15,28 @@ page-trade {
   }
 
   .hack-header{
+    i{
+      color: #999;
+      font-size: 20px;
+      z-index: 3;
+    }
     position: relative;
     overflow: hidden;
     ion-datetime{
       position: absolute;
       top: 0;
       left: 0;
+      opacity: 0;
+    }
+
+  }
+  .pencil{
+    i{
+      color: #999;
+      font-size: 20px;
+      z-index: 3;
     }
   }
-
   .search-box{
     form{
       display: inline-flex;

@@ -28,7 +28,9 @@ export class TradePage {
     this.getj = getj;
     this.store = store;
     this.store.get('API_Token').then(val => {
-      this.getj.load("assets/gd.json", val).then(data =>{
+      // this.getj.load("http://app.onbank.vn/api/transaction/list", val).then(data =>{
+        this.getj.load("assets/gd.json", val).then(data =>{
+        console.log(data);
         this.data = data.data;
         this.out = this.loop(this.data);
         console.log(this.out);
@@ -116,7 +118,6 @@ export class TradePage {
   }
 
   dathu(day){
-    let out :any;
     let money = 0;
     for(let i = 0; i < day.value.length;i++){
       // console.log(diff);
