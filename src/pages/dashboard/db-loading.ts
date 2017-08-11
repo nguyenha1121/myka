@@ -24,8 +24,9 @@ export class DbLoading{
     this.store.get('log-in').then(val=>{
         this.data = val;
         this.navCtrl.push(DashboardPage,{'log-in':this.data});
-        this.loading.dismiss();
-      })
+
+      });
+      this.loading.dismiss();
   }
   goToPage2() {
 

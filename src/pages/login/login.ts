@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { DashboardPage } from '../dashboard/dashboard';
@@ -23,7 +23,7 @@ export class LoginPage {
 
   public url = 'http://app.onbank.vn/api/staff/login?username=abcxyz&password=123456'
   public data;
-  constructor(private store: Storage ,public navCtrl: NavController, public getj : GetJsonProvider, public postf : PostFormProvider, private app: MenuController) {
+  constructor(public plt: Platform, private store: Storage ,public navCtrl: NavController, public getj : GetJsonProvider, public postf : PostFormProvider, private app: MenuController) {
     this.app = app;
     this.app.enable(false);
 
@@ -36,38 +36,27 @@ export class LoginPage {
     password:''
   };
   logForm (){
-    let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
-    this.getj.loadlogin(url,false).then(data =>{
-        this.data = data;
-        this.store.set('API_Token',this.data.data.API_Token);
-        let time = new Date();
-        let timenow = time.getTime();
-        let timeexpire = timenow + 86400000;
-        console.log(timeexpire);
-        this.store.set('time-expire',timeexpire);
-        this.store.set('log-in',this.data.data);
-        console.log(this.data);
-        if(this.data.status==1){
-          this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
-        } else {
-          window.location.reload();
-        }
-      });
-
-    // this.getj.login(this.log).then(data => {
-    //   this.data = data;
-    //   console.log(this.data);
-    //   if(this.data.status==1){
-    //     this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
-    //   } else {
-    //     window.location.reload();
-    //   }
-    // });
-    // console.log(this.log);
-
-
-
-  }
+      this.plt.ready().then((readySource)=>{
+        console.log('Platform ready from', readySource);
+        let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
+        this.getj.loadlogin(url,false).then(data =>{
+            this.data = data;
+            this.store.set('API_Token',this.data.data.API_Token);
+            let time = new Date();
+            let timenow = time.getTime();
+            let timeexpire = timenow + 86400000;
+            console.log(timeexpire);
+            this.store.set('time-expire',timeexpire);
+            this.store.set('log-in',this.data.data);
+            console.log(this.data);
+            if(this.data.status==1){
+              this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
+            } else {
+              window.location.reload();
+            }
+          });
+      })
+    }
 
   goRegister(){
   //   this.store.get('name').then((val) => {

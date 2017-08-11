@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
-import { CallNumber } from '@ionic-native/call-number';
+// import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
@@ -86,7 +86,7 @@ import { LoginProvider } from '../providers/login/login';
     GetJsonProvider,
     PostFormProvider,
     LoginProvider,
-    CallNumber,
+    // CallNumber,
     SMS,
     FileChooser, Transfer, TransferObject, File, FileTransfer
   ]

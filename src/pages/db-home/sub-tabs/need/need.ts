@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { CallNumber } from '@ionic-native/call-number';
+// import { CallNumber } from '@ionic-native/call-number';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
@@ -27,7 +27,7 @@ export class NeedPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,
-    public call: CallNumber,
+    // public call: CallNumber,
     public store : Storage,
     public modal: ModalController,
   ) {
@@ -72,9 +72,9 @@ export class NeedPage {
   }
   clickedCall(num){
     console.log(num);
-    this.call.callNumber(num, true)
-    .then(() => console.log('Launched dialer!'))
-    .catch(() => console.log('Error launching dialer'));
+    // this.call.callNumber(num, true)
+    // .then(() => console.log('Launched dialer!'))
+    // .catch(() => console.log('Error launching dialer'));
   }
 
   //
