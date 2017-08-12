@@ -16,7 +16,7 @@ export class DbLoading{
   public tabs;
   constructor(public loadingCtrl: LoadingController,public store:Storage, public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider) {
     this.loading = this.loadingCtrl.create({
-      content: 'This will navigate to the next page and then dismiss after 3 seconds.'
+      content: 'Please wait!'
     });
     this.loading.present();
 

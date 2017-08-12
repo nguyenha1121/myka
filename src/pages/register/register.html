@@ -14,7 +14,12 @@
 
 
 <ion-content padding>
+    <h2>Đăng kí thành viên</h2>
   <form (ngSubmit)="registerform()">
+    <ion-item>
+      <ion-input [(ngModel)]="reg.full_name" name="full_name" type="text" placeholder="Full name"></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-input [(ngModel)]="reg.user" name="user" placeholder="User"></ion-input>
     </ion-item>
@@ -24,13 +29,13 @@
     </ion-item>
 
     <ion-item>
-      <ion-input [(ngModel)]="reg.rePassword" name="rePassword" type="text" placeholder="Re-Password"></ion-input>
+      <ion-input [(ngModel)]="reg.rePassword" name="rePassword" type="password" placeholder="Re-Password"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-input [(ngModel)]="reg.email" name="email" type="email" placeholder="Email"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-input [(ngModel)]="reg.phone" name="phone" type="number" placeholder="SDT"></ion-input>
     </ion-item>

@@ -37,7 +37,10 @@ export class DbHomePage {
     this.menuCtrl.enable(true,'db-menu');
     this.data = this.navParams.get('dashboard');
     // console.log( this.data.totalChoVay.dangvay);
-    this.params[0] = this.data.totalChoVay.dangvay;
+    this.params[0] = this.data.canthu;
+    this.params[1] = this.data.dangvay;
+    this.params[2] = this.data.daxong;
+    this.params[3] = this.data.quahan;
     // this.store = store;
     // this.getj = getj;
     // this.store.get('API_Token').then(token =>{

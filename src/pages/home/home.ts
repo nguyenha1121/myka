@@ -22,13 +22,13 @@ export class HomePage {
       let timenow = time.getTime();
       this.store.get('API_Token').then(val=>{
         this.store.get('time-expire').then(vals=>{
-          console.log('sksk');
-          console.log(vals);
-          console.log(timenow);
-          console.log('sksk');
+          // console.log('sksk');
+          // console.log(vals);
+          // console.log(timenow);
+          // console.log('sksk');
           if(val && (timenow < vals)){
-            this.root = DbLoading;
-            // this.root = LoginPage;
+            // this.root = DbLoading;
+            this.root = LoginPage;
           }
           else {
             this.root = LoginPage;

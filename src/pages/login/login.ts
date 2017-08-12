@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { DashboardPage } from '../dashboard/dashboard';
@@ -23,10 +23,15 @@ export class LoginPage {
 
   public url = 'http://app.onbank.vn/api/staff/login?username=abcxyz&password=123456'
   public data;
-  constructor(private store: Storage ,public navCtrl: NavController, public getj : GetJsonProvider, public postf : PostFormProvider, private app: MenuController) {
+  public reg;
+  constructor(private store: Storage,public navParam: NavParams ,public navCtrl: NavController, public getj : GetJsonProvider,
+     public postf : PostFormProvider, private app: MenuController,
+     public plt : Platform
+    ) {
     this.app = app;
     this.app.enable(false);
-
+    let loa = this.navParam.get('log');
+    console.log(loa);
     this.store = store;
       let a = this.store.get('API_Token');
       console.log(a);
@@ -36,16 +41,27 @@ export class LoginPage {
     password:''
   };
   logForm (){
-    let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
-    this.getj.loadlogin(url,false).then(data =>{
+    this.plt.ready().then((readySource)=>{
+      console.log('Platform ready from', readySource);
+      let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
+      let to = new Array();
+      to['username'] = this.log.user;
+      to['password'] = this.log.password;
+      let tot = 'username='+to['username']+'&password='+to['password'];
+      console.log(tot);
+      this.postf.postTo('http://app.onbank.vn/api/staff/login',tot,'').then(data=>{
+        console.log(data);
         this.data = data;
         this.store.set('API_Token',this.data.data.API_Token);
         let time = new Date();
         let timenow = time.getTime();
-        let timeexpire = timenow + 86400000;
+        let timeexpire = timenow + 100;
         console.log(timeexpire);
         this.store.set('time-expire',timeexpire);
         this.store.set('log-in',this.data.data);
+        //get bracnch and save that
+        this.store.set('branch',54);
+        // console.log(this.data.data.branch);
         console.log(this.data);
         if(this.data.status==1){
           this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
@@ -53,20 +69,7 @@ export class LoginPage {
           window.location.reload();
         }
       });
-
-    // this.getj.login(this.log).then(data => {
-    //   this.data = data;
-    //   console.log(this.data);
-    //   if(this.data.status==1){
-    //     this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
-    //   } else {
-    //     window.location.reload();
-    //   }
-    // });
-    // console.log(this.log);
-
-
-
+    })
   }
 
   goRegister(){

@@ -40,9 +40,9 @@ export class GetJsonProvider {
           }
 
           var headers = new Headers();
-          headers.append('Content-Type', 'application/json');
-          headers.append('X-Requested-With', 'XMLHttpRequest');
-          headers.append('X-Token', token);
+          headers.append('Content-Type', 'application/x-www-form-urlencoded');
+          // headers.append('X-Requested-With', 'XMLHttpRequest');
+          // headers.append('X-Token', token);
           console.log(token);
           let options = new RequestOptions({
             headers: iheader
@@ -67,23 +67,14 @@ export class GetJsonProvider {
        }
 
        return new Promise(resolve => {
-         let iheader = new Headers({
-           'Content-Type':'application/json',
-           'X-Requested-With': 'XMLHttpRequest',
-           'X-Token': ''
-         });
-         if(token){
-           iheader = new Headers({
-             'Content-Type':'application/json',
-             'X-Requested-With': 'XMLHttpRequest',
-             'X-Token': token
-           });
-         }
 
-         let options = new RequestOptions({
-           headers: iheader
-         });
-         this.http.get(url)
+        let headers = new Headers;
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        // headers.append('X-Requested-With', 'XMLHttpRequest');
+        headers.append('Authorization', 'Bearer'+'ddddddddddddd');
+         this.http.get(url, {
+           headers: headers
+         })
            .map(res => res.json())
            .subscribe(data => {
              // console.log(data);

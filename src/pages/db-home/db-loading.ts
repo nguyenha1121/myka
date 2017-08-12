@@ -16,20 +16,24 @@ export class DbHomeLoading{
   public tabs;
   constructor(public loadingCtrl: LoadingController,public store:Storage, public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider) {
     this.loading = this.loadingCtrl.create({
-      content: 'This will navigate to the next page and then dismiss after 3 seconds.'
+      content: 'Please wait!'
     });
     this.loading.present();
 
 
     this.store = store;
     this.getj = getj;
+    // http://app.onbank.vn/api/loan/list
     this.store.get('API_Token').then(token =>{
-      this.getj.load('assets/db-home.json', token).then(data=>{
-        this.data = data.data;
-        console.log(data);
-        this.navCtrl.push(DbHomePage,{'dashboard' :this.data});
-        this.loading.dismiss();
-      });
+      this.store.get('branch').then(br=>{
+        this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch='+br, '').then(data=>{
+          this.data = data.data;
+          console.log(data);
+          this.navCtrl.push(DbHomePage,{'dashboard' :this.data});
+          this.loading.dismiss();
+        });
+      })
+
     });
 
     // this.store.get('log-in').then(val=>{

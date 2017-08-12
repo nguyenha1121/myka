@@ -23,14 +23,21 @@ export class PostFormProvider {
   public log;
   postTo(url,form,token){
     // let url = 'http://thuviensofl.xyz/api/staff/login';
+    this.data = null;
     if(this.data){
       return Promise.resolve(this.data);
     }
     return new Promise(resolve => {
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      let body = 'username=hanguyen12&password=123456&repassword=123456&email=nguyenha1.08112@gmail.com&identity-no=1&phone=0969538900';
-      this.http.post(url,body,{
+      if(token==''){
+        // headers.append('X-Token', token);
+      }
+      console.log(form);
+      // console.log(tot);
+      // let tot = 'username='+form['username']+'&password='+form['password'];
+      // let body = 'username=hanguyen12&password=123456&repassword=123456&email=nguyenha1.08112@gmail.com&identity-no=1&phone=0969538900';
+      this.http.post(url,form,{
         headers: headers
       })
       .map(res=>res.json())

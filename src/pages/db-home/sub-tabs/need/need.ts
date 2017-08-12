@@ -68,7 +68,7 @@ export class NeedPage {
     console.log('heelo');
   }
   clickedThu(){
-    console.log('heelo');
+    this.navCtrl.parent.parent.parent.select(3);
   }
   clickedCall(num){
     console.log(num);
@@ -113,6 +113,7 @@ export class NeedPage {
   }
 
   styleNumber(number){
+    number = Math.floor(number);
     let out='';
     out = this.dq(number,'');
     out = out.slice(1);
@@ -121,5 +122,6 @@ export class NeedPage {
     }
     return out;
   }
+
 
 }
