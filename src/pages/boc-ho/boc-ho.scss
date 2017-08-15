@@ -1,21 +1,34 @@
 page-boc-ho {
+  ion-input{
+    input{
+      text-align: right;
+    }
+  }
   table.cd-list{
     width: 100%;
+    td:first-child{
+      width: 40%;
+    }
     td{
       ion-label{
         padding: 0;
         margin: 0;
-        width: 100%;
-        height: 100%;
+        // width: 100%;
+        // height: 100%;
         padding: 8px 0;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        background: #C0D5EF;
+        background: #488aff;
+        color: #fff;
+        border: 2px solid #488aff;
+        font-size: 16px;
 
         ion-icon{
           text-align: center;
-          color: #4281D0;
-          width: 25%;
+          // color: #488aff;
+          color: #ddd;
+          // width: 25%;
+          padding: 0 5px;
           font-size: 20px;
         }
       }
@@ -28,15 +41,15 @@ page-boc-ho {
       }
     }
     tr.no{
-      td{
-        ion-label{
-          background: #ccc;
-        }
-        text-align: center;
-        ion-toggle{
-          margin: 0 auto;
-        }
-      }
+      // td{
+      //   ion-label{
+      //     background: #ccc;
+      //   }
+      //   text-align: center;
+        // ion-toggle{
+        //   margin: 0 auto;
+        // }
+      // }
     }
   }
   .btn{

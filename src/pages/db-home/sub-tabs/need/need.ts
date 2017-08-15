@@ -39,8 +39,12 @@ export class NeedPage {
     //     this.data = this.hack(this.data);
     //   });
     // });
+    // if(this.navParams.data){
+    //   console.log('co');
+    // } else console.log('khomg');
     /////// GET DATA LIKE PARAMS
     this.data = this.navParams.data;
+    console.log(this.data);
     // this.store.get('API_Token').then(token =>{
     //   this.getj.load('assets/need.json', token).then(data=>{
     //     // this.data = data.data.items;

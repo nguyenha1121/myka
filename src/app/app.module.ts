@@ -11,6 +11,8 @@ import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FileTransfer} from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
+import { ScrollableTabs } from '../include/scrollable-tabs';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -40,6 +42,7 @@ import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
+    ScrollableTabs,
     MyApp,
     HomePage,
     LoginPage,

@@ -37,7 +37,7 @@
       </tr>
       <tr>
         <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> SDT</span></div></td>
-        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.sdt"></ion-input></div></td>
+        <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.phone"></ion-input></div></td>
       </tr>
       <tr>
         <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> CMT</span></div></td>
@@ -54,23 +54,18 @@
       <th>Thời gian</th>
       <th>Số tiền (VND)</th>
     </tr>
-    <tr>
+    <tr *ngFor="let lt of lich_thu">
+      <td>{{lt.nhanvien}}</td>
+      <td>{{dateConvert(lt.thoigian)}}</td>
+      <td>{{styleNumber(lt.sotien)}}</td>
+    </tr>
+    <!-- <tr>
       <td>Nhân viên A</td>
       <td>7/14</td>
       <td>500.000</td>
-    </tr>
-    <tr>
-      <td>Nhân viên A</td>
-      <td>7/14</td>
-      <td>500.000</td>
-    </tr>
-    <tr>
-      <td>Nhân viên A</td>
-      <td>7/14</td>
-      <td>500.000</td>
-    </tr>
+    </tr> -->
   </table>
-  <button ion-button class="button button-block"  *ngIf="enableEdit">Edit Submit</button>
+  <button ion-button class="button button-block" (click)="edit()" *ngIf="enableEdit">Edit Submit</button>
 </ion-content>
 
 <!-- {{toArray(data.khach_hang).tenkh}} -->

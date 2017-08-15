@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { ScrollableTabs } from '../../include/scrollable-tabs';
 import { TradePage } from '../trade/trade';
 import { LoanPage } from '../loan/loan';
 import { FinalizePage } from '../finalize/finalize';
@@ -31,6 +31,7 @@ export class DashboardPage {
   public tabs;
   public page = [];
   public ftabs = [];
+  scrollableTabsopts: any = {};
   // private url = 'http://localhost:8100/assets/ex.json';
   // get data for test
   constructor(public store:Storage, public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider) {
@@ -49,6 +50,10 @@ export class DashboardPage {
 
 
   }
+
+  refreshScrollbarTabs() {
+   this.scrollableTabsopts = { refresh: true };
+ }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');

@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <ion-tabs selectedIndex="0" tabs-only tabsLayout="icon-top">
+  <ion-tabs  #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts" selectedIndex="0" tabs-only tabsLayout="icon-top">
     <ion-tab *ngIf="tabs[0] && tabs[0].name" [root]="home" tabTitle="Home" tabIcon={{tabs[0].icon}}  ></ion-tab>
     <ion-tab *ngIf="tabs[1] && tabs[1].name" [root]="transaction" tabTitle="Giao dịch" tabIcon={{tabs[1].icon}}  ></ion-tab>
     <ion-tab *ngIf="tabs[2] && tabs[2].name" [root]="loan" tabTitle="Cho vay" tabIcon={{tabs[2].icon}} ></ion-tab>
