@@ -26,21 +26,19 @@ export class DbHomeLoading{
     // http://app.onbank.vn/api/loan/list
     this.store.get('API_Token').then(token =>{
       this.store.get('branch').then(br=>{
+
+        console.log(br);
         this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch='+br, '').then(data=>{
           this.data = data.data;
+              // console.log('sss');s
           console.log(data);
+              // console.log('sss');
           this.navCtrl.push(DbHomePage,{'dashboard' :this.data});
           this.loading.dismiss();
         });
       })
 
     });
-
-    // this.store.get('log-in').then(val=>{
-    //     this.data = val;
-    //     this.navCtrl.push(DbHomePage,{'log-in':this.data});
-    //     this.loading.dismiss();
-    //   })
   }
   goToPage2() {
 

@@ -19,7 +19,7 @@ import { NewTradeModal } from './new-trade/new-trade';
 export class TradePage {
 
   public url = "assets/gd.json";
-  public data;
+  public data:any;
   public out;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modal : ModalController, public getj: GetJsonProvider, public store: Storage) {
     // var a ='';
@@ -28,14 +28,15 @@ export class TradePage {
     this.getj = getj;
     this.store = store;
     this.store.get('API_Token').then(val => {
-      this.getj.load("http://app.onbank.vn/api/transaction/list"+'?API_TOKEN='+val+'&branch=54', '').then(data =>{
-        // this.getj.load("assets/gd.json", val).then(data =>{
-        console.log(data);
-        this.data = data.data;
-        this.out = this.loop(this.data);
-        console.log(this.out);
-      }
-      )
+      this.store.get('branch').then(br => {
+        this.getj.load("http://app.onbank.vn/api/transaction/list"+'?API_TOKEN='+val+'&branch='+br, '').then(data =>{
+          console.log(data);
+          this.data = data.data.items;
+          this.out = this.loop(this.data);
+          // console.log(this.out);
+        });
+      })
+
     });
     this.modal = modal;
   }
@@ -56,16 +57,20 @@ export class TradePage {
       if (!_obj.hasOwnProperty(key)) continue;
 
       var obj = _obj[key];
-      for (var prop in obj) {
-          // skip loop if the property is from prototype
-          if(!obj.hasOwnProperty(prop)) continue;
-
-          out.push({
-            day: prop,
-            value:  obj[prop]
-          });
-          // console.log(prop + " = " + obj[prop]);
-        }
+      out.push({
+        day: key,
+        value: obj
+      })
+      // for (var prop in obj) {
+      //     // skip loop if the property is from prototype
+      //     if(!obj.hasOwnProperty(prop)) continue;
+      //
+      //     out.push({
+      //       day: prop,
+      //       value:  obj[prop]
+      //     });
+      //     // console.log(prop + " = " + obj[prop]);
+      //   }
     }
     return out;
   }
@@ -139,11 +144,8 @@ export class TradePage {
   }
 
   viewDay(day){
-    let dat = new Date(day);
-    var d = dat.getDate() ;
-    var m = dat.getMonth() + 1;
-    var out = (d+'/'+m);
-    return out;
+    day = day.slice(0, day.length - 5);
+    return day;
   }
 
   dq(n,a){
@@ -165,6 +167,7 @@ export class TradePage {
   }
 
   styleNumber(number){
+    number = Math.floor(number);
     let out='';
     out = this.dq(number,'');
     out = out.slice(1);

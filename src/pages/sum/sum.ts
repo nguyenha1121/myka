@@ -25,7 +25,7 @@ export class SumPage {
     this.store = store;
     this.getj = getj;
     this.store.get('API_Token').then(token =>{
-      this.getj.load('http://thuviensofl.xyz/api/customer/list',token).then(data =>{
+      this.getj.load('http://app.onbank.vn/api/customer/list?API_TOKEN='+token+'&branch=54','').then(data =>{
         this.listCustomer = data.data.items;
         // console.log(this.listCustomer);
       })

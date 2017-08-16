@@ -24,7 +24,7 @@ export class TimeoutPage {
   public data:any;
   public param;
   public list_empty=false;
-  private url = "http://thuviensofl.xyz/api/loan/list";
+  private url = "http://app.onbank.vn/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,

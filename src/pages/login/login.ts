@@ -55,13 +55,13 @@ export class LoginPage {
         this.store.set('API_Token',this.data.data.API_Token);
         let time = new Date();
         let timenow = time.getTime();
-        let timeexpire = timenow + 100;
+        let timeexpire = timenow + 100000;
         console.log(timeexpire);
         this.store.set('time-expire',timeexpire);
         this.store.set('log-in',this.data.data);
         //get bracnch and save that
-        this.store.set('branch',54);
-        // console.log(this.data.data.branch);
+        this.store.set('branch',this.data.data.branch[0].id);
+        this.store.set('list-branch',this.data.data.branch);
         console.log(this.data);
         if(this.data.status==1){
           this.navCtrl.push(DashboardPage, {'log-in':this.data.data});

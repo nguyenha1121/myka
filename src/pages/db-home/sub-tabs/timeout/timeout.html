@@ -1,5 +1,6 @@
 <ion-content>
-  <p *ngIf="list_empty" class="empty">Danh sách rỗng</p>
+
+  <h3 *ngIf="list_empty" class="empty">Danh sách rỗng</h3>
   <div *ngIf="!list_empty" >
   <ion-list  class="list-item" *ngFor="let kh of data">
     <ion-item class="hn">

@@ -23,6 +23,7 @@ export class NeedPage {
 
   public data:any;
   public param;
+  public list_empty;
   private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -43,6 +44,10 @@ export class NeedPage {
     //   console.log('co');
     // } else console.log('khomg');
     /////// GET DATA LIKE PARAMS
+    if(this.isEmpty(this.navParams.data )){
+      console.log('khong anh');
+      this.list_empty = true;
+    } else {console.log(this.navParams.data);  console.log('co anh');}
     this.data = this.navParams.data;
     console.log(this.data);
     // this.store.get('API_Token').then(token =>{
@@ -126,6 +131,13 @@ export class NeedPage {
     }
     return out;
   }
+  isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
 
+    return JSON.stringify(obj) === JSON.stringify({});
+  }
 
 }

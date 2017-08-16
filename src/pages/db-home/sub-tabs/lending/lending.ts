@@ -23,6 +23,7 @@ export class LendingPage {
 
   public data:any;
   public param;
+  public list_empty;
   private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,6 +41,10 @@ export class LendingPage {
     //   });
     // });
     /////// GET DATA LIKE PARAMS
+    if(this.isEmpty(this.navParams.data )){
+      console.log('khong anh');
+      this.list_empty = true;
+    } else {console.log(this.navParams.data);  console.log('co anh');}
     this.data = this.navParams.data;
     // this.store.get('API_Token').then(token =>{
     //   this.getj.load('assets/need.json', token).then(data=>{
@@ -122,6 +127,13 @@ export class LendingPage {
     }
     return out;
   }
+  isEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
 
+    return JSON.stringify(obj) === JSON.stringify({});
+  }
 
 }

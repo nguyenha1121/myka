@@ -13,12 +13,10 @@
 </ion-menu>
 <ion-menu id="db-menu" side="left" [content]="mycontent">
     <ion-content>
-        <ion-list>
-             <button ion-item menuClose (click)="dashboardMenu1()">
-                DB 1
-            </button>
-            <button ion-item menuClose (click)="dashboardmenu2()">
-                DB 2
+        <p>Danh sách chi nhánh</p>
+        <ion-list >
+             <button *ngFor="let br of list_br" ion-item menuClose (click)="changeBranch(br)">
+                {{br.name}}
             </button>
         </ion-list>
     </ion-content>

@@ -19,13 +19,17 @@ export class CamDoPage {
 
   public uri:any;
   public token;
+  public br;
   public url = "http://app.onbank.vn/api/loan/save?API_TOKEN=";
   constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams, public store: Storage, public postf: PostFormProvider) {
     this.filechoose = filechoose;
     this.store.get('API_Token').then(token=>{
       this.token = token;
     });
-    console.log(this.token);
+    // console.log(this.token);
+    this.store.get('branch').then(br => {
+      this.br = br;
+    });
   }
 
   cd = {
@@ -59,7 +63,7 @@ export class CamDoPage {
         '&cat-truoc'+this.cd.cattruoc
     ;
 
-      let u = this.url+this.token+'&branch='+'54';
+      let u = this.url+this.token+'&branch='+this.br;
       this.postf.postTo(u,form,'').then(log =>{
         console.log(log);
 

@@ -33,6 +33,7 @@ export class DbHomePage {
       public store: Storage, public getj: GetJsonProvider,
       public menuCtrl: MenuController
   ) {
+    console.log('home');
     this.menuCtrl.enable(false,'usermenu');
     this.menuCtrl.enable(true,'db-menu');
     this.data = this.navParams.get('dashboard');
