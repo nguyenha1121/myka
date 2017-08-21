@@ -61,16 +61,6 @@ export class TradePage {
         day: key,
         value: obj
       })
-      // for (var prop in obj) {
-      //     // skip loop if the property is from prototype
-      //     if(!obj.hasOwnProperty(prop)) continue;
-      //
-      //     out.push({
-      //       day: prop,
-      //       value:  obj[prop]
-      //     });
-      //     // console.log(prop + " = " + obj[prop]);
-      //   }
     }
     return out;
   }
@@ -193,3 +183,16 @@ export class TradePage {
     console.log(this.summaryDate);
   }
 }
+
+
+
+// for (var prop in obj) {
+//     // skip loop if the property is from prototype
+//     if(!obj.hasOwnProperty(prop)) continue;
+//
+//     out.push({
+//       day: prop,
+//       value:  obj[prop]
+//     });
+//     // console.log(prop + " = " + obj[prop]);
+//   }

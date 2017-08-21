@@ -4,7 +4,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
-
+import { ThulaiModal } from '../thulai-modal/thulai-modal';
 import { DbModal } from '../db-modal/db-modal';
 
 // import { NumP } from '../../../../include/numprocess';
@@ -72,8 +72,10 @@ export class LendingPage {
   clickedSMS(){
     console.log('heelo');
   }
-  clickedThu(){
-    this.navCtrl.parent.parent.parent.select(3);
+  clickedThu(kh){
+    let modal = this.modal.create(ThulaiModal,{'param':kh});
+    modal.present();
+
   }
   clickedCall(num){
     console.log(num);

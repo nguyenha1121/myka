@@ -28,6 +28,7 @@ import { DbHomePage } from '../pages/db-home/db-home';
 import { DbHomeLoading } from '../pages/db-home/db-loading';
 import { LendingPage } from '../pages/db-home/sub-tabs/lending/lending';
 import { DbModal } from '../pages/db-home/sub-tabs/db-modal/db-modal';
+import { ThulaiModal } from '../pages/db-home/sub-tabs/thulai-modal/thulai-modal';
 import { NeedPage } from '../pages/db-home/sub-tabs/need/need';
 import { TimeoutPage } from '../pages/db-home/sub-tabs/timeout/timeout';
 import { SignUpPage } from '../pages/db-home/sub-tabs/sign-up/sign-up';
@@ -39,6 +40,7 @@ import { GetJsonProvider } from '../providers/get-json/get-json';
 import { HttpModule } from '@angular/http';
 import { PostFormProvider } from '../providers/post-form/post-form';
 import { LoginProvider } from '../providers/login/login';
+import { ServiceProvider } from '../providers/service/service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,7 @@ import { LoginProvider } from '../providers/login/login';
     CamDoPage,
     BocHoPage,
     DbHomeLoading,
-    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal
+    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal, ThulaiModal
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,7 @@ import { LoginProvider } from '../providers/login/login';
     CamDoPage,
     BocHoPage,
     DbHomeLoading,
-    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal
+    DbHomePage, LendingPage, NeedPage, TimeoutPage, SignUpPage, DbModal, ThulaiModal
   ],
   providers: [
     StatusBar,
@@ -91,7 +93,8 @@ import { LoginProvider } from '../providers/login/login';
     LoginProvider,
     CallNumber,
     SMS,
-    FileChooser, Transfer, TransferObject, File, FileTransfer
+    FileChooser, Transfer, TransferObject, File, FileTransfer,
+    ServiceProvider
   ]
 })
 export class AppModule {}

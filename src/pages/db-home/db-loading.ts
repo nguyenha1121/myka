@@ -28,6 +28,7 @@ export class DbHomeLoading{
       this.store.get('branch').then(br=>{
 
         console.log(br);
+        // this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch=54', '').then(data=>{
         this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch='+br, '').then(data=>{
           this.data = data.data;
               // console.log('sss');s

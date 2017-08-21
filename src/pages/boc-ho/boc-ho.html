@@ -13,7 +13,7 @@
       <tr>
         <td>
           <ion-label><ion-icon name="logo-usd"></ion-icon>
-          <span>Số tiền vay</span></ion-label>
+          <span>Bát họ</span></ion-label>
         </td>
         <td><ion-input type="number" step="10000" [(ngModel)]="bh.sotien" name="sotien" ></ion-input></td>
       </tr>
@@ -30,7 +30,7 @@
       <tr>
         <td><ion-label><ion-icon ios="ios-pulse" md="md-pulse"></ion-icon>
         <span>Tỉ lệ</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.tile" name="tile" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.tile" name="tile" max="10" step="0.5"></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-contact" md="md-contact"></ion-icon>
@@ -38,12 +38,9 @@
         <td><ion-input [(ngModel)]="bh.tenkhach" name="tenkhach" ></ion-input></td>
       </tr>
       <tr>
-        <td colspan="3"><p>HHaha</p></td>
-      </tr>
-      <tr>
         <td><ion-label><ion-icon ios="ios-call" md="md-call"></ion-icon>
         <span>Số ĐT</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.sdt" name="sdt" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.phone" name="sdt" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-card" md="md-card"></ion-icon>

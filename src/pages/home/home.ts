@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login/login';
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 import { DetailPage } from '../detail/detail';
 import { DbLoading } from '../dashboard/db-loading';
+
+import { ServiceProvider } from '../../providers/service/service';
 
 @Component({
   selector: 'page-home',
@@ -17,10 +19,14 @@ export class HomePage {
   public list_br;
   //test url
   // private url = "assets/user.json";
-  constructor(private store: Storage,public navCtrl: NavController, public getj : GetJsonProvider) {
+  constructor(private store: Storage,public navCtrl: NavController, public getj : GetJsonProvider, public event: Events, public service: ServiceProvider) {
       this.store = store;
       let time = new Date();
       let timenow = time.getTime();
+      this.event.subscribe('list-branch',(list_br=>{
+        this.list_br = list_br;
+        console.log(this.list_br);
+      }))
       this.store.get('API_Token').then(val=>{
         this.store.get('time-expire').then(vals=>{
           // console.log('sksk');
@@ -31,12 +37,11 @@ export class HomePage {
             this.store.get('list-branch').then(lb => {
               this.list_br = lb;
               console.log(lb);
-              this.root = DbLoading;
-              // this.root = LoginPage;
+              // this.root = DbLoading;
+              this.root = LoginPage;
             });
           }
           else {
-
             this.root = LoginPage;
           }
         })
@@ -53,4 +58,8 @@ export class HomePage {
       window.location.reload();
     });
   }
+  setListBranch(lb){
+    this.list_br = lb;
+  }
+
 }

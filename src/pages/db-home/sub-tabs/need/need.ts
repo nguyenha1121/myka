@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, Events } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
 
 import { DbModal } from '../db-modal/db-modal';
+import { ThulaiModal } from '../thulai-modal/thulai-modal';
+import { DashboardPage } from '../../../dashboard/dashboard';
 
 // import { NumP } from '../../../../include/numprocess';
 /**
@@ -31,34 +33,16 @@ export class NeedPage {
     public call: CallNumber,
     public store : Storage,
     public modal: ModalController,
+    public event: Events
   ) {
     console.log(this.navParams.data);
     this.modal = modal;
-    // this.store.get('API_Token').then(token =>{
-    //   this.getj.load(this.url, token).then(data=>{
-    //     this.data = data.data.items;
-    //     this.data = this.hack(this.data);
-    //   });
-    // });
-    // if(this.navParams.data){
-    //   console.log('co');
-    // } else console.log('khomg');
     /////// GET DATA LIKE PARAMS
     if(this.isEmpty(this.navParams.data )){
-      console.log('khong anh');
+      // console.log('khong anh');
       this.list_empty = true;
-    } else {console.log(this.navParams.data);  console.log('co anh');}
+    } else {}
     this.data = this.navParams.data;
-    console.log(this.data);
-    // this.store.get('API_Token').then(token =>{
-    //   this.getj.load('assets/need.json', token).then(data=>{
-    //     // this.data = data.data.items;
-    //     console.log(this.data);
-    //     // this.data = this.hack(this.data);
-    //     // console.log(JSON.parse(this.data[0].khach_hang['tenkh']));
-    //     // this.data = null;
-    //   });
-    // });
 
   }
 
@@ -76,8 +60,10 @@ export class NeedPage {
   clickedSMS(){
     console.log('heelo');
   }
-  clickedThu(){
-    this.navCtrl.parent.parent.parent.select(3);
+  clickedThu(kh){
+    let modal = this.modal.create(ThulaiModal,{'param':kh});
+    modal.present();
+
   }
   clickedCall(num){
     console.log(num);
@@ -93,7 +79,7 @@ export class NeedPage {
   }
 
   gotoDetail(kh){
-    console.log(kh);
+    // console.log(kh);
     let myModal = this.modal.create(DbModal,{'param':kh});
     myModal.present();
   }

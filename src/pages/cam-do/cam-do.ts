@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { PostFormProvider } from '../../providers/post-form/post-form';
 
+import { ServiceProvider } from '../../providers/service/service';
 /**
  * Generated class for the CamDoPage page.
  *
@@ -21,7 +22,7 @@ export class CamDoPage {
   public token;
   public br;
   public url = "http://app.onbank.vn/api/loan/save?API_TOKEN=";
-  constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams, public store: Storage, public postf: PostFormProvider) {
+  constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams, public store: Storage, public postf: PostFormProvider, public service: ServiceProvider) {
     this.filechoose = filechoose;
     this.store.get('API_Token').then(token=>{
       this.token = token;
@@ -30,6 +31,7 @@ export class CamDoPage {
     this.store.get('branch').then(br => {
       this.br = br;
     });
+    console.log(this.service.getUser());
   }
 
   cd = {
@@ -41,8 +43,23 @@ export class CamDoPage {
     sdt:'',
     diachi:'',
     cmt:'',
-    cattruoc:''
+    cattruoc:'',
+    ghichu:'',
+    taisan:''
   };
+
+//   sum
+// duration
+// cycle
+// note
+// rate
+// name
+// type
+// phone
+// identity
+// address
+// property
+// cat-truoc
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad CamDoPage');
@@ -58,9 +75,11 @@ export class CamDoPage {
         '&name='+this.cd.tenkhach+
         '&type='+'1'+
         '&phone='+this.cd.sdt+
-        '&address'+this.cd.diachi+
-        '&identity'+this.cd.cmt+
-        '&cat-truoc'+this.cd.cattruoc
+        '&address='+this.cd.diachi+
+        '&identity='+this.cd.cmt+
+        '&cat-truoc='+this.cd.cattruoc+
+        '&note='+this.cd.ghichu+
+        '&property='+this.cd.taisan
     ;
 
       let u = this.url+this.token+'&branch='+this.br;

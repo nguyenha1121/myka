@@ -37,7 +37,7 @@ export class DbHomePage {
     this.menuCtrl.enable(false,'usermenu');
     this.menuCtrl.enable(true,'db-menu');
     this.data = this.navParams.get('dashboard');
-    // console.log( this.data.totalChoVay.dangvay);
+    console.log( this.data);
     this.params[0] = this.data.api_upcoming_list;
     this.params[1] = this.data.api_borrowing_list;
     this.params[3] = this.data.api_completion;
