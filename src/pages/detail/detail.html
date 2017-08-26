@@ -49,6 +49,9 @@
       <ion-input [(ngModel)]="de.cmt" name="day" ></ion-input>
     </ion-item>
   </ion-list>
+  <p>{{ori}}</p>
+  <p>{{log}}</p>
+  <p *ngFor="let log of out"><span>{{log.key}}</span><br><span>{{log.value}}</span></p>
   <button (click)="clickme()">hahah</button>
     <!-- <ion-content>
       <img ng-src="{{pathForImage(image)}}" style="width: 100%; height: 100%;">

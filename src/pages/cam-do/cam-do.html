@@ -72,8 +72,11 @@
         <td><ion-input placeholder="Nhập tiêu đề tài sản" [(ngModel)]="cd.taisan" name="taisan" ></ion-input></td>
       </tr>
     </table>
-
+    <h4 *ngIf="error">{{error}}</h4>
   </form>
+  <div class="imgs">
+    <ion-img *ngIf="uri" [width]='80' [height]="80" src="uri"></ion-img>
+  </div>
   <button class="btn"button-calm ion-button (click)="taiAnh()">
     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
     <span>Tải ảnh lên</span>

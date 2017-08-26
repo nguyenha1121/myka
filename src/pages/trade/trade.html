@@ -15,8 +15,8 @@
     </ion-buttons>
     <ion-title>Giao dịch</ion-title>
     <ion-buttons end>
-      <button class="pencil" (click)="addNew()">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <button class="pencil" (click)="ref()">
+        <i class="fa fa-repeat" aria-hidden="true"></i>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -35,26 +35,27 @@
     <table *ngFor="let day of out" padding>
       <thead>
         <tr>
-          <td class="day">{{viewDay(day.day)}}</td>
-          <td class="cr-money">{{styleNumber(tinhtongtien(day))}}</td>
+          <td class="cr-money">{{viewDay(day.day)}}</td>
+          <td></td>
           <td>
-            <!-- <p class="tb"><span>Cần thu: </span><span class="g target">{{styleNumber(canthu(day)['out'])}}</span></p>
-            <p class="tb"><span>Đã thu: </span><span class="g achievement">{{styleNumber(dathu(day)['out'])}}</span></p> -->
+            {{(day.value.date_item[0].tong_thu)}}
           </td>
         </tr>
       </thead>
       <tbody padding>
-        <tr *ngFor="let gd of day.value" (click)="clickme()">
-          <td>{{gd.time}}</td>
+        <tr *ngFor="let gd of day.value.date_item" (click)="clickme(gd)">
+          <td><p>{{gd.time}}</p><p class="tinhtrang">{{gd.tinhtrang}}</p></td>
           <td>
-            <p class="nm">{{gd.customer}}</p>
+            <p class="nm">{{gd.tenkhach}}</p>
             <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
           <td padding-top class="status tb">
-            <ion-icon class="out" name="log-out"></ion-icon>
-            <span>{{styleNumber(gd.chi_phi)}}</span>
+            <ion-icon *ngIf="gd.type =='0'" class="out" name="log-out"></ion-icon>
+            <ion-icon *ngIf="gd.type =='1'" class="in" name="log-in"></ion-icon>
+            <span>{{(gd.so_tien)}}</span>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <!-- <button (click)="testtab()">ssssssssss</button> -->
 </ion-content>

@@ -8,29 +8,40 @@
 
 
 <ion-content>
-  <form (ngSubmit)="submitBocho()">
+  <form (ngSubmit)="submitCamDo()">
     <table class="cd-list">
       <tr>
         <td>
           <ion-label><ion-icon name="logo-usd"></ion-icon>
-          <span>Bát họ</span></ion-label>
+          <span>Số tiền vay</span></ion-label>
         </td>
-        <td><ion-input type="number" step="10000" [(ngModel)]="bh.sotien" name="sotien" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.sotien" type="number" step="100000" name="sotien" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-clock" md="md-clock"></ion-icon>
         <span>Số ngày</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.songay" name="songay" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.songay" type="number" name="songay" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
         <span>Chu kì</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.chuki" name="chuki" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.chuki" type="number" name="chuki" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-pulse" md="md-pulse"></ion-icon>
         <span>Tỉ lệ</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.tile" name="tile" max="10" step="0.5"></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.chiphi" type="number" max="10" name="chiphi" ></ion-input></td>
+      </tr>
+      <tr class="ghichu">
+        <td colspan = "3">
+          <ion-textarea [(ngModel)]="bh.ghichu" name="ghichu" placeholder="Ghi chú"></ion-textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="3">
+          <p>Khach Hang</p>
+        </td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-contact" md="md-contact"></ion-icon>
@@ -40,7 +51,7 @@
       <tr>
         <td><ion-label><ion-icon ios="ios-call" md="md-call"></ion-icon>
         <span>Số ĐT</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.phone" name="sdt" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.sdt" type="number" name="sdt" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-card" md="md-card"></ion-icon>
@@ -55,12 +66,12 @@
       <tr>
         <td><ion-label><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon>
         <span>Tài sản</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.taisan" name="taisan" ></ion-input></td>
+        <td><ion-input placeholder="Nhập tiêu đề tài sản" [(ngModel)]="bh.taisan" name="taisan" ></ion-input></td>
       </tr>
     </table>
 
   </form>
-  <button class="btn" ion-button (click)="taiAnh()">
+  <button class="btn" button-calm ion-button (click)="taiAnh()">
     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
     <span>Tải ảnh lên</span>
   </button>
@@ -68,6 +79,8 @@
     <i class="fa fa-floppy-o" aria-hidden="true"></i>
     <span>Lưu lại</span>
   </button>
+  <img *ngIf="uri" [src]="uri" alt="#">
+  <!-- <p>{{uri}}</p> -->
 </ion-content>
       <!-- <tr>
         <ion-label>Cắt trước</ion-label>

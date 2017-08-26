@@ -19,26 +19,24 @@ export class HomePage {
   public list_br;
   //test url
   // private url = "assets/user.json";
-  constructor(private store: Storage,public navCtrl: NavController, public getj : GetJsonProvider, public event: Events, public service: ServiceProvider) {
+  constructor(private store: Storage,public navCtrl: NavController,
+    public getj : GetJsonProvider, public event: Events, public service: ServiceProvider) {
       this.store = store;
       let time = new Date();
       let timenow = time.getTime();
       this.event.subscribe('list-branch',(list_br=>{
         this.list_br = list_br;
-        console.log(this.list_br);
+        // console.log(this.list_br);
       }))
       this.store.get('API_Token').then(val=>{
         this.store.get('time-expire').then(vals=>{
-          // console.log('sksk');
-          // console.log(vals);
-          // console.log(timenow);
-          // console.log('sksk');
+          console.log(vals,"va",timenow);
           if(val && (timenow < vals)){
             this.store.get('list-branch').then(lb => {
               this.list_br = lb;
               console.log(lb);
-              // this.root = DbLoading;
-              this.root = LoginPage;
+              this.root = DbLoading;
+              // this.root = LoginPage;
             });
           }
           else {

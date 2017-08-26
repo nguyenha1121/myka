@@ -15,11 +15,13 @@
 <ion-content>
   <form class="list" (ngSubmit)="logForm()">
     <ion-item class="item item-input">
-      <ion-input [(ngModel)]="log.user" name="user" placeholder="Text Input"></ion-input>
+      <ion-label floating>Tài khoản</ion-label>
+      <ion-input [(ngModel)]="log.user" name="user" ></ion-input>
     </ion-item>
-
+    
     <ion-item class="item item-input">
-      <ion-input [(ngModel)]="log.password" name="password" type="password" placeholder="Password Input"></ion-input>
+      <ion-label floating>Mật khẩu</ion-label>
+      <ion-input [(ngModel)]="log.password" name="password" type="password"></ion-input>
     </ion-item>
 
     <button class="button button-block button-calm" ion-button type="submit">Login</button>

@@ -23,6 +23,7 @@ export class NewTradeModal {
   public enableEdit=false;
   public readonly="";
   public summaryDate;
+  test:any;
   constructor(
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -34,6 +35,8 @@ export class NewTradeModal {
     // console.log(this.data.ngay_vay);
     // this.summaryDate = new Date(this.data.ngay_vay).toISOString();
     // // this.data = 'aaaa';
+    this.test = this.navParams.data.test;
+
   }
 
   dateConvert(date){
@@ -42,6 +45,7 @@ export class NewTradeModal {
   }
 
   dismiss(){
+    this.test = "kkk";
     this.ViewCtrl.dismiss();
   }
 

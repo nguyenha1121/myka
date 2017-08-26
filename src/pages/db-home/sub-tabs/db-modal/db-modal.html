@@ -56,7 +56,7 @@
     </tr>
     <tr *ngFor="let lt of lich_thu">
       <td>{{lt.nhanvien}}</td>
-      <td>{{dateConvert(lt.thoigian)}}</td>
+      <td>{{dateConvert(lt.thoigian*1000)}}</td>
       <td>{{styleNumber(lt.sotien)}}</td>
     </tr>
     <!-- <tr>
@@ -65,7 +65,9 @@
       <td>500.000</td>
     </tr> -->
   </table>
+
   <button ion-button class="button button-block" (click)="edit()" *ngIf="enableEdit">Edit Submit</button>
+<!--   <button ion-button class="button button-block"(click)="tattoan()" >Thanh toán toàn bộ</button> -->
 </ion-content>
 
 <!-- {{toArray(data.khach_hang).tenkh}} -->

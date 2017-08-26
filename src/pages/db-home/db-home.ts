@@ -33,15 +33,15 @@ export class DbHomePage {
       public store: Storage, public getj: GetJsonProvider,
       public menuCtrl: MenuController
   ) {
-    console.log('home');
-    this.menuCtrl.enable(false,'usermenu');
+    // console.log('home');
+    this.menuCtrl.enable(true,'usermenu');
     this.menuCtrl.enable(true,'db-menu');
     this.data = this.navParams.get('dashboard');
     console.log( this.data);
     this.params[0] = this.data.api_upcoming_list;
     this.params[1] = this.data.api_borrowing_list;
-    this.params[3] = this.data.api_completion;
-    this.params[2] = this.data.api_overdue_list;
+    this.params[2] = this.data.api_completion;
+    this.params[3] = this.data.api_overdue_list;
     // this.store = store;
     // this.getj = getj;
     // this.store.get('API_Token').then(token =>{
@@ -59,7 +59,7 @@ export class DbHomePage {
   openDbMenu(){
     // this.menuCtrl.enable(false,'usermenu');
     // this.menuCtrl.enable(true,'dbmenu');
-    this.menuCtrl.toggle('left');
+    this.menuCtrl.toggle();
   }
 
 

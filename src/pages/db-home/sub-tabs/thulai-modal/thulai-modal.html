@@ -47,10 +47,10 @@
         <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> Số tiền</span></div></td>
         <td><div><ion-input type="number" step="100000" [(ngModel)]="data.can_thu"></ion-input></div></td>
       </tr>
-      <tr>
+   <!--    <tr>
         <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> Hẹn lần tới</span></div></td>
         <td><div class="hack"><ion-datetime displayFormat="M/D" (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime></div></td>
-      </tr>
+      </tr> -->
       <tr>
         <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> Nhân viên</span></div></td>
         <td><div><ion-input type="text" name="tennhanvien" readonly value={{user}}></ion-input></div></td>
@@ -59,7 +59,8 @@
     <button ion-button class="button button-block" (click)="edit()">Thu Lãi</button>
   </table>
   <h3>Tài sản</h3>
-  <p>Chưa cập nhật</p>
+  <p *ngIf="data.tai_san==''">Chưa cập nhật</p>
+  <img *ngIf="data.tai_san !=''" src="{{data.tai_san}}" alt="">
   <h3>Lịch trả lãi</h3>
   <table class="lichthu">
     <tr>

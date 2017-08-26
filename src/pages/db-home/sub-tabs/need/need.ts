@@ -26,7 +26,6 @@ export class NeedPage {
   public data:any;
   public param;
   public list_empty;
-  private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, Events, PopoverController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
 import { NewTradeModal } from './new-trade/new-trade';
+import { TradeModal } from './modal-trade/modal-trade';
+
+import { SumPage } from '../sum/sum';
 /**
  * Generated class for the TradePage page.
  *
@@ -21,33 +24,107 @@ export class TradePage {
   public url = "assets/gd.json";
   public data:any;
   public out;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modal : ModalController, public getj: GetJsonProvider, public store: Storage) {
-    // var a ='';
-    // // this.dq(1230000099988,a);
-    // console.log(this.dq(1230000099988,a),"sss");
+  br;
+  ld;
+  api;
+  empty=false;
+  save;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public modal : ModalController, public event : Events, public popov: PopoverController,
+    public getj: GetJsonProvider, public store: Storage,
+    public loading: LoadingController) {
     this.getj = getj;
     this.store = store;
-    this.store.get('API_Token').then(val => {
-      this.store.get('branch').then(br => {
-        this.getj.load("http://app.onbank.vn/api/transaction/list"+'?API_TOKEN='+val+'&branch='+br, '').then(data =>{
-          console.log(data);
-          this.data = data.data.items;
-          this.out = this.loop(this.data);
-          // console.log(this.out);
-        });
-      })
-
-    });
+    this.refresh();
     this.modal = modal;
   }
-
-  addNew(){
-    let news = this.modal.create(NewTradeModal);
-    news.present();
+// get data 
+  refresh(){
+    this.ld = this.loading.create({
+      content: "Please wait ..."
+    });
+    this.ld.present();
+    this.store.get('API_Token').then(val => {
+      this.api = val;
+      this.store.get('branch').then(br => {
+        this.br = br;
+        this.getj.load("http://app.onbank.vn/api/transaction/list"+'?API_TOKEN='+val+'&branch='+br, '').then(data =>{
+          // console.log(data);
+          this.data = data.data.items;
+          this.out = this.loop(this.data);
+          this.save = this.out;
+          // console.log(this.out);
+          this.ld.dismiss();
+        });
+      })
+    });
   }
 
-  clickme(){
-    console.log('some thing');
+
+  toArr(obj){
+    let keys = Object.keys(obj);
+    console.log(keys);
+    var out = [];
+    for(let k=0; k<keys.length; k++){
+      if(keys[k]!="tongthuArr"){
+        out.push({
+          k: keys[k],
+          v: (obj[keys[k]])
+        });
+      }   
+    };
+    return out;
+  }
+
+  onChangehere(){
+
+    console.log(this.summaryDate);
+    let date = new Date(this.summaryDate);
+    let m = date.getMonth() +1;
+    let mo = "";
+    if(m<10){
+      mo = "0"+m;
+    } else{
+      mo = ""+m;
+    }
+    let n = date.getDate();
+    let ng = "";
+    if(n<10){
+      ng = "0"+n;
+    } else {
+      ng = ""+n;
+    }
+    let strDate = ng+"/"+mo+"/"+date.getUTCFullYear();
+    let ink = this.save;
+    let output = [];
+    for(let k =0; k < ink.length; k++){
+       if(ink[k].day == strDate){
+           output.push(ink[k]);
+       }
+    }
+    this.out = output;
+  }
+
+  search(myEv){
+    // let pop = this.popov.create(NewTradeModal,{
+    //   fun1: this.func1,
+    //   test: this.test
+    // });
+    // pop.present({
+    //   ev: myEv
+    // });
+  }
+
+  ref(){
+    this.refresh();
+  }
+
+  clickme(gd){
+    this.getj.load("http://app.onbank.vn/api/transaction/info/"+gd.id+'?API_TOKEN='+this.api+'&branch='+this.br, '').then(data =>{
+      let modal = this.modal.create(TradeModal,{'param':data});
+      modal.present();
+    });
+    
   }
 
   loop(_obj){
@@ -157,6 +234,9 @@ export class TradePage {
   }
 
   styleNumber(number){
+    if(number < 0){
+      return '0';
+    }
     number = Math.floor(number);
     let out='';
     out = this.dq(number,'');
@@ -170,18 +250,15 @@ export class TradePage {
   trade = {};
   summaryDate: any = new Date().toISOString();
 
-  search(){
-    console.log(this.trade);
-    console.log(this.summaryDate);
-  };
   openCalendar(){
     console.log('modal');
 
   }
 
-  onChangehere(ev){
-    console.log(this.summaryDate);
+  testtab(){
+    this.navCtrl.parent.select(3);
   }
+
 }
 
 

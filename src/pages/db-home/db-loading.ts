@@ -31,9 +31,7 @@ export class DbHomeLoading{
         // this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch=54', '').then(data=>{
         this.getj.load('http://app.onbank.vn/api/loan/list?API_TOKEN='+token+'&branch='+br, '').then(data=>{
           this.data = data.data;
-              // console.log('sss');s
           console.log(data);
-              // console.log('sss');
           this.navCtrl.push(DbHomePage,{'dashboard' :this.data});
           this.loading.dismiss();
         });

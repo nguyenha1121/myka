@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
+import { FileTransfer, FileTransferObject} from '@ionic-native/file-transfer';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
+
 
 // import { GetJsonProvider } from '../../../../providers/get-json/get-json';
 /**
@@ -24,20 +25,24 @@ export class DetailPage {
   public helo="jsjs";
   public params;
   public ab;
-  public filepath ;
-  public uploadUrl;
+  public log="wait me...";
+  public ori="default";
+  public out=[];
+  public token;
+  public br;
+  public url = "http://app.onbank.vn/api/upload?API_TOKEN=";
+  public filepath = "";
   constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage,
      public filechoose: FileChooser, public upload : FileTransfer) {
     this.filechoose = filechoose;
     this.upload = upload;
-    // this.getj = getj;
-    // this.store = store;
-    // this.store.get('API_Token').then(token=>{
-    //   this.getj.load('http://thuviensofl.xyz/api/customer/list',token).then(data=>{
-    //     console.log(data);
-    //   })
-    // });
-
+    this.store.get('API_Token').then(token=>{
+      this.token = token;
+    });
+    // console.log(this.token);
+    this.store.get('branch').then(br => {
+      this.br = br;
+    });
 
     this.params = this.navParams.get('late-time');
     this.helo = this.params;
@@ -52,16 +57,32 @@ export class DetailPage {
   loadImage(){
     this.filechoose.open().then(uri=>{
       console.log(uri);
+      this.ori = uri;
       this.filepath = uri;
     }).catch(e => console.log(e));
   }
-  // uploadImage(){
-  //   this.fileTransfer.upload(this.filepath,this.uploadUrl );
-  // }
+  uploadImage(){
+    this.log = "waiting ...";
+    let u = this.url+this.token+'&branch='+this.br;
+    console.log(u);
+    this.fileTransfer.upload(this.ori,u).then((result) =>{
+      console.log(result);
+      let log = JSON.parse(result.response);
+      let keys = Object.keys(log);
+      for( let k = 0; k< keys.length;k++){
+        this.out.push({
+          key: keys[k],
+          value: log[keys[k]]
+        })
+      };
+    },(err)=>{
+      console.log(err);
+      let log = JSON.parse(err.target);
+      let keys = Object.keys(log);
+      this.filepath = log;
+    });
+  }
   clickme(){
-    // this.navCtrl.push(DetailPage,{'late-time':'your face'},{duration:1}).then(()=>{
-    //   this.navCtrl.remove(this.navCtrl.getActive().index - 1 ,1);
-    // });
     this.ab= 10;
     for(let i = 1;i<10000;i++){
       this.ab = i;

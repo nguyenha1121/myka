@@ -1,12 +1,14 @@
 <ion-content>
-
-  <h3 *ngIf="list_empty" class="empty">Danh sách rỗng</h3>
+  <h3 padding *ngIf="list_empty" class="empty">Danh sách rỗng</h3>
   <div *ngIf="!list_empty" >
   <ion-list  class="list-item" *ngFor="let kh of data">
-    <ion-item class="hn">
+    <ion-item *ngIf="kh" class="hn">
         <div class="kh-name">
           <div class="name">
-            <div class="icon"><ion-icon name="md-contact"></ion-icon></div>
+            <div class="icon">
+              <ion-icon *ngIf="kh.loai == '2'" name="logo-bitcoin"></ion-icon>
+              <ion-icon *ngIf="kh.loai == '1'" name="logo-euro"></ion-icon>
+            </div>
             <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name}}</button></div>
           </div>
           <div class="kh-money">{{styleNumber(kh.can_thu)}}</div>

@@ -16,11 +16,13 @@ import { ScrollableTabs } from '../include/scrollable-tabs';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
 import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { DbLoading } from '../pages/dashboard/db-loading';
 import { TradePage } from '../pages/trade/trade';
 import { NewTradeModal } from '../pages/trade/new-trade/new-trade';
+import { TradeModal } from '../pages/trade/modal-trade/modal-trade';
 import { LoanPage } from '../pages/loan/loan';
 import { FinalizePage } from '../pages/finalize/finalize';
 import { SumPage } from '../pages/sum/sum';
@@ -47,10 +49,10 @@ import { ServiceProvider } from '../providers/service/service';
     ScrollableTabs,
     MyApp,
     HomePage,
-    LoginPage,
+    LoginPage, ProfilePage,
     RegisterPage,
     DashboardPage, DbLoading,
-    TradePage, NewTradeModal,
+    TradePage, NewTradeModal, TradeModal,
     LoanPage,
     FinalizePage,
     SumPage,
@@ -71,10 +73,10 @@ import { ServiceProvider } from '../providers/service/service';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
+    LoginPage, ProfilePage,
     RegisterPage,
     DashboardPage, DbLoading,
-    TradePage, NewTradeModal,
+    TradePage, NewTradeModal, TradeModal,
     LoanPage,
     FinalizePage,
     SumPage,

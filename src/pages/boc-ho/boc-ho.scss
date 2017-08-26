@@ -1,4 +1,16 @@
 page-boc-ho {
+  .ghichu{
+    width: 100%;
+
+    ion-textarea{
+      width: 100%;
+      margin:10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding : 0  10px;
+    }
+
+  }
   ion-input{
     input{
       text-align: right;

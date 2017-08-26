@@ -1,27 +1,16 @@
-<!--
-  Generated template for the NeedPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>Cần thu</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
 <ion-content>
   <div *ngIf="list_empty">
-    <h3>Danh sách rống!</h3>
+    <h4 padding>Danh sách rống!</h4>
   </div>
   <div *ngIf="!list_empty">
   <ion-list class="list-item" *ngFor="let kh of data">
     <ion-item class="hn">
         <div class="kh-name">
           <div class="name">
-            <div class="icon"><ion-icon name="md-contact"></ion-icon></div>
+            <div class="icon">
+              <ion-icon *ngIf="kh.loai == '2'" name="logo-bitcoin"></ion-icon>
+              <ion-icon *ngIf="kh.loai == '1'" name="logo-euro"></ion-icon>
+            </div>
             <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name}}</button></div>
           </div>
           <div class="kh-money">{{styleNumber(kh.can_thu)}}</div>
@@ -34,7 +23,7 @@
           </div>
         </div>
         <div class="kh-r3">
-          <button (click)="clickedCall(toArray(kh.khach_hang).sdt)" class="box phone">{{kh.khach_hang.phone}}</button>
+          <button (click)="clickedCall(kh)" class="box phone">{{kh.khach_hang.phone}}</button>
           <button (click)="clickedSMS()" class="box oth">SMS</button>
           <button (click)="clickedThu(kh)" class="box oth">Thu lãi</button>
         </div>

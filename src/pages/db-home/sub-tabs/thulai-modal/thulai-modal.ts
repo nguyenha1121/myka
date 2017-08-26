@@ -36,6 +36,7 @@ export class ThulaiModal {
   public user;
   public token;
   public br;
+  haschangeday = false;
   constructor(
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -43,6 +44,7 @@ export class ThulaiModal {
     public service: ServiceProvider,
     public postf : PostFormProvider,
     public store: Storage
+
   ) {
     // this.data.ngay_vay = new Date().toISOString();
 
@@ -57,7 +59,6 @@ export class ThulaiModal {
     this.user = this.service.getUser();
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
-    // this.data.han_toi = this.a;
     console.log(this.data);
     this.lich_thu = JSON.parse(this.data.lich_thu);
 
@@ -79,7 +80,7 @@ export class ThulaiModal {
   onChangehere(ev){
     let date = new Date(this.summaryDate);
     this.data.han_toi = this.summaryDate;
-    // console.log(this.data.ngay_vay);
+    this.haschangeday = true;
   }
   editEnable(){
     this.enableEdit = !this.enableEdit;
@@ -117,16 +118,33 @@ export class ThulaiModal {
     }
 
     edit(){
-      let han_toi = new Date(this.data.han_toi);
-      let out = (han_toi.getUTCFullYear())+"/"+(han_toi.getMonth() + 1)+"/"+han_toi.getDate();
-      console.log(out);
-      let form = "loan-id="+this.data.id+
+      let form = "";
+      if(this.haschangeday){
+        let han_toi = new Date(this.data.han_toi);
+        let thang = han_toi.getMonth() + 1;
+        let m="";
+        let n ="";
+        if(thang<10){
+          m = '0'+thang;
+        } else { m = ''+thang }
+        let ngay = han_toi.getDate();
+        if(ngay<10){
+           n = '0'+ngay;
+        } else { n = ''+ngay; }
+        let out = (han_toi.getUTCFullYear())+"/"+m+"/"+n;
+        form = "loan-id="+this.data.id+
                 "&sum="+this.data.can_thu+
-                "&next_pay="+out;
+                "&next_pay='"+out+"'";
+      }
+      else {
+        form = "loan-id="+this.data.id+
+                "&sum="+this.data.can_thu;
+      }
+      
       let u = this.url+this.token+'&branch='+this.br;
       this.postf.postTo(u,form,'').then(log =>{
         console.log(log);
-
+        // window.location.reload();
     });
     }
 

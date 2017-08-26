@@ -1,3 +1,140 @@
 page-finalize {
+  .scroll-content{
+    padding:0!important;
+  }
+  ion-navbar{
+    button{
+      background: #f8f8f8;
+      // border: 1px solid #2371fb;
 
+    }
+    ion-icon{
+      color: #2371fb;
+      font-size: 30px;
+    }
+  }
+
+  .hack-header{
+    i{
+      color: #999;
+      font-size: 20px;
+      z-index: 3;
+    }
+    position: relative;
+    overflow: hidden;
+    ion-datetime{
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+  }
+  .pencil{
+    i{
+      color: #999;
+      font-size: 20px;
+      z-index: 3;
+    }
+  }
+  .search-box{
+    form{
+      display: inline-flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      width: 100%;
+      height: 35px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      button{
+        background: #fff;
+        border-radius: 5px;
+        ion-icon{
+          color: #999;
+          padding-left: 3px;
+        }
+      }
+
+      ion-input{
+        color: #000;
+        padding-left: 10px;
+      }
+    }
+  }
+
+
+
+  table{
+    width: 100%;
+    thead{
+      padding: 8px 0;
+      border-top: 8px solid #2371fb;
+      border-bottom: 8px solid #2371fb;
+    }
+    thead tr{
+      padding: 8px 0;
+      background: #2371fb;
+      color: #fff;
+    }
+    .day{
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .cr-money{
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  tbody{
+    border: 1px solid #ddd;
+    // padding : 5px 10px;
+    tr{
+      border-bottom: 1px solid #ddd;
+    }
+    td{
+        padding-left: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-weight: bold;
+      p{
+        margin: 0;
+      }
+      .ph{
+        color: #2371fb;
+        ion-icon{
+          background: #1f497d;
+          color: #fff;
+          border: 2px solid #1f497d;
+          border-radius: 3px;
+          font-size: 12px;
+        }
+      }
+      .out{
+        color: red;
+      }
+    }
+    td.status{
+      margin: auto 0;
+      span{
+        color: #1f497d;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .tb{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .hello{
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .cr-money{
+    font-size: 15px;
+    font-style: italic;
+  }
 }

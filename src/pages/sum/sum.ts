@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { GetJsonProvider } from '../../providers/get-json/get-json';
-
+import { ServiceProvider } from '../../providers/service/service';
 /**
  * Generated class for the SumPage page.
  *
@@ -18,22 +18,22 @@ export class SumPage {
 
   public listCustomer:any;
   public su = {
-
+    staff:''
   }
   public kh;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public store: Storage, public event: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: ServiceProvider,
+    public getj: GetJsonProvider, public store: Storage, public event: Events) {
     this.store = store;
     this.getj = getj;
     this.store.get('API_Token').then(token =>{
       this.store.get('branch').then(br => {
         this.getj.load('http://app.onbank.vn/api/customer/list?API_TOKEN='+token+'&branch='+br,'').then(data =>{
           this.listCustomer = data.data.items;
-          // console.log(this.listCustomer);
-          console.log(data);
+          // console.log(data);
         });
       })
-
     });
+    this.su.staff = this.service.getUser();
     this.event.subscribe('thulai',(kh)=>{
       this.kh = kh;
     });
@@ -45,6 +45,9 @@ export class SumPage {
   }
 
 
+  jsonParse(json){
+    return JSON.parse(json);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SumPage');

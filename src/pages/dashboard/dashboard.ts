@@ -35,15 +35,16 @@ export class DashboardPage {
   public select = 0;
   // private url = 'http://localhost:8100/assets/ex.json';
   // get data for test
-  constructor(public store:Storage, public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider, public event: Events) {
+  constructor(public store:Storage, public navCtrl: NavController, public navParams: NavParams,
+    public getj: GetJsonProvider, public event: Events) {
     // console.log('jsjsj');
     this.data = navParams.get('log-in');
     let a = this.data.roles;
     let ob = JSON.parse(a);
     this.tb = this.loop(ob);
-
-
   }
+
+
 
   refreshScrollbarTabs() {
    this.scrollableTabsopts = { refresh: true };

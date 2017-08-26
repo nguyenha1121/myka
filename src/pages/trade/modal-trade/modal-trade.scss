@@ -1,27 +1,24 @@
-thulai-modal{
+modal-trade{
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
       display: none;
   }
   // ion-input{
   //   input{
-  //     text-align: right!important;
+  //     text-align: right;
   //   }
   // }
-  img{
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
+  table{
+    width: 100%;
   }
   .hack{
     width: 100%;
     height: 40px;
     position: relative;
-    float: right;
     overflow: hidden;
     ion-datetime{
       position: absolute;
-      right: 0;
+      left: 0;
       top: 0;
       width: 100%;
       height: 40px;
@@ -29,8 +26,17 @@ thulai-modal{
   }
   tr{
     width: 100%;
+    align-items: center;
+    border: 0.5px solid #ddd;
     div{
       float: right;
+    }
+    td:nth-child(2){
+      float:right;
+      height: 100%;
+      padding: 11px 5px 11px 0;
+      margin-bottom: 0!important;
+
     }
   }
   ion-navbar{
@@ -46,22 +52,24 @@ thulai-modal{
     }
   }
   .modal{
-    tr{    margin-bottom: 5px;
+    tr{    
+      margin-bottom: 5px;
+      width: 100%;
       .w{
         background: #C0D5EF;
         margin-left: 10px;
         font-weight: bold;
         color: #1281D0;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+        // border-top-left-radius: 8px;
+        // border-bottom-left-radius: 8px;
 
       }
       td{
-        border-bottom: 5px solid #fff;
+        // border-bottom: 5px solid #fff;
         margin: 0;
         div{
           span{
-            padding-left: 8px;
+            // padding-left: 8px;
           }
         }
         &:first-child{
@@ -107,56 +115,4 @@ thulai-modal{
       }
     }
   }
-
-
-  table{
-    width: 100%;
-    tr{
-      width: 100%;
-    }
-  }
-  .sum{
-    .item-ios.item-block .item-inner{
-      border: none!important;
-    }
-    td{
-      ion-label{
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        padding: 8px 0;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        background: #C0D5EF;
-
-        ion-icon{
-          text-align: center;
-          color: #4281D0;
-          width: 25%;
-          font-size: 20px;
-        }
-      }
-      ion-input{
-        padding-left: 10px;
-      }
-      ion-input{
-        margin: 1px;
-        border: 1px solid #ddd;
-      }
-      ion-select{
-        width: 100%;
-        margin: 1px;
-        border: 1px solid #ddd;
-      }
-      ion-item{
-        padding:0;
-        border: none;
-      }
-    }
-  }
-
-
-
-
 }

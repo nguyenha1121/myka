@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams ,ToastController} from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { FileTransfer, FileTransferObject} from '@ionic-native/file-transfer';
 import { PostFormProvider } from '../../providers/post-form/post-form';
 
 import { ServiceProvider } from '../../providers/service/service';
@@ -19,15 +20,18 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class BocHoPage {
 
+  public error;
+  public uri = "";
   public token;
   public br;
+  public log;
   public url = "http://app.onbank.vn/api/loan/save?API_TOKEN=";
+  public urlUpload = "http://app.onbank.vn/api/upload?API_TOKEN=";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public postf: PostFormProvider, public service: ServiceProvider,
-    public store: Storage,
-  ) {
-
+  constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams,
+    public store: Storage, public postf: PostFormProvider, public fileTranfer : FileTransfer,
+    public service: ServiceProvider, public toast: ToastController) {
+    this.filechoose = filechoose;
     this.store.get('API_Token').then(token=>{
       this.token = token;
     });
@@ -37,7 +41,7 @@ export class BocHoPage {
     });
 
   }
-
+  upload : FileTransferObject = this.fileTranfer.create();
   ionViewDidLoad() {
     console.log('ionViewDidLoad BocHoPage');
   }
@@ -51,7 +55,7 @@ export class BocHoPage {
     chuki:'',
     chiphi:'',
     tenkhach:'',
-    phone:'',
+    sdt:'',
     diachi:'',
     cmt:'',
     ghichu:'',
@@ -59,26 +63,95 @@ export class BocHoPage {
   };
 
   save(){
-    console.log(this.bh);
+    // console.log(this.bh);
+    this.toast.create({
+        message:  "Saving...",
+        duration: 2500,
+        position: "middle"
+      });
+    if(this.uri != ""){
+     var link = this.urlUpload+this.token+'&branch='+this.br;
+      this.upload.upload(this.uri,link).then((suc)=>{
+        this.log = JSON.parse(suc.response);
+        let toast = this.toast.create({
+          message: "Upload success !",
+          duration: 2000,
+          position: 'top'
+        });
+        let form = 'sum='+this.bh.sotien+
+            '&duration='+this.bh.songay+
+            '&cycle='+this.bh.chuki+
+            '&rate='+this.bh.chiphi+
+            '&name='+this.bh.tenkhach+
+            '&type='+'2'+
+            '&image-url'+this.log+
+            '&phone='+this.bh.sdt+
+            '&address='+this.bh.diachi+
+            '&identity='+this.bh.cmt+
+            '&note='+this.bh.ghichu+
+            '&property='+this.bh.taisan
+        ;
 
-    let form = 'sum='+this.bh.sotien+
-        '&duration='+this.bh.songay+
-        '&cycle='+this.bh.chuki+
-        '&rate='+this.bh.chiphi+
-        '&name='+this.bh.tenkhach+
-        '&type='+'2'+
-        '&phone='+this.bh.phone+
-        '&address='+this.bh.diachi+
-        '&identity='+this.bh.cmt+
-        '&note='+this.bh.ghichu+
-        '&property='+this.bh.taisan
-    ;
+          let u = this.url+this.token+'&branch='+this.br;
+          this.postf.postTo(u,form,'').then(log =>{
+            console.log(log);
+            if(log.status == 1){
+              this.toast.create({
+                message:  "Success",
+                duration: 500,
+                position: "middle"
+              });
+              window.location.reload();
+            } else {
+              this.toast.create({
+                message:  "Something wrong ...",
+                duration: 1500,
+                position: "middle"
+              });
+            }
+        });
+      },(err)=>{
+        let toast = this.toast.create({
+          message: "Upload fail, something wrong. Please try again later!"
+        })
+      });
+    }
+     else {
+      let form = 'sum='+this.bh.sotien+
+          '&duration='+this.bh.songay+
+          '&cycle='+this.bh.chuki+
+          '&rate='+this.bh.chiphi+
+          '&name='+this.bh.tenkhach+
+          '&type='+'2'+
+          '&phone='+this.bh.sdt+
+          '&address='+this.bh.diachi+
+          '&identity='+this.bh.cmt+
+          '&note='+this.bh.ghichu+
+          '&property='+this.bh.taisan
+      ;
 
-      let u = this.url+this.token+'&branch='+this.br;
-      this.postf.postTo(u,form,'').then(log =>{
-        console.log(log);
-    });
+        let u = this.url+this.token+'&branch='+this.br;
+        this.postf.postTo(u,form,'').then(log =>{
+          console.log(log);
+          if(log.status == 1){
+            window.location.reload();
+          } else {
+            this.toast.create({
+              message:  "Something wrong ...",
+              duration: 1500,
+              position: "middle"
+            }) ;
+          }
+      });
+    }
 
+  }
+ 
+  taiAnh(){
+    this.filechoose.open().then(uri =>{
+      console.log("ss");
+      this.uri = uri;
+    }).catch(e => console.log(e));
   }
 
 }

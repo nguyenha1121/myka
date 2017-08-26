@@ -33,16 +33,19 @@ export class DbModal {
     // this.data.ngay_vay = new Date().toISOString();
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
-    console.log(this.data);
-    console.log(JSON.parse(this.data.lich_thu));
+    // console.log(JSON.parse(this.data.lich_thu));
     this.lich_thu = JSON.parse(this.data.lich_thu);
     this.summaryDate = new Date(this.data.ngay_vay).toISOString();
     // this.data = 'aaaa';
   }
 
+  tattoan(){
+    console.log('Todo');
+  }
+
   dateConvert(date){
-    var dt = new Date(date);
-    return((dt.getMonth() + 1) + '/' + dt.getDate());
+    var dt = new Date(date*1000);
+    return(dt.getDate() + '/'+(dt.getMonth() + 1) );
   }
 
   dismiss(){

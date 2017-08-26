@@ -23,8 +23,8 @@ export class TimeoutPage {
 
   public data:any;
   public param;
-  public list_empty=false;
-  private url = "http://app.onbank.vn/api/loan/list";
+  public list_empty;
+  private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -40,13 +40,21 @@ export class TimeoutPage {
     //     this.data = this.hack(this.data);
     //   });
     // });
+    /////// GET DATA LIKE PARAMS
     if(this.isEmpty(this.navParams.data )){
       console.log('khong anh');
       this.list_empty = true;
     } else {console.log(this.navParams.data);  console.log('co anh');}
-    /////// GET DATA LIKE PARAMS
-    this.data = this.navParams.data;
-    console.log(this.data);
+    this.data = [];
+    // this.list_empty = true;
+    // console.log(this.navParams.data[14]);
+    var x =(Object.keys(this.navParams.data));
+    if(x.length == 0){
+      this.list_empty = true;
+    }
+    for (let t = 0;t<x.length;t++){
+      this.data.push(this.navParams.data[x[t]]);
+    }
     // this.store.get('API_Token').then(token =>{
     //   this.getj.load('assets/need.json', token).then(data=>{
     //     // this.data = data.data.items;
@@ -77,7 +85,7 @@ export class TimeoutPage {
     let modal = this.modal.create(ThulaiModal,{'param':kh});
     modal.present();
 
-  } 
+  }
   clickedCall(num){
     console.log(num);
     this.call.callNumber(num, true)
@@ -130,7 +138,6 @@ export class TimeoutPage {
     }
     return out;
   }
-
   isEmpty(obj) {
     for(var prop in obj) {
         if(obj.hasOwnProperty(prop))
@@ -139,6 +146,5 @@ export class TimeoutPage {
 
     return JSON.stringify(obj) === JSON.stringify({});
   }
-
 
 }

@@ -7,12 +7,65 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>finalize</ion-title>
+    <ion-buttons start>
+      <div class="hack-header">
+        <ion-label><i class="fa fa-calendar-check-o" aria-hidden="true"></i></ion-label>
+        <ion-datetime (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime>
+      </div>
+    </ion-buttons>
+    <ion-title>Chốt sổ</ion-title>
+    <ion-buttons end>
+      <button class="pencil" (click)="addNew()">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div class="search-box">
+    <form (ngSubmit)="search()">
+      <!-- [(ngModel)]="trade.search" -->
+      <ion-input  name="user" placeholder="Search.."></ion-input>
+      <button type="submit"><ion-icon name="search"></ion-icon></button>
+    </form>
+  </div>
+  <div class="day-report">
+    <!-- *ngFor="let day of out" -->
+    <table  padding>
+      <thead>
+        <tr>
+          <!-- {{viewDay(day.day)}} -->
+          <td class="day">11/12</td>
+          <!-- {{styleNumber(tinhtongtien(day))}} -->
+          <td class="cr-money">2.000.000</td>
+          <td>
+            <!-- <p>{{styleNumber(canthu(day)['out'])}}</p> -->
+            <p class="tb"><span>Cần thu: </span><span class="g target">500.000</span></p>
+            <!-- {{styleNumber(dathu(day)['out'])}} -->
+            <p class="tb"><span>Đã thu: </span><span class="g achievement">100.000</span></p>
+          </td>
+        </tr>
+      </thead>
+      <tbody padding>
+        <!-- *ngFor="let gd of day.value" -->
+        <tr  (click)="clickme()">
+          <!-- {{gd.time}} -->
+          <td>16.45</td>
+          <td>
+            <!-- {{gd.customer}} -->
+            <p class="nm">HMD</p>
+            <p class="ph"><ion-icon name="call"></ion-icon> 0969538900</p></td>
+          <td padding-top class="status tb">
+            <ion-icon class="out" name="log-out"></ion-icon>
+            <!-- {{styleNumber(gd.chi_phi)}} -->
+            <span>100.000</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- <button (click)="testtab()">ssssssssss</button> -->
 </ion-content>
