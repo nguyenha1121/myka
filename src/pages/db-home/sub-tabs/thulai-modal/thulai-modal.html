@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{data.khach_hang.tenkh}}</ion-title>
+    <ion-title>{{data.khach_hang.name}}</ion-title>
     <!-- <ion-buttons end>
       <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
     </ion-buttons> -->
@@ -21,25 +21,25 @@
       </tr>
       <!-- [attr.enableEdit]="true ? null : 'readonly'" -->
       <tr>
-        <td  class="io"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Chi phí</span></div></td>
+        <td  class="io"><div><i class="fa fa-usd" aria-hidden="true"></i><span> Chi phí</span></div></td>
         <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.chi_phi"></ion-input></div></td>
       </tr>
       <tr>
-        <td  class="io"><div><i class="fa fa-user" aria-hidden="true"></i><span> Ngày vay</span></div></td>
+        <td  class="io"><div><i class="fa fa-calendar" aria-hidden="true"></i><span> Ngày vay</span></div></td>
         <td *ngIf="!enableEdit">
-          <div><span>{{dateConvert(data.ngay_vay)}}</span></div>
+          <div><span>{{dateConvert(data.ngay_vay*1000)}}</span></div>
         </td>
       </tr>
-      <tr>
+<!--       <tr>
         <td  class="io"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Khách hàng</span></div></td>
         <td><div><ion-input [readonly]="enableEdit ? false : true" type="text" [(ngModel)]="data.khach_hang.name"></ion-input></div></td>
-      </tr>
+      </tr> -->
       <tr>
-        <td  class="io"><div><i class="fa fa-tags" aria-hidden="true"></i><span> SDT</span></div></td>
+        <td  class="io"><div><i class="fa fa-phone" aria-hidden="true"></i><span> SDT</span></div></td>
         <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.khach_hang.phone"></ion-input></div></td>
       </tr>
       <tr>
-        <td  class="io"><div><i class="fa fa-user" aria-hidden="true"></i><span> CMT</span></div></td>
+        <td  class="io"><div><i class="fa fa-id-card" aria-hidden="true"></i><span> CMT</span></div></td>
         <td><div><ion-input [readonly]="enableEdit ? false : true" type="number" [(ngModel)]="data.khach_hang.identity_no"></ion-input></div></td>
       </tr>
       <!-- ssssssssssss -->

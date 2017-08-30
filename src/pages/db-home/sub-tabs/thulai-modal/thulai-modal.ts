@@ -144,7 +144,7 @@ export class ThulaiModal {
       let u = this.url+this.token+'&branch='+this.br;
       this.postf.postTo(u,form,'').then(log =>{
         console.log(log);
-        // window.location.reload();
+        window.location.reload();
     });
     }
 

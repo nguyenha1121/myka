@@ -21,6 +21,7 @@ export class SumPage {
     staff:''
   }
   public kh;
+  public selected = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public service: ServiceProvider,
     public getj: GetJsonProvider, public store: Storage, public event: Events) {
     this.store = store;
@@ -44,13 +45,18 @@ export class SumPage {
     // console.log(this.kh);
   }
 
+  customer(val : any){
+    this.selected = val;
+    this.selected.khachhang = JSON.parse(this.selected.khach_hang);
+    console.log(this.selected);
+  }
 
   jsonParse(json){
     return JSON.parse(json);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SumPage');
+    // console.log('ionViewDidLoad SumPage');
   }
 
   submitSum(){

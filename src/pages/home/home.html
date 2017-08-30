@@ -5,9 +5,7 @@
              <button ion-item menuClose (click)="yourProfile()">
                 Your Profile
             </button>
-            <button ion-item menuClose (click)="singOut()">
-                Đăng xuất
-            </button>
+            
         </ion-list>
     </ion-content>
 </ion-menu>
@@ -17,6 +15,9 @@
         <ion-list >
              <button *ngFor="let br of list_br" ion-item menuClose (click)="changeBranch(br)">
                 {{br.name}}
+            </button>
+            <button ion-item menuClose (click)="singOut()">
+                Đăng xuất
             </button>
         </ion-list>
     </ion-content>

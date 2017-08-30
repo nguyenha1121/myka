@@ -27,7 +27,7 @@
 <ion-content>
   <div class="search-box">
     <form (ngSubmit)="search()">
-      <ion-input [(ngModel)]="trade.search" name="user" placeholder="Search.."></ion-input>
+      <ion-input [(ngModel)]="key" name="user" placeholder="Search.."></ion-input>
       <button type="submit"><ion-icon name="search"></ion-icon></button>
     </form>
   </div>
@@ -57,5 +57,4 @@
       </tbody>
     </table>
   </div>
-  <!-- <button (click)="testtab()">ssssssssss</button> -->
 </ion-content>

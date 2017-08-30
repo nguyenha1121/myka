@@ -22,12 +22,34 @@
         <tr>
           <td><ion-label><ion-icon ios="ios-contact" md="md-contact"></ion-icon>
           <span>Khách hàng</span></ion-label></td>
-          <td>
+          <td style="border: 1px solid #ddd;">
             <ion-item>
-            <ion-select [(ngModel)]="su.kh" name ="kh" [compareWith]="compareFn">
-              <ion-option *ngFor="let o of listCustomer" [value]="o"><p class="in-l"><span>{{jsonParse(o.khach_hang).name}} =>  {{o.so_tien}}</span></p></ion-option>
-            </ion-select>
+              <ion-select (ionChange)="customer($event)" [(ngModel)]="su.kh" name ="kh" [compareWith]="compareFn">
+                <ion-option *ngFor="let o of listCustomer" [value]="o"><p class="in-l"><span>{{jsonParse(o.khach_hang).name}} =>  {{o.so_tien}}</span></p></ion-option>
+              </ion-select>
             </ion-item>
+          </td>
+        </tr>
+        <tr *ngIf="selected">
+          <td colspan="4">
+            <ul data-role="listview" class="ui-listview custom-listview">
+              <li class="ui-li-static ui-body-inherit ui-first-child">
+                <span><i class="fa fa-user"></i>{{selected.khachhang.name}}<span class="pull-right"><i class="fa fa-phone"></i> {{selected.khachhang.phone}}</span></span>
+              </li>
+              <li class="ui-li-static ui-body-inherit ui-first-child">
+                <i class="fa fa-usd"></i>Khoản vay:<span class="pull-right">{{selected.so_tien}}</span>
+              </li>
+              <li class="ui-li-static ui-body-inherit ui-first-child">
+                <span><i class="fa fa-calendar"></i>Ngày vay:{{selected.ngay_vay}}<span class="pull-right"> Kỳ:<b> {{selected.chu_ky}} </b>ngày</span></span>
+              </li>
+              <li class="ui-li-static ui-body-inherit ui-first-child">
+                <span><i class="fa fa-calendar"></i>Trả lãi:{{selected.ngay_toi}}<span class="pull-right red"> {{selected.can_thu}}</span></span>
+              </li>
+              <li class="ui-li-static ui-body-inherit">
+                <span> <i class="fa fa-tags"></i> <b>Nợ:</b></span>
+                <span class="pull-right"><b>{{selected.tong_no}}</b></span>
+              </li>
+            </ul>
           </td>
         </tr>
         <tr>
@@ -41,6 +63,7 @@
         <td><ion-input type="number" step=100000 [(ngModel)]="su.sotien" name="money" ></ion-input></td>
       </tr>
     </table>
+
     <button ion-button button-calm class="button">Xác nhận</button>
   </form>
 

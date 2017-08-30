@@ -17,13 +17,18 @@ import { GetJsonProvider } from '../../../providers/get-json/get-json';
 export class NewTradeModal {
 
   public data = {
-    // ngay_vay: 0
+    key : "",
+    result: null,
+    data:null
   };
 
   public enableEdit=false;
   public readonly="";
   public summaryDate;
-  test:any;
+  key:any;
+  result:any;
+  customer ;
+  staff;
   constructor(
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -32,11 +37,10 @@ export class NewTradeModal {
     // this.data.ngay_vay = new Date().toISOString();
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
-    // console.log(this.data.ngay_vay);
-    // this.summaryDate = new Date(this.data.ngay_vay).toISOString();
-    // // this.data = 'aaaa';
-    this.test = this.navParams.data.test;
-
+    this.key = this.navParams.get('key');
+    this.customer = this.toArr(this.data.data.customers);
+    this.staff = this.toArr(this.data.data.staff);
+        console.log(this.customer, this.staff);
   }
 
   dateConvert(date){
@@ -44,8 +48,24 @@ export class NewTradeModal {
     return((dt.getMonth() + 1) + '/' + dt.getDate());
   }
 
+  toArr(obj){
+    if(Array.isArray(obj)){
+      return obj;
+    }
+    let arr = [];
+    let keys = Object.keys(obj);
+    for(let i =0; i< keys.length;i++){
+      arr.push(obj[keys[i]]);
+    }
+    return arr;
+  }
+
+  parseJ(json){
+    let output = JSON.parse(json);
+    return output;
+  }
+
   dismiss(){
-    this.test = "kkk";
     this.ViewCtrl.dismiss();
   }
 

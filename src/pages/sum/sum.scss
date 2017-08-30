@@ -6,10 +6,19 @@ page-sum {
     display: flex;
     justify-content: space-between;
   }
+  .infos{
+    width: 100%;
+    .field{
+      width: 100%;
+      display: inline-flex;
+      justify-content: space-between;
+    }
+  }
   ion-select{
     max-width: 100%;
     min-width: 140px;
     padding-right: 5px!important;
+    font-size: 12px;
   }
   // sssssssss
     ion-input{
@@ -87,5 +96,16 @@ page-sum {
     }
     ion-select.select.select-ios.ng-valid.ng-touched.ng-dirty{
       min-width: 140px;
+    }
+    .custom-listview{
+      list-style: none;
+      padding-left: 0;
+      li{
+        border: 1px solid #eee;
+        padding: 5px;
+        i{
+            width: 15px;
+        }
+      }
     }
   }

@@ -28,6 +28,7 @@ export class TradePage {
   ld;
   api;
   empty=false;
+  key ="";
   save;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public modal : ModalController, public event : Events, public popov: PopoverController,
@@ -105,14 +106,17 @@ export class TradePage {
     this.out = output;
   }
 
-  search(myEv){
-    // let pop = this.popov.create(NewTradeModal,{
-    //   fun1: this.func1,
-    //   test: this.test
-    // });
-    // pop.present({
-    //   ev: myEv
-    // });
+  search(){
+    if( this.key != ''){
+      this.getj.load("http://app.onbank.vn/api/search/?search="+this.key+"&object[]=staff&object[]=customer&branch-filter=0"+'&API_TOKEN='+this.api+'&branch='+this.br, '').then(data=>{
+        console.log(data);
+         let mo = this.modal.create(NewTradeModal,{
+           param: data,
+           key: this.key
+         });
+         mo.present();
+      });
+    } 
   }
 
   ref(){

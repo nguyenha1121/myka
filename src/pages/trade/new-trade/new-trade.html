@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Thêm mới</ion-title>
+    <ion-title>Result for "{{key}}"</ion-title>
     <!-- <ion-buttons end>
       <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
     </ion-buttons> -->
@@ -12,41 +12,37 @@
 
 </ion-header>
 <ion-content padding>
-  <!-- <table class="modal">
-    <tbody>
-      <ion-input type=hidden [(ngModel)]="data.id"></ion-input>
-      <tr>
-        <td  class="w"><div><i class="fa fa-usd" aria-hidden="true"></i><span> Tổng tiền</span></div></td>
-        <td><div><ion-input type="number" [(ngModel)]="data.so_tien"></ion-input></div></td>
-      </tr>
-      [attr.enableEdit]="true ? null : 'readonly'"
-      <tr>
-        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Chi phí</span></div></td>
-        <td><div><ion-input type="number" [(ngModel)]="data.chi_phi"></ion-input></div></td>
-      </tr>
-      <tr>
-        <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> Ngày vay</span></div></td>
-        <td *ngIf="!enableEdit">
-          <div><span>112</span></div>
+    <div class="search-box">
+    <form (ngSubmit)="search()">
+      <ion-input [(ngModel)]="key" name="user" placeholder="Search.."></ion-input>
+      <button type="submit"><ion-icon name="search"></ion-icon></button>
+    </form>
+    </div>
+    <div class="list-result">
+      <h4>Customer for: "{{this.key}}"</h4>
+      <div *ngFor="let ct of customer" class="items">
+      <table>
+      <tr class="rio">
+        <td>
+        <ion-icon *ngIf="ct.loai == '2'" name="logo-bitcoin"></ion-icon>
+        <ion-icon *ngIf="ct.loai == '1'" name="logo-euro"></ion-icon>
         </td>
-        <td *ngIf="enableEdit"><div><ion-datetime displayFormat="M/D" (ionChange)="onChangehere()" pickerFormat="MMMM D" [(ngModel)]="summaryDate"></ion-datetime></div></td>
+        <td><span>{{parseJ(ct.khach_hang).name}}</span></td>
+        <td><span>{{parseJ(ct.khach_hang).phone}}</span></td>
       </tr>
-      <tr>
-        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> Khách hàng</span></div></td>
-        <td><div><ion-input type="number" value="100000"></ion-input></div></td>
+      <tr class="rio">
+        <td colspan="3"><span>Cần thu: {{ct.can_thu}}</span></td>
       </tr>
-      <tr>
-        <td  class="w"><div><i class="fa fa-tags" aria-hidden="true"></i><span> SDT</span></div></td>
-        <td><div><ion-input type="number" [(ngModel)]="data.sdt"></ion-input></div></td>
-      </tr>
-      <tr>
-        <td  class="w"><div><i class="fa fa-user" aria-hidden="true"></i><span> CMT</span></div></td>
-        <td><div><ion-input type="number" [(ngModel)]="data.cmt"></ion-input></div></td>
-      </tr>
-    </tbody>
-  </table> -->
-    Some field
-  <!-- <button ion-button class="button button-block"  *ngIf="enableEdit">Edit Submit</button> -->
+      </table>
+      </div>
+    </div>
+  <!--   <div class="list-result">
+      <h4>Staff for: "{{this.key}}"</h4>
+      <div *ngFor="let st of staff" class="items">
+      <div>
+      </div>
+      </div>
+    </div> -->
 </ion-content>
 
 <!-- {{toArray(data.khach_hang).tenkh}} -->
