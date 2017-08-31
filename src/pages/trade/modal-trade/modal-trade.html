@@ -57,7 +57,7 @@
      </tr>
     </tbody>
   </table>
-  <button ion-button class="button button-block" (click)="chotso()" >Chốt sổ khoản vay</button>
+  <button *ngIf="!data.status" ion-button class="button button-block" (click)="chotso()" >Chốt sổ khoản vay</button>
 </ion-content>
 
 <!-- {{toArray(data.khach_hang).tenkh -->

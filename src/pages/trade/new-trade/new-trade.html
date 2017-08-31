@@ -22,7 +22,7 @@
       <h4>Customer for: "{{this.key}}"</h4>
       <div *ngFor="let ct of customer" class="items">
       <table>
-      <tr class="rio">
+      <tr class="info">
         <td>
         <ion-icon *ngIf="ct.loai == '2'" name="logo-bitcoin"></ion-icon>
         <ion-icon *ngIf="ct.loai == '1'" name="logo-euro"></ion-icon>
@@ -30,7 +30,7 @@
         <td><span>{{parseJ(ct.khach_hang).name}}</span></td>
         <td><span>{{parseJ(ct.khach_hang).phone}}</span></td>
       </tr>
-      <tr class="rio">
+      <tr class="info">
         <td colspan="3"><span>Cần thu: {{ct.can_thu}}</span></td>
       </tr>
       </table>

@@ -1,0 +1,138 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Chi tiết giao dịch</ion-title>
+    <ion-buttons start>
+      <button (click)="dismiss()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <table class="modal">
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <i class="fa fa-user"></i> <span>Thông tin khách hàng</span>
+        </td>
+      </tr>
+      <tr>
+       <td><span>Tên khách hàng</span></td>
+       <td>{{data.khachhang.name}}</td>
+     </tr>
+     <tr>
+       <td><span>Số CMT</span></td>
+       <td>{{data.khachhang.identity_no}}</td>
+     </tr>
+     <tr>
+       <td><span>Địa chỉ</span></td>
+       <td>{{data.khachhang.addr}}</td>
+     </tr> 
+     <tr>
+       <td colspan="2">
+          <i class="fa fa-usd"></i> <span>Thông tin khoản vay</span>
+        </td>
+     </tr>
+     <tr>
+       <td><span>Khoản vay ban đầu:</span></td>
+       <td>{{data.so_tien}}</td>
+     </tr>
+     <tr>
+      <td><span>Hình thức:</span></td>
+      <td>
+        <span *ngIf="data.loai=='1'"><i class="fa fa-money"></i> Cầm đồ</span>
+        <span *ngIf="data.loai=='2'"><i class="fa fa-bold"></i> Bát họ</span>
+      </td>
+     </tr>
+     <tr>
+       <td><span>Ngày vay:</span></td>
+       <td>{{data.ngay_vay}}</td>
+     </tr>
+     <tr>
+       <td><span>Hạn trả:</span></td>
+       <td>{{data.thoi_gian}}</td>
+     </tr>
+     <tr>
+       <td><span>Chu kì</span></td>
+       <td>{{data.chu_ky}}</td>
+     </tr>
+     <tr>
+       <td><span>Lãi theo chu kì:</span></td>
+       <td>{{data.chi_phi}}</td>
+     </tr>
+     <tr class="tinhtrang">
+       <td><span>Tình trạng vay</span></td>
+       <td><i class="fa fa-exchange"></i> Đang vay</td>
+     </tr>
+     <tr>
+      <td colspan="2">
+        <i class="fa fa-calculator"></i> <span>Tính toán</span>
+      </td>
+     </tr>
+      <tr>
+        <td colspan="2">
+          <p>Chọn Block</p>
+          <div class="select">
+          <ion-select (ionChange)="secBlock($event)" [(ngModel)]="tt.block" name ="kh" >
+            <ion-option [value]="0">0</ion-option>
+            <ion-option [value]="1">1</ion-option>
+            <ion-option [value]="2">2</ion-option>
+            <ion-option [value]="3">3</ion-option>
+            <ion-option [value]="4">4</ion-option>
+          </ion-select>
+          <span>{{tt.block*data.chu_ky}} ngày</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>Số ngày vay tính tới thời điểm hiện tại:</p>
+          <p>{{getDif(data.tao_luc)}} ngày</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>Lãi theo ngày:</p>
+          <p>{{styleNumber(data.chi_phi)}} đ</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>Tống lãi phải trả:</p>
+          <p>{{styleNumber(data.chi_phi)}} x {{styleNumber(tt.block*data.chu_ky > getDif(data.tao_luc)?tt.block*data.chu_ky: getDif(data.tao_luc))}} = 
+              {{styleNumber(getTonglai())}} đ<ion-input  style="border:none;" type="hidden" [(ngModel)]="tt.tonglai"></ion-input>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>Số tiền đã đóng:</p>
+          <p>{{styleNumber(dadong(data.lich_thu))}} đ</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>Số tiền cần đóng: (Vay + lãi - đã đóng</p>
+          <p>{{data.so_tien}} + {{styleNumber(tt.tonglai)}} - {{styleNumber(dadong(data.lich_thu))}} = {{styleNumber(canDong())}} đ</p>
+        </td>
+      </tr>
+
+
+     <tr>
+      <td colspan="2">
+        <i class="fa fa-check" aria-hidden="true"></i><span>Xác nhận tất toán</span>
+      </td>
+     </tr>
+     <tr>
+       <td colspan="2">
+         <p>Số tiền thu thực tế:</p>
+         <ion-input type="number" step=100000 [(ngModel)]="tt.thucte"></ion-input>
+       </td>
+     </tr>
+      
+    </tbody>
+  </table>
+  <button ion-button class="button button-block" (click)="tattoan()" >Chốt sổ khoản vay</button>
+</ion-content>
+
+<!-- toArray(data.khach_hang).tenkh -->

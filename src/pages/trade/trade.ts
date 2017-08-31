@@ -112,7 +112,9 @@ export class TradePage {
         console.log(data);
          let mo = this.modal.create(NewTradeModal,{
            param: data,
-           key: this.key
+           key: this.key,
+           api: this.api,
+           br: this.br
          });
          mo.present();
       });
@@ -125,7 +127,11 @@ export class TradePage {
 
   clickme(gd){
     this.getj.load("http://app.onbank.vn/api/transaction/info/"+gd.id+'?API_TOKEN='+this.api+'&branch='+this.br, '').then(data =>{
-      let modal = this.modal.create(TradeModal,{'param':data});
+      let modal = this.modal.create(TradeModal,{
+        'param':data,
+        api: this.api,
+        br: this.br
+      });
       modal.present();
     });
     

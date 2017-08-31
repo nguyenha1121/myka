@@ -26,6 +26,7 @@ import { TradeModal } from '../pages/trade/modal-trade/modal-trade';
 import { LoanPage } from '../pages/loan/loan';
 import { FinalizePage } from '../pages/finalize/finalize';
 import { SumPage } from '../pages/sum/sum';
+import { TatToanModal } from '../pages/sum/tat-toan/tattoan';
 import { DbHomePage } from '../pages/db-home/db-home';
 import { DbHomeLoading } from '../pages/db-home/db-loading';
 import { LendingPage } from '../pages/db-home/sub-tabs/lending/lending';
@@ -55,7 +56,7 @@ import { ServiceProvider } from '../providers/service/service';
     TradePage, NewTradeModal, TradeModal,
     LoanPage,
     FinalizePage,
-    SumPage,
+    SumPage, TatToanModal,
     DetailPage,
     CamDoPage,
     BocHoPage,
@@ -79,7 +80,7 @@ import { ServiceProvider } from '../providers/service/service';
     TradePage, NewTradeModal, TradeModal,
     LoanPage,
     FinalizePage,
-    SumPage,
+    SumPage, TatToanModal,
     DetailPage,
     CamDoPage,
     BocHoPage,

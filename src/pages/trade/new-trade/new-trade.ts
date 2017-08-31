@@ -29,6 +29,10 @@ export class NewTradeModal {
   result:any;
   customer ;
   staff;
+  api;
+  br;
+
+
   constructor(
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -38,9 +42,21 @@ export class NewTradeModal {
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
     this.key = this.navParams.get('key');
+    this.api = this.navParams.get('api');
+    this.br = this.navParams.get('br');
     this.customer = this.toArr(this.data.data.customers);
     this.staff = this.toArr(this.data.data.staff);
         console.log(this.customer, this.staff);
+  }
+
+  search(){
+    if( this.key != ''){
+      this.getj.load("http://app.onbank.vn/api/search/?search="+this.key+"&object[]=staff&object[]=customer&branch-filter=0"+'&API_TOKEN='+this.api+'&branch='+this.br, '').then(data=>{
+        this.data = data;
+        this.customer = this.toArr(this.data.data.customers);
+        this.staff = this.toArr(this.data.data.staff);
+      });
+    } 
   }
 
   dateConvert(date){

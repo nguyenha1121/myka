@@ -23,7 +23,6 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  public url = 'http://app.onbank.vn/api/staff/login?username=abcxyz&password=123456'
   public data;
   public reg;
   constructor(private store: Storage,public navParam: NavParams ,public navCtrl: NavController, public getj : GetJsonProvider,

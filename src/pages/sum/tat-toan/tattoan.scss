@@ -1,38 +1,55 @@
-new-trade{
+tattoan{
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
       display: none;
   }
-  h4{
-    padding-top: 5px;
-  }
-  .list-result{
+  // ion-input{
+  //   input{
+  //     text-align: right;
+  //   }
+  // }
+  table{
     width: 100%;
-  }
-  .items{
-    table{
+    .select{
+      display: flex;
+      justify-content: space-between;
       width: 100%;
-      padding:10px;
-      margin-bottom: 5px;
-      padding:5px;
-      background-color: #eee;
+      align-items: center;
+      ion-select{
+        border-radius: 5px;
+        background-color: #ddd;
+      }
+      span{
+        vertical-align: middle;
+      }
     }
   }
-  .info{
+  .hack{
     width: 100%;
-    display: inline-flex;
-    font-size: 13px;
-    justify-content: space-between;
-    
-
-    ion-icon{
-      color: red;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    ion-datetime{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 40px;
     }
   }
   tr{
     width: 100%;
+    align-items: center;
+    border: 0.5px solid #ddd;
     div{
       float: right;
+    }
+    td:nth-child(2){
+      float:right;
+      height: 100%;
+      padding: 11px 5px 11px 0;
+      margin-bottom: 0!important;
+
     }
   }
   ion-navbar{
@@ -48,22 +65,24 @@ new-trade{
     }
   }
   .modal{
-    tr{    margin-bottom: 5px;
+    tr{    
+      margin-bottom: 5px;
+      width: 100%;
       .w{
         background: #C0D5EF;
         margin-left: 10px;
         font-weight: bold;
         color: #1281D0;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+        // border-top-left-radius: 8px;
+        // border-bottom-left-radius: 8px;
 
       }
       td{
-        border-bottom: 5px solid #fff;
+        // border-bottom: 5px solid #fff;
         margin: 0;
         div{
           span{
-            padding-left: 8px;
+            // padding-left: 8px;
           }
         }
         &:first-child{
@@ -106,30 +125,6 @@ new-trade{
         background: #f2f2f2;
         border: #f2f2f2;
         padding: 5px;
-      }
-    }
-  }
-  .search-box{
-    form{
-      display: inline-flex;
-      justify-content: flex-start;
-      flex-direction: row-reverse;
-      width: 100%;
-      height: 35px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      button{
-        background: #fff;
-        border-radius: 5px;
-        ion-icon{
-          color: #999;
-          padding-left: 3px;
-        }
-      }
-
-      ion-input{
-        color: #000;
-        padding-left: 10px;
       }
     }
   }

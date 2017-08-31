@@ -1,7 +1,13 @@
 page-sum {
+  table{
+    width: 100%!important;
+  }
   .select-ios{
     padding: 0;
   }
+ .item-inner{
+  border-bottom: 0!important;
+ }
   .in-l{
     display: flex;
     justify-content: space-between;

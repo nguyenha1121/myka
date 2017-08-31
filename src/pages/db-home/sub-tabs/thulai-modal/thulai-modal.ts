@@ -145,7 +145,7 @@ export class ThulaiModal {
       this.postf.postTo(u,form,'').then(log =>{
         console.log(log);
         window.location.reload();
-    });
+      });
     }
 
 }
