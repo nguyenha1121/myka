@@ -59,7 +59,7 @@ export class SumPage {
     this.selected = val;
     this.selected.khachhang = JSON.parse(this.selected.khach_hang);
     console.log(this.selected);
-    this.su.sotien = this.selected.can_thu;
+    this.su.sotien = this.parseNum(this.selected.can_thu);
   }
 
   jsonParse(json){
@@ -109,5 +109,14 @@ export class SumPage {
         alert2.present();
       });
      }
+  }
+  parseNum(num){
+    let out = "";
+    for(let i = 0; i<num.length; i++ ){
+      if(num[i] != "."){
+        out += num[i];
+      }
+    }
+    return Number(out);
   }
 }

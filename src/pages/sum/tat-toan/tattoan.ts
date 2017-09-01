@@ -46,6 +46,8 @@ export class TatToanModal{
 	secBlock(val:any){
 		// console.log(val);
 		// console.log(this.tt.block);
+		this.getTonglai();
+		this.canDong();
 	}
 	getDif(time){
 		let dif = this.now - time;
@@ -84,6 +86,11 @@ export class TatToanModal{
 			}
 		}
 		return Number(out);
+	}
+	tinhtrang(){
+		if (this.getDif(this.data.tao_luc) < this.data.thoi_gian) {
+			return true;
+		} return false;
 	}
 	dq(n,a){
 	    if(n <=0){

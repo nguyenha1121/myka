@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, Events } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../../../providers/get-json/get-json';
@@ -32,7 +33,8 @@ export class NeedPage {
     public call: CallNumber,
     public store : Storage,
     public modal: ModalController,
-    public event: Events
+    public event: Events,
+    public sms: SMS
   ) {
     console.log(this.navParams.data);
     this.modal = modal;
@@ -56,8 +58,10 @@ export class NeedPage {
     return result;
   }
 
-  clickedSMS(){
-    console.log('heelo');
+  clickedSMS(num){
+    // console.log('heelo');
+    this.sms.send(num, ' Bạn đã đến hạn chả lãi cầm đồ(bát họ)!');
+
   }
   clickedThu(kh){
     let modal = this.modal.create(ThulaiModal,{'param':kh});

@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Result for "{{key}}"</ion-title>
+    <!-- <ion-buttons end>
+      <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    </ion-buttons> -->
+    <ion-buttons start>
+      <button (click)="dismiss()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <div class="search-box">
+    <form (ngSubmit)="search()">
+      <ion-input [(ngModel)]="key" name="user" placeholder="Search.."></ion-input>
+      <button type="submit"><ion-icon name="search"></ion-icon></button>
+    </form>
+    </div>
+    <div class="list-result">
+      <h4>Customer for: "{{this.key}}"</h4>
+      <div *ngFor="let ct of customer" class="items">
+      <table>
+      <tr class="info">
+        <td>
+        <ion-icon *ngIf="ct.loai == '2'" name="logo-bitcoin"></ion-icon>
+        <ion-icon *ngIf="ct.loai == '1'" name="logo-euro"></ion-icon>
+        </td>
+        <td><span>{{parseJ(ct.khach_hang).name}}</span></td>
+        <td><span>{{parseJ(ct.khach_hang).phone}}</span></td>
+      </tr>
+      <tr class="info">
+        <td colspan="3"><span>Cần thu: {{ct.can_thu}}</span></td>
+      </tr>
+      </table>
+      </div>
+    </div>
+  <!--   <div class="list-result">
+      <h4>Staff for: "{{this.key}}"</h4>
+      <div *ngFor="let st of staff" class="items">
+      <div>
+      </div>
+      </div>
+    </div> -->
+</ion-content>
+
+<!-- {{toArray(data.khach_hang).tenkh}} -->

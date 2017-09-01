@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Chi tiết giao dịch</ion-title>
+    <ion-buttons start>
+      <button (click)="dismiss()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <table class="modal">
+    <tbody>
+     <tr>
+       <td><i class="fa fa-calendar" aria-hidden="true"></i><span>Thời gian tạo</span></td>
+       <td>{{data.time_create}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-user" aria-hidden="true"></i><span>Nhân viên</span></td>
+       <td>{{data.nhan_vien}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-user-secret" aria-hidden="true"></i><span>Khách hàng</span></td>
+       <td>{{data.khach_hang}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-dollar" aria-hidden="true"></i><span>Số tiền</span></td>
+       <td>{{data.so_tien}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-university" aria-hidden="true"></i><span>Món vay</span></td>
+       <td>{{data.mon_vay.so_tien}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Ngày vay</span></td>
+       <td>{{data.mon_vay.ngay_vay}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa  fa-hourglass-3" aria-hidden="true"></i><span>Số ngày vay</span></td>
+       <td>{{data.mon_vay.thoi_gian}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-balance-scale" aria-hidden="true"></i><span>Chi phí</span></td>
+       <td>{{data.mon_vay.chi_phi}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-history " aria-hidden="true"></i><span>Chu kỳ</span></td>
+       <td>{{data.mon_vay.chu_ky}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-sticky-note" aria-hidden="true"></i><span>Ghi chú</span></td>
+       <td>{{data.note}}</td>
+     </tr>
+     <tr>
+       <td><i class="fa fa-book" aria-hidden="true"></i><span>Vào sổ</span></td>
+       <td><p *ngIf="data.status=='0'">Chưa vào sổ</p><p *ngIf="data.status!='0'">Đã vào sổ</p></td>
+     </tr>
+    </tbody>
+  </table>
+  <button *ngIf="!data.status" ion-button class="button button-block" (click)="chotso()" >Chốt sổ khoản vay</button>
+</ion-content>
+
+<!-- {{toArray(data.khach_hang).tenkh -->

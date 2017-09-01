@@ -1,16 +1,7 @@
-tattoan{
+modal-trade{
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
       display: none;
-  }
-  .warning{
-    background-color: red;
-    color: #fff;
-  }
-  .head{
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
   }
   // ion-input{
   //   input{
@@ -18,33 +9,7 @@ tattoan{
   //   }
   // }
   table{
-    p,span{
-      font-size: 14px;
-      color: #3b5998;
-    }
-    p.money{
-      color: #000;
-      font-weight: bold;
-    }
     width: 100%;
-    .select{
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-      padding-bottom: 14px;
-      ion-select{
-        border-radius: 5px;
-        background-color: #ddd;
-        overflow: hidden;
-
-      }
-      span{
-        vertical-align: middle;
-      }
-    }
   }
   .hack{
     width: 100%;

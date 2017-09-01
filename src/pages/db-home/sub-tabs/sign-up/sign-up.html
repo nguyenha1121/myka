@@ -1,15 +1,31 @@
-<!--
-  Generated template for the SignUpPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-
-</ion-header>
-
-
-<ion-content padding>
-  <p>Dang ki</p>
+<ion-content>
+  <h3 padding *ngIf="list_empty" class="empty">Danh sách rỗng</h3>
+  <div *ngIf="!list_empty" >
+  <ion-list  class="list-item" *ngFor="let kh of data">
+    <ion-item *ngIf="kh" class="hn">
+        <div class="kh-name">
+          <div class="name">
+            <div class="icon">
+              <ion-icon *ngIf="kh.loai == '2'" name="logo-bitcoin"></ion-icon>
+              <ion-icon *ngIf="kh.loai == '1'" name="logo-euro"></ion-icon>
+            </div>
+            <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name}}</button></div>
+          </div>
+          <div class="kh-money">{{styleNumber(kh.can_thu)}}</div>
+        </div>
+        <div class="kh-r2">
+          <div *ngIf="dateConvert(kh.khach_hang.date)!==null" class="day">{{(kh.ngay_toi)}}</div>
+          <div class="local">
+            <ion-icon name="md-pin"></ion-icon>
+            <span class="address">{{kh.khach_hang.addr}}</span>
+          </div>
+        </div>
+        <div class="kh-r3">
+          <button (click)="clickedCall(kh.khach_hang.phone)" class="box phone">{{kh.khach_hang.phone}}</button>
+          <button (click)="clickedSMS(kh.khach_hang.phone)" class="box oth">SMS</button>
+          <button (click)="clickedThu(kh)" class="box oth">Thu lãi</button>
+        </div>
+    </ion-item>
+  </ion-list>
+  </div>
 </ion-content>

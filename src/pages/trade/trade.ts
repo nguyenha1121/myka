@@ -54,7 +54,7 @@ export class TradePage {
           this.data = data.data.items;
           this.out = this.loop(this.data);
           this.save = this.out;
-          // console.log(this.out);
+          console.log(this.out);
           this.ld.dismiss();
         });
       })

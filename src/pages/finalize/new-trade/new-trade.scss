@@ -1,77 +1,38 @@
-tattoan{
+new-trade{
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
       display: none;
   }
-  .warning{
-    background-color: red;
-    color: #fff;
+  h4{
+    padding-top: 5px;
   }
-  .head{
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
-  }
-  // ion-input{
-  //   input{
-  //     text-align: right;
-  //   }
-  // }
-  table{
-    p,span{
-      font-size: 14px;
-      color: #3b5998;
-    }
-    p.money{
-      color: #000;
-      font-weight: bold;
-    }
+  .list-result{
     width: 100%;
-    .select{
-      display: flex;
-      justify-content: space-between;
+  }
+  .items{
+    table{
       width: 100%;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-      padding-bottom: 14px;
-      ion-select{
-        border-radius: 5px;
-        background-color: #ddd;
-        overflow: hidden;
+      padding:10px;
+      margin-bottom: 5px;
+      padding:5px;
+      background-color: #eee;
+    }
+  }
+  .info{
+    width: 100%;
+    display: inline-flex;
+    font-size: 13px;
+    justify-content: space-between;
+    
 
-      }
-      span{
-        vertical-align: middle;
-      }
-    }
-  }
-  .hack{
-    width: 100%;
-    height: 40px;
-    position: relative;
-    overflow: hidden;
-    ion-datetime{
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 40px;
+    ion-icon{
+      color: red;
     }
   }
   tr{
     width: 100%;
-    align-items: center;
-    border: 0.5px solid #ddd;
     div{
       float: right;
-    }
-    td:nth-child(2){
-      float:right;
-      height: 100%;
-      padding: 11px 5px 11px 0;
-      margin-bottom: 0!important;
-
     }
   }
   ion-navbar{
@@ -87,24 +48,22 @@ tattoan{
     }
   }
   .modal{
-    tr{    
-      margin-bottom: 5px;
-      width: 100%;
+    tr{    margin-bottom: 5px;
       .w{
         background: #C0D5EF;
         margin-left: 10px;
         font-weight: bold;
         color: #1281D0;
-        // border-top-left-radius: 8px;
-        // border-bottom-left-radius: 8px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
 
       }
       td{
-        // border-bottom: 5px solid #fff;
+        border-bottom: 5px solid #fff;
         margin: 0;
         div{
           span{
-            // padding-left: 8px;
+            padding-left: 8px;
           }
         }
         &:first-child{
@@ -147,6 +106,30 @@ tattoan{
         background: #f2f2f2;
         border: #f2f2f2;
         padding: 5px;
+      }
+    }
+  }
+  .search-box{
+    form{
+      display: inline-flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      width: 100%;
+      height: 35px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      button{
+        background: #fff;
+        border-radius: 5px;
+        ion-icon{
+          color: #999;
+          padding-left: 3px;
+        }
+      }
+
+      ion-input{
+        color: #000;
+        padding-left: 10px;
       }
     }
   }

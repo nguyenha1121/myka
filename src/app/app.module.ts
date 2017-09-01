@@ -23,6 +23,8 @@ import { DbLoading } from '../pages/dashboard/db-loading';
 import { TradePage } from '../pages/trade/trade';
 import { NewTradeModal } from '../pages/trade/new-trade/new-trade';
 import { TradeModal } from '../pages/trade/modal-trade/modal-trade';
+import { NewTradeModal2 } from '../pages/finalize/new-trade/new-trade';
+import { TradeModal2 } from '../pages/finalize/modal-trade/modal-trade';
 import { LoanPage } from '../pages/loan/loan';
 import { FinalizePage } from '../pages/finalize/finalize';
 import { SumPage } from '../pages/sum/sum';
@@ -55,7 +57,7 @@ import { ServiceProvider } from '../providers/service/service';
     DashboardPage, DbLoading,
     TradePage, NewTradeModal, TradeModal,
     LoanPage,
-    FinalizePage,
+    FinalizePage, NewTradeModal2, TradeModal2,
     SumPage, TatToanModal,
     DetailPage,
     CamDoPage,
@@ -79,7 +81,7 @@ import { ServiceProvider } from '../providers/service/service';
     DashboardPage, DbLoading,
     TradePage, NewTradeModal, TradeModal,
     LoanPage,
-    FinalizePage,
+    FinalizePage, NewTradeModal2, TradeModal2,
     SumPage, TatToanModal,
     DetailPage,
     CamDoPage,
