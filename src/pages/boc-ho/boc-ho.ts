@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController, NavParams ,ToastController} from 'ionic-angular';
+import { NavController, NavParams ,ToastController, Platform, LoadingController} from 'ionic-angular';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FileTransfer, FileTransferObject} from '@ionic-native/file-transfer';
 import { PostFormProvider } from '../../providers/post-form/post-form';
@@ -30,6 +30,7 @@ export class BocHoPage {
 
   constructor(public filechoose: FileChooser ,public navCtrl: NavController, public navParams: NavParams,
     public store: Storage, public postf: PostFormProvider, public fileTranfer : FileTransfer,
+    public platform: Platform,public loading: LoadingController,
     public service: ServiceProvider, public toast: ToastController) {
     this.filechoose = filechoose;
     this.store.get('API_Token').then(token=>{
@@ -41,7 +42,7 @@ export class BocHoPage {
     });
 
   }
-  upload : FileTransferObject = this.fileTranfer.create();
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad BocHoPage');
   }
@@ -62,13 +63,16 @@ export class BocHoPage {
     taisan:''
   };
 
+  upload: FileTransferObject = this.fileTranfer.create();
+
   save(){
     // console.log(this.bh);
-    this.toast.create({
+    let toast = this.toast.create({
         message:  "Saving...",
         duration: 2500,
         position: "middle"
       });
+    toast.present();
     if(this.uri != ""){
      var link = this.urlUpload+this.token+'&branch='+this.br;
       this.upload.upload(this.uri,link).then((suc)=>{
@@ -78,6 +82,7 @@ export class BocHoPage {
           duration: 2000,
           position: 'top'
         });
+        toast.present();
         let form = 'sum='+this.bh.sotien+
             '&duration='+this.bh.songay+
             '&cycle='+this.bh.chuki+
@@ -96,24 +101,27 @@ export class BocHoPage {
           this.postf.postTo(u,form,'').then(log =>{
             console.log(log);
             if(log.status == 1){
-              this.toast.create({
+              let  toa = this.toast.create({
                 message:  "Success",
                 duration: 500,
                 position: "middle"
               });
+              toa.present();
               window.location.reload();
             } else {
-              this.toast.create({
+              let  toa = this.toast.create({
                 message:  "Something wrong ...",
                 duration: 1500,
                 position: "middle"
               });
+              toa.present();
             }
         });
       },(err)=>{
         let toast = this.toast.create({
           message: "Upload fail, something wrong. Please try again later!"
-        })
+        });
+        toast.present();
       });
     }
      else {
@@ -136,22 +144,30 @@ export class BocHoPage {
           if(log.status == 1){
             window.location.reload();
           } else {
-            this.toast.create({
+            let toast = this.toast.create({
               message:  "Something wrong ...",
               duration: 1500,
               position: "middle"
             }) ;
+            toast.present();
           }
       });
     }
 
   }
- 
+
   taiAnh(){
-    this.filechoose.open().then(uri =>{
-      console.log("ss");
-      this.uri = uri;
-    }).catch(e => console.log(e));
+    let u = this.urlUpload+this.token+'&branch='+this.br;
+    
+    if(this.platform.is('android')){
+       this.filechoose.open().then(uri =>{
+        // loading.present();
+        // console.log("ss");
+        this.uri = uri;
+
+      }).catch(e => console.log(e));
+    }
+   
   }
 
 }

@@ -1,3 +1,26 @@
 page-register {
-
+	::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+      display: none;
+  }
+  ion-content{
+    background-image: url(../../assets/img/login-bg.jpg);
+    background-size: cover;
+    }
+    .item-input{
+    	background-color: transparent;
+    }
+    button{
+    background-color: transparent!important;
+    border: 1px solid orange;
+    // color: #000!important;
+    color: #fff;
+  }
+  button:active{
+    background: orange;
+    color: #fff;
+  }
+  ion-label{
+    color: #fff;
+  }
 }

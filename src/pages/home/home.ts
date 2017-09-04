@@ -46,9 +46,9 @@ export class HomePage {
       })
   }
   singOut(){
-    this.navCtrl.push(DetailPage);
+    // this.navCtrl.push(DetailPage);
     // this.store.remove('API_Token');
-    // this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
   changeBranch(br){
     this.store.set('branch', br.id).then(vale =>{

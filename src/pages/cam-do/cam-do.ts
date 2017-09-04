@@ -151,11 +151,12 @@ export class CamDoPage {
           if(log.status == 1){
             window.location.reload();
           } else {
-            this.toast.create({
+            let toast = this.toast.create({
               message:  "Something wrong ...",
               duration: 1500,
               position: "middle"
             }) ;
+            toast.present();
           }
       });
     }

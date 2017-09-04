@@ -35,7 +35,7 @@
     <table *ngFor="let day of out" padding>
       <tbody padding *ngFor="let gd of day.value.date_item">
         <tr *ngIf="gd.status == 1" (click)="clickme(gd)">
-          <td><p>{{gd.time}}</p></td>
+          <td><p>{{gd.time}}</p><p class="nhonho">{{gd.day}}</p></td>
           <td>
             <p class="nm">{{gd.tenkhach}}</p>
             <p class="ph"><ion-icon name="call"></ion-icon> {{gd.sdt}}</p></td>
