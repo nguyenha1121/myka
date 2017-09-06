@@ -54,30 +54,16 @@ export class RegisterPage {
     ;
 
 
-    console.log(form);
+    // console.log(form);
 
     this.post.postTo(url,form,'').then(data =>{
-      console.log(data);
+      // console.log(data);
       if(data.status == 1){
         this.navCtrl.setRoot(LoginPage,{log:{
           user: this.reg.user,
           password: this.reg.password
         }});
       }
-        // this.data = data;
-        // this.store.set('API_Token',this.data.data.API_Token);
-        // let time = new Date();
-        // let timenow = time.getTime();
-        // let timeexpire = timenow + 86400;
-        // console.log(timeexpire);
-        // this.store.set('time-expire',timeexpire);
-        // this.store.set('log-in',this.data.data);
-        // console.log(this.data);
-        // if(this.data.status==1){
-        //   this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
-        // } else {
-        //   window.location.reload();
-        // }
         this.load.dissmiss();
       });
   }

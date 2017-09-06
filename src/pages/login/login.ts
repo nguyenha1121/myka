@@ -34,10 +34,10 @@ export class LoginPage {
     this.app = app;
     this.app.enable(false);
     let loa = this.navParam.get('log');
-    console.log(loa);
+    // console.log(loa);
     this.store = store;
       let a = this.store.get('API_Token');
-      console.log(a);
+      // console.log(a);
   }
   log ={
     user:'',
@@ -45,32 +45,32 @@ export class LoginPage {
   };
   logForm (){
     this.plt.ready().then((readySource)=>{
-      console.log('Platform ready from', readySource);
+      // console.log('Platform ready from', readySource);
       let url = 'http://app.onbank.vn/api/staff/login?username='+this.log.user+'&password='+this.log.password;
       let to = new Array();
       to['username'] = this.log.user;
       to['password'] = this.log.password;
       let tot = 'username='+to['username']+'&password='+to['password'];
-      console.log(tot);
+      // console.log(tot);
       this.postf.postTo('http://app.onbank.vn/api/staff/login',tot,'').then(data=>{
-        console.log(data);
+        // console.log(data);
         this.data = data;
         this.service.setUser(this.data.data.username);
         this.store.set('API_Token',this.data.data.API_Token);
         let time = new Date();
         let timenow = time.getTime();
         let timeexpire = timenow + 864000;
-        console.log(timeexpire);
+        // console.log(timeexpire);
         this.store.set('time-expire',timeexpire);
         this.store.set('log-in',this.data.data);
         //get bracnch and save that
         this.store.get('branch').then(br=>{
-          console.log('br',br);
+          // console.log('br',br);
         })
         this.store.set('branch',this.data.data.branch[0].id);
         this.store.set('list-branch',this.data.data.branch);
         this.event.publish('list-branch',this.data.data.branch);
-        console.log(this.data);
+        // console.log(this.data);
         if(this.data.status==1){
           this.navCtrl.push(DashboardPage, {'log-in':this.data.data});
         } else {
@@ -81,29 +81,9 @@ export class LoginPage {
   }
 
   goRegister(){
-  //   this.store.get('name').then((val) => {
-  //    console.log('Your name is', val);
-  //  });
     this.navCtrl.push(RegisterPage);
   }
 }
 
 
 
-
-//
-// this.postf.postTo(this.url,this.log).then(data=>{
-//   this.data = data;
-//     console.log(this.data.data.API_Token);
-//         this.store.set('API_Token',this.data.data.API_Token);
-//         let time = new Date();
-//         let timenow = time.getTime();
-//         let timeexpire = timenow + 86400000;
-//         this.store.set('time-expire',timeexpire);
-//         this.store.set('log-in',this.data.data);
-//     if(this.data.status==1){
-//       this.navCtrl.push(DashboardPage,{'log-in':this.data.data});
-//     } else {
-//       window.location.reload();
-//     }
-// });

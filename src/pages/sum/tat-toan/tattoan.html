@@ -114,7 +114,8 @@
       <tr >
         <td colspan="2">
           <p>Số tiền cần đóng: (Vay + lãi - Đã đóng)</p>
-          <p class="money">{{data.so_tien}} + {{styleNumber(tt.tonglai)}} - {{styleNumber(dadong(data.lich_thu))}} = {{styleNumber(canDong())}} đ</p>
+          <p *ngIf="dadong(data.lich_thu) != 0" class="money">{{data.so_tien}} + {{styleNumber(tt.tonglai)}} - {{styleNumber(dadong(data.lich_thu))}} = {{styleNumber(canDong())}} đ</p>
+          <p *ngIf="dadong(data.lich_thu) == 0" class="money">{{data.so_tien}} + {{styleNumber(tt.tonglai)}} - 0= {{styleNumber(canDong())}} đ</p>
         </td>
       </tr>
 

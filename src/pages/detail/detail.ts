@@ -50,9 +50,35 @@ export class DetailPage {
     for(let i = 1;i<10000;i++){
       this.ab = i;
     }
+    this.store.set('h1','h1');
+    this.store.set('h2','h2');
+    this.store.set('h3','h3');
+    this.store.set('h4','h4');
   }
 
   fileTransfer: FileTransferObject = this.upload.create();
+
+  result = [];
+
+  async gj(i){
+    let a = await this.store.get(i);
+    this.result.push(a);
+    // console.log(a);
+    return 0;
+  }
+
+  async testt(){
+    // console.log(this.result);
+    let k = ['h1','h2','h3','h4'];
+    for(let i = 0; i<k.length;i++){
+      // this.result.push(this.gj(k[i]));
+      await this.gj(k[i]);
+      // console.log(this.result);
+    }
+    console.log(this.result);
+     let a = JSON.stringify(this.result);
+     console.log(a);
+  }
 
   loadImage(){
     this.filechoose.open().then(uri=>{

@@ -58,7 +58,7 @@ export class SumPage {
   customer(val : any){
     this.selected = val;
     this.selected.khachhang = JSON.parse(this.selected.khach_hang);
-    console.log(this.selected);
+    // console.log(this.selected);
     this.su.sotien = this.parseNum(this.selected.can_thu);
   }
 
@@ -71,14 +71,14 @@ export class SumPage {
   }
 
   submitSum(){
-    console.log(this.su);
+    // console.log(this.su);
   }
 
   compareFn(option1: any, option2: any) {
       return option1.id === option2.id;
   }
   save(){
-    console.log(this.su);
+    // console.log(this.su);
      let alert = this.alert.create({
       title: 'Ooopp! ',
       subTitle: 'You need to complete all field',
@@ -91,10 +91,10 @@ export class SumPage {
      else {
       let form = "loan-id="+this.selected.id+
                 "&sum="+this.su.sotien;
-      console.log(form);
+      // console.log(form);
       let u = this.url+this.api+'&branch='+this.br;
       this.postf.postTo(u,form,'').then(log =>{
-        console.log(log);
+        // console.log(log);
         
         let alert2 = this.alert.create({
           title: 'Done! ',

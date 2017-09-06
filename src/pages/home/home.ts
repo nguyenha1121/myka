@@ -47,7 +47,7 @@ export class HomePage {
   }
   singOut(){
     // this.navCtrl.push(DetailPage);
-    // this.store.remove('API_Token');
+    this.store.remove('API_Token');
     this.navCtrl.setRoot(LoginPage);
   }
   changeBranch(br){

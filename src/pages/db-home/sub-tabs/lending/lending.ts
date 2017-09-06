@@ -24,7 +24,6 @@ export class LendingPage {
   public data:any;
   public param;
   public list_empty;
-  private url = "http://thuviensofl.xyz/api/loan/list";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -34,27 +33,12 @@ export class LendingPage {
   ) {
     console.log(this.navParams.data);
     this.modal = modal;
-    // this.store.get('API_Token').then(token =>{
-    //   this.getj.load(this.url, token).then(data=>{
-    //     this.data = data.data.items;
-    //     this.data = this.hack(this.data);
-    //   });
-    // });
     /////// GET DATA LIKE PARAMS
     if(this.isEmpty(this.navParams.data )){
       console.log('khong anh');
       this.list_empty = true;
     } else {console.log(this.navParams.data);  console.log('co anh');}
     this.data = this.navParams.data;
-    // this.store.get('API_Token').then(token =>{
-    //   this.getj.load('assets/need.json', token).then(data=>{
-    //     // this.data = data.data.items;
-    //     console.log(this.data);
-    //     // this.data = this.hack(this.data);
-    //     // console.log(JSON.parse(this.data[0].khach_hang['tenkh']));
-    //     // this.data = null;
-    //   });
-    // });
 
   }
 

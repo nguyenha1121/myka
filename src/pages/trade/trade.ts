@@ -7,7 +7,7 @@ import { GetJsonProvider } from '../../providers/get-json/get-json';
 import { NewTradeModal } from './new-trade/new-trade';
 import { TradeModal } from './modal-trade/modal-trade';
 
-import { SumPage } from '../sum/sum';
+// import { SumPage } from '../sum/sum';
 /**
  * Generated class for the TradePage page.
  *

@@ -24,9 +24,11 @@ export class ThulaiModal {
     han_toi: null,
     id: null,
     so_tien: null,
-    can_thu: null
+    can_thu: null,
+    tai_san: null,
+    taisan: null
   };
-
+  imgs = [];
 
   public url = "http://app.onbank.vn/api/loan/collect?API_TOKEN=";
   public enableEdit=false;
@@ -59,11 +61,21 @@ export class ThulaiModal {
     this.user = this.service.getUser();
     this.ViewCtrl = ViewCtrl;
     this.data = this.navParams.get('param');
-    console.log(this.data);
+    // console.log(this.data);
     this.lich_thu = JSON.parse(this.data.lich_thu);
 
     this.summaryDate = new Date().toISOString();
     this.data.han_toi = this.summaryDate;
+    if(this.data.tai_san){
+      let arr = JSON.parse(this.data.tai_san);
+      if(Array.isArray(arr)){
+        for( let i =0;i<arr.length;i++){
+          this.imgs.push('http://app.onbank.vn'+JSON.parse(JSON.parse(this.data.tai_san)[i]));
+        }
+      }
+      
+    }
+    
     // this.data = 'aaaa';
 
   }
@@ -78,7 +90,7 @@ export class ThulaiModal {
   }
 
   onChangehere(ev){
-    let date = new Date(this.summaryDate);
+    // let date = new Date(this.summaryDate);
     this.data.han_toi = this.summaryDate;
     this.haschangeday = true;
   }

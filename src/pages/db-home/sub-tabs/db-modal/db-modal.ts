@@ -18,8 +18,11 @@ export class DbModal {
 
   public data = {
     ngay_vay: 0,
-    lich_thu: null
+    lich_thu: null,
+    tai_san:'',
+    taisan:[]
   };
+  imgs = [];
 
   public enableEdit=false;
   public readonly="";
@@ -36,7 +39,21 @@ export class DbModal {
     // console.log(JSON.parse(this.data.lich_thu));
     this.lich_thu = JSON.parse(this.data.lich_thu);
     this.summaryDate = new Date(this.data.ngay_vay).toISOString();
-    // this.data = 'aaaa';
+    console.log(this.data);
+    if(this.data.tai_san){
+      let arr = JSON.parse(this.data.tai_san);
+      if(Array.isArray(arr)){
+        for( let i =0;i<arr.length;i++){
+          this.imgs.push('http://app.onbank.vn'+JSON.parse(JSON.parse(this.data.tai_san)[i]));
+        }
+      }
+    }
+    console.log(this.data.taisan);
+  }
+  parses(json){
+    let out = JSON.parse(json);
+    return out;
+
   }
 
   tattoan(){
@@ -61,9 +78,9 @@ export class DbModal {
     this.enableEdit = !this.enableEdit;
     this.readonly = "readonly";
   }
+// sls
 
-
-    dq(n,a){
+    dq(n,a){   
       if(n <=0){
         return a;
       } else {

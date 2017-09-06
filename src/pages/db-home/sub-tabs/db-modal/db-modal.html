@@ -2,9 +2,9 @@
 
   <ion-navbar>
     <ion-title>{{data.khach_hang.tenkh}}</ion-title>
-    <ion-buttons end>
+<!--     <ion-buttons end>
       <button (click)="editEnable()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-buttons start>
       <button (click)="dismiss()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
     </ion-buttons>
@@ -46,7 +46,11 @@
     </tbody>
   </table>
   <h3>Tài sản</h3>
-  <p>Chưa cập nhật</p>
+  <p *ngIf="!data.tai_san">Chưa cập nhật</p>
+  <div class="ts" *ngIf="data.tai_san">
+    <p *ngIf="data.title_ts">{{data.title_ts}}</p>
+    <img *ngFor="let ts of imgs" [src]="ts" alt="">
+  </div>
   <h3>Lịch trả lãi</h3>
   <table class="lichthu">
     <tr>

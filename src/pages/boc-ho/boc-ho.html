@@ -56,7 +56,7 @@
       <tr>
         <td><ion-label><ion-icon ios="ios-card" md="md-card"></ion-icon>
         <span>CMT</span></ion-label></td>
-        <td><ion-input [(ngModel)]="bh.cmt" name="cmt" ></ion-input></td>
+        <td><ion-input [(ngModel)]="bh.cmt" type="number" name="cmt" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
@@ -79,7 +79,12 @@
     <i class="fa fa-floppy-o" aria-hidden="true"></i>
     <span>Lưu lại</span>
   </button>
-  <img *ngIf="uri" [src]="uri" alt="#">
+  <!-- <p>Debugs</p> -->
+  <div class="imgs" *ngFor="let l of imgs">
+    <!-- <i>{{l}}</i> -->
+    <img class="dt-img" [src]="l" alt="#">
+
+  </div>
   <!-- <p>{{uri}}</p> -->
 </ion-content>
       <!-- <tr>

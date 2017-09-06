@@ -1,5 +1,3 @@
-
-
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, Events, PopoverController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -8,14 +6,6 @@ import { GetJsonProvider } from '../../providers/get-json/get-json';
 
 import { NewTradeModal2 } from './new-trade/new-trade';
 import { TradeModal2 } from './modal-trade/modal-trade';
-
-import { SumPage } from '../sum/sum';
-/**
- * Generated class for the TradePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-finalize',

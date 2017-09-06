@@ -15,22 +15,22 @@
           <ion-label><ion-icon name="logo-usd"></ion-icon>
           <span>Số tiền vay</span></ion-label>
         </td>
-        <td><ion-input [(ngModel)]="cd.sotien" name="sotien" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.sotien" type="number" step="100000" name="sotien" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-clock" md="md-clock"></ion-icon>
         <span>Số ngày</span></ion-label></td>
-        <td><ion-input [(ngModel)]="cd.songay" name="songay" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.songay" type="number" name="songay" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
         <span>Chu kì</span></ion-label></td>
-        <td><ion-input [(ngModel)]="cd.chuki" name="chuki" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.chuki" type="number" name="chuki" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-pulse" md="md-pulse"></ion-icon>
         <span>Chi phí</span></ion-label></td>
-        <td><ion-input [(ngModel)]="cd.chiphi" name="chiphi" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.chiphi" type="number" step="100000" name="chiphi" ></ion-input></td>
       </tr>
       <tr class="ghichu">
         <td colspan = "3">
@@ -54,12 +54,12 @@
       <tr>
         <td><ion-label><ion-icon ios="ios-call" md="md-call"></ion-icon>
         <span>Số ĐT</span></ion-label></td>
-        <td><ion-input [(ngModel)]="cd.sdt" name="sdt" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.sdt" type="number" name="sdt" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-card" md="md-card"></ion-icon>
         <span>CMT</span></ion-label></td>
-        <td><ion-input [(ngModel)]="cd.cmt" name="cmt" ></ion-input></td>
+        <td><ion-input [(ngModel)]="cd.cmt" type="number" name="cmt" ></ion-input></td>
       </tr>
       <tr>
         <td><ion-label><ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
@@ -72,7 +72,6 @@
         <td><ion-input placeholder="Nhập tiêu đề tài sản" [(ngModel)]="cd.taisan" name="taisan" ></ion-input></td>
       </tr>
     </table>
-    <h4 *ngIf="error">{{error}}</h4>
   </form>
   <div class="imgs">
     <ion-img *ngIf="uri" [width]='80' [height]="80" src="uri"></ion-img>
@@ -85,7 +84,13 @@
     <i class="fa fa-floppy-o" aria-hidden="true"></i>
     <span>Lưu lại</span>
   </button>
-  <img *ngIf="uri" [src]="uri" alt="#">
+    <p>{{log}}</p>
+    <p>{{bug}}</p>
+   <div class="imgs" *ngFor="let l of imgs">
+    <!-- <i>{{l}}</i> -->
+    <img class="dt-img" [src]="l" alt="#">
+  
+  </div>
   <!-- <p>{{uri}}</p> -->
 </ion-content>
       <!-- <tr>

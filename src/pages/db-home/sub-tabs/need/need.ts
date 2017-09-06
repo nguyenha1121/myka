@@ -27,6 +27,7 @@ export class NeedPage {
   public data:any;
   public param;
   public list_empty;
+  debug: any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public getj: GetJsonProvider,
@@ -44,7 +45,6 @@ export class NeedPage {
       this.list_empty = true;
     } else {}
     this.data = this.navParams.data;
-
   }
 
   toArray(string){
@@ -59,8 +59,12 @@ export class NeedPage {
   }
 
   clickedSMS(num){
-    // console.log('heelo');
-    this.sms.send(num, ' Bạn đã đến hạn chả lãi cầm đồ(bát họ)!');
+    // console.log('heelo');.
+    this.sms.send(num, ' Bạn đã đến hạn chả lãi cầm đồ(bát họ)!',{
+      android: {
+        intent: 'INTENT' 
+      }
+    });
 
   }
   clickedThu(kh){

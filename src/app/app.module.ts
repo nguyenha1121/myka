@@ -10,6 +10,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FileTransfer} from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import { ScrollableTabs } from '../include/scrollable-tabs';
 
@@ -44,7 +45,7 @@ import { DetailPage } from '../pages/detail/detail';
 import { GetJsonProvider } from '../providers/get-json/get-json';
 import { HttpModule } from '@angular/http';
 import { PostFormProvider } from '../providers/post-form/post-form';
-import { LoginProvider } from '../providers/login/login';
+// import { LoginProvider } from '../providers/login/login';
 import { ServiceProvider } from '../providers/service/service';
 
 @NgModule({
@@ -93,9 +94,10 @@ import { ServiceProvider } from '../providers/service/service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ImagePicker,
     GetJsonProvider,
     PostFormProvider,
-    LoginProvider,
+    // LoginProvider,
     CallNumber,
     SMS,
     FileChooser, Transfer, TransferObject, File, FileTransfer,

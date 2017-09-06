@@ -11,7 +11,7 @@
             </div>
             <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name}}</button></div>
           </div>
-          <div class="kh-money">{{styleNumber(kh.can_thu)}}</div>
+          <div class="kh-money">{{styleNumber(kh.so_tien)}}</div>
         </div>
         <div class="kh-r2">
           <div *ngIf="dateConvert(kh.khach_hang.date)!==null" class="day">{{(kh.ngay_toi)}}</div>

@@ -44,9 +44,6 @@ export class GetJsonProvider {
           // headers.append('X-Requested-With', 'XMLHttpRequest');
           // headers.append('X-Token', token);
           console.log(token);
-          let options = new RequestOptions({
-            headers: iheader
-          });
           this.http.get(url, {
               headers: headers
             })

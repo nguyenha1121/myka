@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams, ModalController, Events } from 'ionic-angular';
+import {  ViewController, NavParams, ModalController } from 'ionic-angular';
 
+import { PostFormProvider } from '../../../providers/post-form/post-form';
 
 @Component({
   selector: 'tattoan',
@@ -13,15 +14,18 @@ export class TatToanModal{
 	api;
 	br;
 	now = 0;
+	url = "http://app.onbank.vn/api/loan/complete?API_TOKEN=";
 	tt = {
 		block: 0,
 		tonglai: 0,
 		thucte: 0
 	};
+	time = true;
 
 	constructor(
 		public viewCtrl: ViewController,
 		public navParams: NavParams,
+		public postf: PostFormProvider,
 		){
 		this.viewCtrl = viewCtrl;
 		this.data = this.navParams.get('data');
@@ -31,17 +35,25 @@ export class TatToanModal{
 		this.now = lnow.getTime() /(1000);
 		this.now = Math.floor(this.now);
 		// console.log(this.data);
-		this.getDif(1503657182);
+		// this.getDif(1503657182);
 	}
 
-	ionViewDidLoad(){
-
-	}
 	dismiss(){
 		this.viewCtrl.dismiss();
 	}	
 	tattoan(){
-		console.log(this.tt);
+		if(this.time == true){
+			// console.log(this.tt);
+			let u = this.url+this.api+"&branch="+this.br;
+			let form = "id="+this.data.id+
+						"&total="+this.tt.thucte;
+			this.postf.postTo(u,form,"").then(result => {
+				// console.log(result);
+				window.location.reload();
+			});
+			this.time = false;
+		}
+		
 	}
 	secBlock(val:any){
 		// console.log(val);
@@ -117,6 +129,9 @@ export class TatToanModal{
 	    out = out.slice(1);
 	    while(out[0] == '0'){
 	      out = out.slice(1);
+	    }
+	    if(out == ''){
+	    	return "0";
 	    }
 	    return out;
 	  }
