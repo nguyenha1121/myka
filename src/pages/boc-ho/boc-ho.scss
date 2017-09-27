@@ -11,6 +11,14 @@ page-boc-ho {
     }
 
   }
+  .list-header{
+    font-style: italic;
+    text-align: center;
+    background-color: rgba(36, 42, 49, 0.12);
+    td{
+      border-radius: 8px;
+    }
+  }
   ion-input{
     input{
       text-align: right;

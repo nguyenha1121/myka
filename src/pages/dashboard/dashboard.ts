@@ -74,7 +74,7 @@ export class DashboardPage {
         page = this.transaction;
       } else if(key == "lending"){
         icon = "card";
-        kk = "Đang vay";
+        kk = "Thêm Mới";
         page = this.loan;
       } else if(key == "gaining"){
         icon = "refresh";

@@ -32,17 +32,17 @@
     </form>
   </div>
   <div class="day-report">
-    <table *ngFor="let day of out" padding>
+    <table *ngFor="let day of out" >
       <thead>
         <tr>
-          <td class="cr-money">{{viewDay(day.day)}}</td>
+          <td style="padding-left: 5px;" class="cr-money">{{viewDay(day.day)}}</td>
           <td></td>
           <td colspan="2" class="p30">
             {{(day.value.date_item[0].tong_thu)}}
           </td>
         </tr>
       </thead>
-      <tbody padding>
+      <tbody >
         <tr *ngFor="let gd of day.value.date_item" (click)="clickme(gd)">
           <td><p>{{gd.time}}</p><p class="tinhtrang">{{gd.tinhtrang}}</p></td>
           <td>

@@ -44,7 +44,7 @@ export class DbModal {
       let arr = JSON.parse(this.data.tai_san);
       if(Array.isArray(arr)){
         for( let i =0;i<arr.length;i++){
-          this.imgs.push('http://app.onbank.vn'+JSON.parse(JSON.parse(this.data.tai_san)[i]));
+          this.imgs.push('http://app.onbank.vn'+JSON.parse(this.data.tai_san)[i]);
         }
       }
     }

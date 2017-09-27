@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 
 // import { FileChooser } from '@ionic-native/file-chooser';
 import { FileTransfer, FileTransferObject} from '@ionic-native/file-transfer';
@@ -80,8 +80,9 @@ export class CamDoPage {
       this.bug = 0;
       if(Array.isArray(JSON.parse(suc.response))){
         this.bug = 1;
-      }
-      this.imgsw.push(JSON.parse(suc.response)[0]);
+        this.imgsw.push(JSON.parse(suc.response)[0]);
+      } 
+      
     });
   }
 
@@ -107,7 +108,7 @@ export class CamDoPage {
           '&rate='+this.cd.chiphi+
           '&name='+this.cd.tenkhach+
           '&type='+'1'+
-          '&image-url'+this.log+
+          '&image-url='+this.log+
           '&phone='+this.cd.sdt+
           '&address='+this.cd.diachi+
           '&identity='+this.cd.cmt+
@@ -115,7 +116,7 @@ export class CamDoPage {
           '&note='+this.cd.ghichu+
           '&property='+this.cd.taisan
       ;
-
+      this.bug = form;
         let u = this.url+this.token+'&branch='+this.br;
         this.postf.postTo(u,form,'').then(log =>{
           console.log(log);

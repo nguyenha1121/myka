@@ -41,9 +41,9 @@
         <td><ion-label>Cắt trước</ion-label></td>
         <td><ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle></td>
       </tr>
-      <tr>
+      <tr class="list-header">
         <td colspan="3">
-          <p>Khach Hang</p>
+          <p>Khách hàng</p>
         </td>
       </tr>
       <tr>
@@ -84,8 +84,8 @@
     <i class="fa fa-floppy-o" aria-hidden="true"></i>
     <span>Lưu lại</span>
   </button>
-    <p>{{log}}</p>
-    <p>{{bug}}</p>
+<!--     <p>{{log}}</p>
+    <p>{{bug}}</p> -->
    <div class="imgs" *ngFor="let l of imgs">
     <!-- <i>{{l}}</i> -->
     <img class="dt-img" [src]="l" alt="#">
@@ -93,7 +93,3 @@
   </div>
   <!-- <p>{{uri}}</p> -->
 </ion-content>
-      <!-- <tr>
-        <ion-label>Cắt trước</ion-label>
-        <ion-toggle (ionChange)="isDisabled = !isDisabled"></ion-toggle>
-      </tr> -->

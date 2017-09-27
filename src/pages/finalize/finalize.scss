@@ -2,6 +2,17 @@ page-finalize {
   .scroll-content{
     padding:0!important;
   }
+  .r1{
+    width: 25%;
+  }
+  .r2{
+    width: 40%;
+  }
+  .r3{
+    // width: 35%;
+    display: flex;
+    justify-content: space-between;
+  }
   .tinhtrang{
     font-size: 12px;
     font-weight: 400;
@@ -130,7 +141,7 @@ page-finalize {
       }
     }
     td.status{
-      margin: auto 0;
+      // margin: auto 0;
       span{
         color: #1f497d;
         padding-right: 10px;

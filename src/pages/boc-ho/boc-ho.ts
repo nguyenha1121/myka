@@ -75,7 +75,7 @@ export class BocHoPage {
   async upt(img){
     var link = this.urlUpload+this.token+'&branch='+this.br;
     await this.upload.upload(img,link).then((suc) =>{
-      this.imgsw.push(JSON.parse(suc.response));
+      this.imgsw.push(JSON.parse(suc.response)[0]);
     });
   }
 

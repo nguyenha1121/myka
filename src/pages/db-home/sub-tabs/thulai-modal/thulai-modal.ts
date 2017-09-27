@@ -66,11 +66,14 @@ export class ThulaiModal {
 
     this.summaryDate = new Date().toISOString();
     this.data.han_toi = this.summaryDate;
+    
     if(this.data.tai_san){
       let arr = JSON.parse(this.data.tai_san);
+      // console.log('shsh');
+      // console.log(arr);
       if(Array.isArray(arr)){
         for( let i =0;i<arr.length;i++){
-          this.imgs.push('http://app.onbank.vn'+JSON.parse(JSON.parse(this.data.tai_san)[i]));
+          this.imgs.push('http://app.onbank.vn'+JSON.parse(this.data.tai_san)[i]);
         }
       }
       

@@ -20,17 +20,12 @@ export class DbLoading{
     this.loading = this.loadingCtrl.create({
       content: 'Please wait!'
     });
-    // this.loading.present();
 
 
     this.store.get('log-in').then(val=>{
         this.data = val;
         this.service.setUser(val.username);
-        // this.navCtrl.push(DashboardPage,{'log-in':this.data}).then(()=>{
-        //
-        // });
         this.navCtrl.setRoot(DashboardPage,{'log-in':this.data});
-        // this.loading.dismiss();
       })
   }
   goToPage2() {
