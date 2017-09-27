@@ -21,10 +21,11 @@
     <div class="list-result">
       <div class="items">
       <p *ngIf="!customer.length">Không tìm thây</p>
+      <ion-list-header>
+        Khách hàng: "{{this.key}}"
+      </ion-list-header>
       <ion-list *ngFor="let c of customer">
-        <ion-list-header>
-          Khách hàng: "{{this.key}}"
-        </ion-list-header>
+        
         <button ion-item>
           <!-- <ion-icon name="wifi" item-start color="primary"></ion-icon> -->
           <ion-icon *ngIf="c.loai == '2'" item-start color="primary" name="logo-bitcoin"></ion-icon>

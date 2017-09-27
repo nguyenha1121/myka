@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { GetJsonProvider } from '../../providers/get-json/get-json';
@@ -20,7 +20,10 @@ import { LoginPage } from '../login/login';
 })
 export class RegisterPage {
   public load:any;
-  constructor(public loading: LoadingController ,public navCtrl: NavController, public navParams: NavParams, public getj: GetJsonProvider,public post: PostFormProvider, public store: Storage) {
+  constructor(public loading: LoadingController ,public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public toast : ToastController,
+    public getj: GetJsonProvider,public post: PostFormProvider, public store: Storage) {
     this.load = this.loading.create({
       content: "Please wait!"
     });
@@ -41,7 +44,7 @@ export class RegisterPage {
   };
   public data;
   registerform(){
-    this.load.present();
+
     let url = "http://app.onbank.vn/api/staff/register";
     // let forn = ?username='+this.reg.user+'&password='+this.reg.password+'&repassword='+this.reg.repassword+'&email='+this.reg.email+'&identity-no=1'+'&phone='+'this.reg.phone';
     let form =
@@ -53,20 +56,28 @@ export class RegisterPage {
        '&full_name=' + this.reg.full_name
     ;
 
-
-    // console.log(form);
-
     this.post.postTo(url,form,'').then(data =>{
-      // console.log(data);
+      console.log(data);
       if(data.status == 1){
         this.navCtrl.setRoot(LoginPage,{log:{
           user: this.reg.user,
           password: this.reg.password
         }});
-      }
-        this.load.dissmiss();
+        this.toast.create({
+            message:"Đăng kí thành công!",
+            duration: 1500,
+            position: 'middle'
+         }).present()
+      } else {
+          this.toast.create({
+            message:data.msg,
+            duration: 1500,
+            position: 'middle'
+          }).present()
+        }   
       });
-  }
+    }
+  
 
   goLogin(){
     this.navCtrl.push(LoginPage);

@@ -4,9 +4,14 @@ page-home {
       display: none;
   }
 }
-table{
-	width: 100%;
-	tbody{
+thulai-modal, db-modal{
+	table{
 		width: 100%;
+		tbody{
+			width: 100%;
+			td> div{
+				width: 100%;
+			}
+		}
 	}
 }
