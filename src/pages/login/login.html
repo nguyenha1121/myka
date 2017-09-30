@@ -16,16 +16,16 @@
   <div class="lggg"><img width="150" class="" src="http://app.onbank.vn/public/image/logoOB.png" alt="Logo"></div>
   <form class="list" (ngSubmit)="logForm()">
     <ion-item class="item item-input">
-      <ion-label floating>Tài khoản</ion-label>
+      <ion-label floating><ion-icon ios="ios-contact" md="md-contact"></ion-icon> Tài khoản</ion-label>
       <ion-input [(ngModel)]="log.user" name="user" ></ion-input>
     </ion-item>
     
     <ion-item class="item item-input">
-      <ion-label floating>Mật khẩu</ion-label>
+      <ion-label floating><ion-icon ios="ios-key" md="md-key"></ion-icon> Mật khẩu</ion-label>
       <ion-input [(ngModel)]="log.password" name="password" type="password"></ion-input>
     </ion-item>
 
-    <button class="button button-block " ion-button type="submit">Login</button>
+    <button class="button button-block " style="width: 60%!important; margin: 10px auto!important;" ion-button type="submit">Login</button>
 
   </form>
   <button class="button button-block " ion-button (click)="goRegister()">Register</button>
