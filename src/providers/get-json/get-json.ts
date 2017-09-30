@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 
 /*
@@ -44,10 +45,12 @@ export class GetJsonProvider {
           // headers.append('X-Requested-With', 'XMLHttpRequest');
           // headers.append('X-Token', token);
           console.log(token);
-          this.http.get(url, {
+          var rest = this.http.get(url, {
               headers: headers
-            })
-            .map(res => res.json())
+            });
+          var promise = rest.toPromise();
+          promise.then().catch();
+          rest.map(res => res.json())
             .subscribe(data => {
               // console.log(data);
               this.data = data;

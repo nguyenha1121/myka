@@ -128,11 +128,13 @@ export class TradePage {
   clickme(gd){
     this.getj.load("http://app.onbank.vn/api/transaction/info/"+gd.id+'?API_TOKEN='+this.api+'&branch='+this.br, '').then(data =>{
       let modal = this.modal.create(TradeModal,{
-        'param':data,
+        param:data,
         api: this.api,
-        br: this.br
+        br: this.br,
+        callback: this.refresh
       });
       modal.present();
+      modal.onDidDismiss(()=>this.refresh());
     });
     
   }

@@ -11,7 +11,7 @@
 </ion-menu> -->
 <ion-menu id="db-menu" side="left" [content]="mycontent">
     <ion-content>
-        <p>Danh sách chi nhánh</p>
+        <h3>Danh sách chi nhánh</h3>
         <ion-list >
              <button *ngFor="let br of list_br" ion-item menuClose (click)="changeBranch(br)">
                 {{br.name}}
