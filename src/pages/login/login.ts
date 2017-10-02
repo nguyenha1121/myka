@@ -55,7 +55,7 @@ export class LoginPage {
       // console.log(tot);
 
       this.postf.postTo('http://app.onbank.vn/api/staff/login',tot,'').then(data=>{
-        // console.log(data);
+        console.log(data);
         this.data = data;
         
         // console.log(this.data);

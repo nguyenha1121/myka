@@ -28,7 +28,7 @@ export class DashboardPage {
   interest:any = SumPage;
   finalize:any = FinalizePage;
   public data;
-  public tb;
+  public tb =[];
   public page = [];
   public ftabs = [];
   scrollableTabsopts: any = {};
@@ -38,10 +38,16 @@ export class DashboardPage {
   constructor(public store:Storage, public navCtrl: NavController, public navParams: NavParams,
     public getj: GetJsonProvider, public event: Events) {
     // console.log('jsjsj');
-    this.data = navParams.get('log-in');
+    this.data = this.navParams.get('log-in');
+    console.log(this.data);
     let a = this.data.roles;
+    if( a=='all'){
+      console.log('all');
+      a = '{"home":["view","edit","export"],"transaction":["view","edit","export"],"lending":["view","edit","export"],"gaining":["view","edit","export"],"finalizing":["view","edit","export"]}';
+    } 
     let ob = JSON.parse(a);
     this.tb = this.loop(ob);
+    
   }
 
 

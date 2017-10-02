@@ -35,8 +35,6 @@ export class PostFormProvider {
       }
       console.log(form);
       // console.log(tot);
-      // let tot = 'username='+form['username']+'&password='+form['password'];
-      // let body = 'username=hanguyen12&password=123456&repassword=123456&email=nguyenha1.08112@gmail.com&identity-no=1&phone=0969538900';
       this.http.post(url,form,{
         headers: headers
       })
