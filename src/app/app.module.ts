@@ -27,6 +27,9 @@ import { TradeModal } from '../pages/trade/modal-trade/modal-trade';
 import { NewTradeModal2 } from '../pages/finalize/new-trade/new-trade';
 import { TradeModal2 } from '../pages/finalize/modal-trade/modal-trade';
 import { LoanPage } from '../pages/loan/loan';
+import { StaffPage } from '../pages/staff/staff';
+import { AddStaffPage } from '../pages/staff/add-staff/add-staff';
+import { ListStaffPage } from '../pages/staff/list-staff/list-staff';
 import { FinalizePage } from '../pages/finalize/finalize';
 import { SumPage } from '../pages/sum/sum';
 import { TatToanModal } from '../pages/sum/tat-toan/tattoan';
@@ -41,6 +44,7 @@ import { SignUpPage } from '../pages/db-home/sub-tabs/sign-up/sign-up';
 import { CamDoPage } from '../pages/cam-do/cam-do';
 import { BocHoPage } from '../pages/boc-ho/boc-ho';
 import { DetailPage } from '../pages/detail/detail';
+import { BranchPage } from '../pages/branch/branch';
 
 import { GetJsonProvider } from '../providers/get-json/get-json';
 import { HttpModule } from '@angular/http';
@@ -53,6 +57,8 @@ import { ServiceProvider } from '../providers/service/service';
     ScrollableTabs,
     MyApp,
     HomePage,
+    BranchPage,
+    StaffPage, AddStaffPage, ListStaffPage,
     LoginPage, ProfilePage,
     RegisterPage,
     DashboardPage, DbLoading,
@@ -77,6 +83,8 @@ import { ServiceProvider } from '../providers/service/service';
   entryComponents: [
     MyApp,
     HomePage,
+    BranchPage,
+    StaffPage,
     LoginPage, ProfilePage,
     RegisterPage,
     DashboardPage, DbLoading,

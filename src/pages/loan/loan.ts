@@ -19,7 +19,10 @@ export class LoanPage {
 
   camdo:any = CamDoPage;
   bocho:any = BocHoPage;
+  params: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	this.params = navParams.data;
+  	console.log(this.params);
   }
 
   ionViewDidLoad() {

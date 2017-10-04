@@ -10,6 +10,8 @@ import { DbHomePage } from '../db-home/db-home';
 import { DbHomeLoading } from '../db-home/db-loading';
 import { GetJsonProvider } from '../../providers/get-json/get-json';
 
+import { StaffPage } from '../staff/staff';
+
 /**
  * Generated class for the DashboardPage page.
  *
@@ -40,14 +42,17 @@ export class DashboardPage {
     // console.log('jsjsj');
     this.data = this.navParams.get('log-in');
     console.log(this.data);
-    let a = this.data.roles;
-    if( a=='all'){
-      console.log('all');
-      a = '{"home":["view","edit","export"],"transaction":["view","edit","export"],"lending":["view","edit","export"],"gaining":["view","edit","export"],"finalizing":["view","edit","export"]}';
-    } 
-    let ob = JSON.parse(a);
-    this.tb = this.loop(ob);
-    
+    let a = this.data.menu;
+    // if( a=='all'){
+    //   console.log('all');
+    //   a = '{"home":["view","edit","export"],"transaction":["view","edit","export"],"lending":["view","edit","export"],"gaining":["view","edit","export"],"finalizing":["view","edit","export"]}';
+    // } 
+    // let ob = JSON.parse(a);
+    console.log(a);
+    this.tb = this.loop(a);
+    // console.log('hehehhe');
+    console.log(this.tb);
+
   }
 
 
@@ -65,35 +70,39 @@ export class DashboardPage {
     for (var key in _obj) {
     // skip loop if the property is from prototype
       if (!_obj.hasOwnProperty(key)) continue;
-
       var obj = _obj[key];
+
       let icon = "bonfire";
       let kk = "Bonfire";
-      let page:any;
-      if(key == "home"){
+      let page:any = StaffPage;
+      if(key == "tab-1"){
         icon = "home";
         kk = "Home";
         page = this.home;
-      } else if( key == "transaction"){
+      } else if( key == "tab-2"){
         icon = "swap";
         kk = "Giao dịch";
         page = this.transaction;
-      } else if(key == "lending"){
+      } else if(key == "tab-3"){
         icon = "card";
         kk = "Thêm Mới";
         page = this.loan;
-      } else if(key == "gaining"){
+      } else if(key == "tab-4"){
         icon = "refresh";
         kk = "Thu lãi";
         page = this.interest;
-      } else if(key == "finalizing"){
+      } else if(key == "tab-5"){
         icon = "logo-usd";
         kk = "Thống kê";
         page = this.finalize;
-      } else kk = key;
+      }
+      else kk = key;
       out.push({
         tab: kk,
-        own: obj,
+        own: {
+          title: (obj.title)?obj.title: "Thêm mới",
+          icon: obj.icon
+        },
         icon: icon,
         page: page,
       })

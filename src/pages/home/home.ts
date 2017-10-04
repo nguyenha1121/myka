@@ -35,8 +35,8 @@ export class HomePage {
             this.store.get('list-branch').then(lb => {
               this.list_br = lb;
               console.log(lb);
-              // this.root = DbLoading;
-              this.root = LoginPage;
+              this.root = DbLoading;
+              // this.root = LoginPage;
             });
           }
           else {

@@ -6,12 +6,6 @@
 -->
 <ion-content>
   <ion-tabs  #ionTabs [scrollable-tabs]="ionTabs" [opts]="scrollableTabsopts" selectedIndex={{select}} tabs-only tabsLayout="icon-top">
-    <!-- <ion-tab *ngIf="tabs[0] && tabs[0].name" [root]="home" tabTitle="Home" tabIcon={{tabs[0].icon}}  ></ion-tab>
-    <ion-tab *ngIf="tabs[1] && tabs[1].name" [root]="transaction" tabTitle="Giao dịch" tabIcon={{tabs[1].icon}}  ></ion-tab>
-    <ion-tab *ngIf="tabs[2] && tabs[2].name" [root]="loan" tabTitle="Cho vay" tabIcon={{tabs[2].icon}} ></ion-tab>
-    <ion-tab *ngIf="tabs[3] && tabs[3].name" [root]="interest" tabTitle="Thu lãi" tabIcon={{tabs[3].icon}} ></ion-tab>
-    <ion-tab *ngIf="tabs[4] && tabs[4].name" [root]="finalize" tabTitle="Chốt sổ" tabIcon={{tabs[4].icon}} ></ion-tab> -->
-    <!-- <ion-tab *ngIf="tabs[5].name" [root]="tab5" tabTitle="Chốt sổ" tabIcon="logo-usd" tabBadge="5"></ion-tab> -->
-    <ion-tab *ngFor="let tab of tb" [root]="tab.page" tabTitle={{tab.tab}} tabIcon={{tab.icon}}></ion-tab>
+    <ion-tab *ngFor="let tab of tb" [rootParams]="tab.own" [root]="tab.page" tabTitle={{tab.own.title}} tabIcon={{tab.icon}}></ion-tab>
   </ion-tabs>
 </ion-content>
