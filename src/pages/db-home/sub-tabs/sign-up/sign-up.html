@@ -9,7 +9,7 @@
               <ion-icon *ngIf="kh.loai == '2'" name="logo-bitcoin"></ion-icon>
               <ion-icon *ngIf="kh.loai == '1'" name="logo-euro"></ion-icon>
             </div>
-            <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name}}</button></div>
+            <div><button (click)="gotoDetail(kh)">{{kh.khach_hang.name!=''?kh.khach_hang.name:'Unknow'}}</button></div>
           </div>
           <div class="kh-money">{{styleNumber(kh.so_tien)}}</div>
         </div>

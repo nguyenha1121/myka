@@ -42,13 +42,8 @@ export class DashboardPage {
     // console.log('jsjsj');
     this.data = this.navParams.get('log-in');
     console.log(this.data);
-    let a = this.data.menu;
-    // if( a=='all'){
-    //   console.log('all');
-    //   a = '{"home":["view","edit","export"],"transaction":["view","edit","export"],"lending":["view","edit","export"],"gaining":["view","edit","export"],"finalizing":["view","edit","export"]}';
-    // } 
-    // let ob = JSON.parse(a);
-    console.log(a);
+    let a = JSON.parse(this.data.roles);
+    // console.log(JSON.parse(a));
     this.tb = this.loop(a);
     // console.log('hehehhe');
     console.log(this.tb);
@@ -68,6 +63,7 @@ export class DashboardPage {
   loop(_obj){
     var out =[];
     for (var key in _obj) {
+      console.log(key);
     // skip loop if the property is from prototype
       if (!_obj.hasOwnProperty(key)) continue;
       var obj = _obj[key];
@@ -75,28 +71,28 @@ export class DashboardPage {
       let icon = "bonfire";
       let kk = "Bonfire";
       let page:any = StaffPage;
-      if(key == "tab-1"){
+      if(key == "home"){
         icon = "home";
         kk = "Home";
         page = this.home;
-      } else if( key == "tab-2"){
+      } else if( key == "transaction"){
         icon = "swap";
         kk = "Giao dịch";
         page = this.transaction;
-      } else if(key == "tab-3"){
+      } else if(key == "lending"){
         icon = "card";
         kk = "Thêm Mới";
         page = this.loan;
-      } else if(key == "tab-4"){
+      } else if(key == "gaining"){
         icon = "refresh";
         kk = "Thu lãi";
         page = this.interest;
-      } else if(key == "tab-5"){
+      } else if(key == "finalizing"){
         icon = "logo-usd";
         kk = "Thống kê";
         page = this.finalize;
       }
-      else kk = key;
+      else continue;
       out.push({
         tab: kk,
         own: {
